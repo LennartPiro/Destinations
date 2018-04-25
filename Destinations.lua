@@ -6427,80 +6427,6 @@ local function InitSettings()
 			})
 			
 		elseif menu == "Achievements" then
-		
-			table.insert(submenu, { -- Achievement Other Header
-				type = "header",
-				name = defaults.miscColorCodes.settingsTextAchHeaders:Colorize(GetString(DEST_SETTINGS_ACH_OTHER_HEADER)),
-			})
-			table.insert(submenu, { -- Achievement Other Toggle
-				type = "checkbox",
-				name = defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_ACH_PIN_TOGGLE)).." "..defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_PER_CHAR)),
-				getFunc = function() return DestinationsCSSV.filters[DPINS.LB_GTTP_CP] end,
-				setFunc = function(state)
-					TogglePins(DPINS.LB_GTTP_CP, state)
-					RedrawAllPins(DPINS.LB_GTTP_CP)
-				end,
-				default = defaults.filters[DPINS.LB_GTTP_CP],
-			})
-			table.insert(submenu, { -- Achievement Other Done Toggle
-				type = "checkbox",
-				name = defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_ACH_PIN_TOGGLE_DONE)).." "..defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_PER_CHAR)),
-				getFunc = function() return DestinationsCSSV.filters[DPINS.LB_GTTP_CP_DONE] end,
-				setFunc = function(state)
-					TogglePins(DPINS.LB_GTTP_CP_DONE, state)
-					RedrawAllPins(DPINS.LB_GTTP_CP_DONE)
-				end,
-				default = defaults.filters[DPINS.LB_GTTP_CP_DONE],
-			})
-			table.insert(submenu, { -- Achievement Other Style
-				type = "dropdown",
-				name = GetString(DEST_SETTINGS_ACH_PIN_STYLE),
-				reference = "previewpinTextureOther",
-				choices = pinTextures.lists.Other,
-				getFunc = function() return pinTextures.lists.Other[DestinationsSV.pins.pinTextureOther.type] end,
-				setFunc = function(selected)
-					for index, name in ipairs(pinTextures.lists.Other) do
-						if name == selected then
-							DestinationsSV.pins.pinTextureOther.type = index
-							DestinationsSV.pins.pinTextureOtherDone.type = index
-							LMP:SetLayoutKey(DPINS.LB_GTTP_CP, "texture", pinTextures.paths.Other[index])
-							LMP:SetLayoutKey(DPINS.LB_GTTP_CP_DONE, "texture", pinTextures.paths.OtherDone[index])
-							otherPreview:SetTexture(pinTextures.paths.Other[index])
-							otherPreviewDone:SetTexture(pinTextures.paths.OtherDone[index])
-							RedrawAllPins(DPINS.LB_GTTP_CP)
-							RedrawAllPins(DPINS.LB_GTTP_CP_DONE)
-							break
-						end
-					end
-				end,
-				disabled = function() return 
-					not DestinationsCSSV.filters[DPINS.LB_GTTP_CP] and
-					not DestinationsCSSV.filters[DPINS.LB_GTTP_CP_DONE]
-				end,
-				default = pinTextures.lists.Other[defaults.pins.pinTextureOther.type],
-			})
-			table.insert(submenu, { -- Achievement Other size
-				type = "slider",
-				name = GetString(DEST_SETTINGS_ACH_PIN_SIZE),
-				min = 20,
-				max = 70,
-				getFunc = function() return DestinationsSV.pins.pinTextureOther.size end,
-				setFunc = function(size)
-					DestinationsSV.pins.pinTextureOther.size = size
-					LMP:SetLayoutKey(DPINS.LB_GTTP_CP, "size", size)
-					otherPreview:SetDimensions(size, size)
-					DestinationsSV.pins.pinTextureOtherDone.size = size
-					LMP:SetLayoutKey(DPINS.LB_GTTP_CP_DONE, "size", size)
-					otherPreviewDone:SetDimensions(size, size)
-					RedrawAllPins(DPINS.LB_GTTP_CP)
-					RedrawAllPins(DPINS.LB_GTTP_CP_DONE)
-				end,
-				disabled = function() return 
-					not DestinationsCSSV.filters[DPINS.LB_GTTP_CP] and
-					not DestinationsCSSV.filters[DPINS.LB_GTTP_CP_DONE]
-				end,
-				default = defaults.pins.pinTextureOther.size
-			})
 
 			table.insert(submenu, { -- Champion Header
 				type = "header",
@@ -6617,6 +6543,79 @@ local function InitSettings()
 					not DestinationsCSSV.filters[DPINS.CHAMPION_DONE]
 				end,
 				default = defaults.pins.pinTextureChampion.size
+			})
+			table.insert(submenu, { -- Achievement Other Header
+				type = "header",
+				name = defaults.miscColorCodes.settingsTextAchHeaders:Colorize(GetString(DEST_SETTINGS_ACH_OTHER_HEADER)),
+			})
+			table.insert(submenu, { -- Achievement Other Toggle
+				type = "checkbox",
+				name = defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_ACH_PIN_TOGGLE)).." "..defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_PER_CHAR)),
+				getFunc = function() return DestinationsCSSV.filters[DPINS.LB_GTTP_CP] end,
+				setFunc = function(state)
+					TogglePins(DPINS.LB_GTTP_CP, state)
+					RedrawAllPins(DPINS.LB_GTTP_CP)
+				end,
+				default = defaults.filters[DPINS.LB_GTTP_CP],
+			})
+			table.insert(submenu, { -- Achievement Other Done Toggle
+				type = "checkbox",
+				name = defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_ACH_PIN_TOGGLE_DONE)).." "..defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_PER_CHAR)),
+				getFunc = function() return DestinationsCSSV.filters[DPINS.LB_GTTP_CP_DONE] end,
+				setFunc = function(state)
+					TogglePins(DPINS.LB_GTTP_CP_DONE, state)
+					RedrawAllPins(DPINS.LB_GTTP_CP_DONE)
+				end,
+				default = defaults.filters[DPINS.LB_GTTP_CP_DONE],
+			})
+			table.insert(submenu, { -- Achievement Other Style
+				type = "dropdown",
+				name = GetString(DEST_SETTINGS_ACH_PIN_STYLE),
+				reference = "previewpinTextureOther",
+				choices = pinTextures.lists.Other,
+				getFunc = function() return pinTextures.lists.Other[DestinationsSV.pins.pinTextureOther.type] end,
+				setFunc = function(selected)
+					for index, name in ipairs(pinTextures.lists.Other) do
+						if name == selected then
+							DestinationsSV.pins.pinTextureOther.type = index
+							DestinationsSV.pins.pinTextureOtherDone.type = index
+							LMP:SetLayoutKey(DPINS.LB_GTTP_CP, "texture", pinTextures.paths.Other[index])
+							LMP:SetLayoutKey(DPINS.LB_GTTP_CP_DONE, "texture", pinTextures.paths.OtherDone[index])
+							otherPreview:SetTexture(pinTextures.paths.Other[index])
+							otherPreviewDone:SetTexture(pinTextures.paths.OtherDone[index])
+							RedrawAllPins(DPINS.LB_GTTP_CP)
+							RedrawAllPins(DPINS.LB_GTTP_CP_DONE)
+							break
+						end
+					end
+				end,
+				disabled = function() return 
+					not DestinationsCSSV.filters[DPINS.LB_GTTP_CP] and
+					not DestinationsCSSV.filters[DPINS.LB_GTTP_CP_DONE]
+				end,
+				default = pinTextures.lists.Other[defaults.pins.pinTextureOther.type],
+			})
+			table.insert(submenu, { -- Achievement Other size
+				type = "slider",
+				name = GetString(DEST_SETTINGS_ACH_PIN_SIZE),
+				min = 20,
+				max = 70,
+				getFunc = function() return DestinationsSV.pins.pinTextureOther.size end,
+				setFunc = function(size)
+					DestinationsSV.pins.pinTextureOther.size = size
+					LMP:SetLayoutKey(DPINS.LB_GTTP_CP, "size", size)
+					otherPreview:SetDimensions(size, size)
+					DestinationsSV.pins.pinTextureOtherDone.size = size
+					LMP:SetLayoutKey(DPINS.LB_GTTP_CP_DONE, "size", size)
+					otherPreviewDone:SetDimensions(size, size)
+					RedrawAllPins(DPINS.LB_GTTP_CP)
+					RedrawAllPins(DPINS.LB_GTTP_CP_DONE)
+				end,
+				disabled = function() return 
+					not DestinationsCSSV.filters[DPINS.LB_GTTP_CP] and
+					not DestinationsCSSV.filters[DPINS.LB_GTTP_CP_DONE]
+				end,
+				default = defaults.pins.pinTextureOther.size
 			})
 			table.insert(submenu, { -- Achievement M'aiq Header
 				type = "header",
