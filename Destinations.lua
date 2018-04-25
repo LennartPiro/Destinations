@@ -5810,7 +5810,7 @@ local function HookPoiTooltips()
 			
 			local mapData = POIsStore[zoneId]
 			
-			if mapData[poiIndex] then
+			if mapData and mapData[poiIndex] then
 				local englishName = mapData[poiIndex].n
 				if englishName then
 					local localizedName = ZO_WorldMapMouseoverName:GetText()
