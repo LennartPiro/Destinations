@@ -1,8 +1,8 @@
 -- Destinations
 
 local ADDON_NAME = "Destinations"
-local ADDON_AUTHOR = "|c990000Snowman|r|cFFFFFFDK|r & Ayantir"
-local ADDON_VERSION = "2.9.5"
+local ADDON_AUTHOR = "|c990000Snowman|r|cFFFFFFDK|r & MasterLenman & Ayantir"
+local ADDON_VERSION = "3.0.0"
 local ADDON_WEBSITE = "http://www.esoui.com/downloads/info667-Destinations.html"
 
 local LMP = LibStub("LibMapPins-1.0")
@@ -63,6 +63,7 @@ local DESTINATIONS_PIN_TYPE_GROUPCAVE = 45
 local DESTINATIONS_PIN_TYPE_GROUPCEMETERY = 46
 local DESTINATIONS_PIN_TYPE_GROUPKEEP = 47
 local DESTINATIONS_PIN_TYPE_GROUPAREAOFINTEREST = 48
+local DESTINATIONS_PIN_TYPE_HOUSING = 49
 local DESTINATIONS_PIN_TYPE_UNKNOWN = 99
 
 local ENGLISH_POI_COLOR, ENGLISH_KEEP_COLOR
@@ -1242,6 +1243,7 @@ local poiTypes = {
 	[DESTINATIONS_PIN_TYPE_GROUPCEMETERY] = GetString(POITYPE_QUESTHUB),
 	[DESTINATIONS_PIN_TYPE_GROUPKEEP] = GetString(POITYPE_QUESTHUB),
 	[DESTINATIONS_PIN_TYPE_GROUPAREAOFINTEREST] = GetString(POITYPE_AOI),
+	[DESTINATIONS_PIN_TYPE_HOUSING] = GetString(POITYPE_HOUSING),
 	[DESTINATIONS_PIN_TYPE_UNKNOWN] = GetString(POITYPE_UNKNOWN),
 }
 
@@ -1347,6 +1349,9 @@ local ZoneIDsToFileNames = {
 	[534] = "strosmkai_base_0",
 	[103] = "therift_base_0",
 	[684] = "wrothgar_base_0",
+	[849] = "vvardenfell_base_0",
+	[1011] = "summerset_base_0",
+	[1027] = "artaeum_base_0",
 }
 
 local achTypes = {
@@ -3613,6 +3618,7 @@ local function GetDestinationKnownPOITexture(poiTypeId)
 		[DESTINATIONS_PIN_TYPE_GROUPCEMETERY] 			= "/esoui/art/icons/poi/poi_group_cemetery_complete.dds",
 		[DESTINATIONS_PIN_TYPE_GROUPKEEP] 				= "/esoui/art/icons/poi/poi_group_keep_complete.dds",
 		[DESTINATIONS_PIN_TYPE_GROUPAREAOFINTEREST] 	= "/esoui/art/icons/poi/poi_group_areaofinterest_complete.dds",	
+		[DESTINATIONS_PIN_TYPE_HOUSING] = "/esoui/art/icons/poi/poi_group_house_owned.dds",
 		[DESTINATIONS_PIN_TYPE_UNKNOWN]					= "Destinations/pins/poi_unknown_pintype.dds",
 	}
 
@@ -3675,6 +3681,7 @@ local function GetDestinationUnknownPOITexture(poiTypeId)
 		[DESTINATIONS_PIN_TYPE_GROUPCEMETERY] 			= "/esoui/art/icons/poi/poi_group_cemetery_complete.dds",
 		[DESTINATIONS_PIN_TYPE_GROUPKEEP] 				= "/esoui/art/icons/poi/poi_group_keep_complete.dds",
 		[DESTINATIONS_PIN_TYPE_GROUPAREAOFINTEREST] 	= "/esoui/art/icons/poi/poi_group_areaofinterest_complete.dds",	
+		[DESTINATIONS_PIN_TYPE_HOUSING] = "/esoui/art/icons/poi/poi_group_house_unowned.dds",
 		[DESTINATIONS_PIN_TYPE_UNKNOWN]					= "Destinations/pins/poi_unknown_pintype.dds",
 	}
 

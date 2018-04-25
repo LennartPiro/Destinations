@@ -346,6 +346,7 @@ do
 
 	--POI Types
 	Add("POITYPE_AOI",										"Area of Interest")
+	Add("POITYPE_HOUSING",									"Casa")
 	Add("POITYPE_CRAFTING",									"Crafting Location")
 	Add("POITYPE_DELVE",									"Delve")
 	Add("POITYPE_DOLMEN",									"Dolmen")

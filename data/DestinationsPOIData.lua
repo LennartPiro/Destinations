@@ -59,6 +59,7 @@ local DESTINATIONS_PIN_TYPE_GROUPCAVE				= 45
 local DESTINATIONS_PIN_TYPE_GROUPCEMETERY			= 46
 local DESTINATIONS_PIN_TYPE_GROUPKEEP				= 47
 local DESTINATIONS_PIN_TYPE_GROUPAREAOFINTEREST = 48
+local DESTINATIONS_PIN_TYPE_HOUSING = 49
 local DESTINATIONS_PIN_TYPE_UNKNOWN					= 99
 
 -- value is abilityId
@@ -128,6 +129,10 @@ local CRAFTINGSET_INNATE_AXIOM						= 39
 local CRAFTINGSET_FORTIFIED_BRASS					= 40
 local CRAFTINGSET_MECHANICAL_ACUITY						= 41
 
+local CRAFTINGSET_ADEPT_RIDER = 42
+local CRAFTINGSET_SLOADS_SEMBLANCE = 43
+local CRAFTINGSET_NOCTURNALS_FAVOR = 44
+
 -- itemId, numberOfTraitsRequired	
 Destinations.SetsStore = {	
 		
@@ -194,6 +199,10 @@ Destinations.SetsStore = {
 	[CRAFTINGSET_FORTIFIED_BRASS]					= {130723, 4},
 	[CRAFTINGSET_MECHANICAL_ACUITY]					= {131070, 6},
 	
+	--Summerset
+	[CRAFTINGSET_ADEPT_RIDER]						= {135717, 3},
+	[CRAFTINGSET_SLOADS_SEMBLANCE]					= {136102, 6},
+	[CRAFTINGSET_NOCTURNALS_FAVOR]					= {136417, 9},
 }
 
 Destinations.KeepsStore = {
@@ -1910,7 +1919,7 @@ Destinations.POIsStore = {
 		[5] = {n = "Mire Mechanica Wayshrine", t = DESTINATIONS_PIN_TYPE_WAYSHRINE}, --
 		[6] = {n = "Everwound Wellspring", t = DESTINATIONS_PIN_TYPE_FARM},
 		[7] = {n = "Mnemonic Planisphere", t = DESTINATIONS_PIN_TYPE_DWEMERRUIN},
-		[8] = {n = "", t = DESTINATIONS_PIN_TYPE_UNKNOWN}, --
+		[8] = {n = "The Orbservatory Prior", t = DESTINATIONS_PIN_TYPE_HOUSING}, --
 		[9] = {n = "Elegiac Replication", t = DESTINATIONS_PIN_TYPE_AOI},
 		[10] = {n = "Insalubrious Effluvium", t = DESTINATIONS_PIN_TYPE_AOI},
 		[11] = {n = "Vale of Tiers", t = DESTINATIONS_PIN_TYPE_AOI},
@@ -1934,4 +1943,78 @@ Destinations.POIsStore = {
 		[4] = {n = "Asylum Sanctorium", t = DESTINATIONS_PIN_TYPE_RAIDDUNGEON},
         ["zoneName"] = "Brass Fortress",
 	}
+	[1011] = -- Summerset
+	{
+		[1] = {n = "King's Haven Pass Wayshrine", t = DESTINATIONS_PIN_TYPE_WAYSHRINE}, --
+		[2] = {n = "Shimmerene Wayshrine", t = DESTINATIONS_PIN_TYPE_WAYSHRINE}, --
+		[3] = {n = "Sil-Var-Woad Wayshrine", t = DESTINATIONS_PIN_TYPE_WAYSHRINE}, --
+		[4] = {n = "Russafeld Heights Wayshrine", t = DESTINATIONS_PIN_TYPE_WAYSHRINE}, --
+		[5] = {n = "Cey-Tarn Wayshrine", t = DESTINATIONS_PIN_TYPE_WAYSHRINE}, --
+		[6] = {n = "Ebon Stadmont Wayshrine", t = DESTINATIONS_PIN_TYPE_WAYSHRINE}, --
+		[7] = {n = "Alinor", t = DESTINATIONS_PIN_TYPE_CITY}, --
+		[8] = {n = "Shimmerene", t = DESTINATIONS_PIN_TYPE_TOWN}, --
+		[9] = {n = "Lillandril", t = DESTINATIONS_PIN_TYPE_TOWN}, --
+		[10] = {n = "Direnni Acropolis", t = DESTINATIONS_PIN_TYPE_GATE}, --
+		[11] = {n = "Russafeld", t = DESTINATIONS_PIN_TYPE_FARM}, --
+		[12] = {n = "Sil-Var-Woad", t = DESTINATIONS_PIN_TYPE_GROVE}, --
+		[13] = {n = "Rellenthil", t = DESTINATIONS_PIN_TYPE_RUIN}, --
+		[14] = {n = "Cey-Tarn Keep", t = DESTINATIONS_PIN_TYPE_GATE}, --
+		[15] = {n = "Ebon Stadmont", t = DESTINATIONS_PIN_TYPE_GROVE}, --
+		[16] = {n = "Sea Keep", t = DESTINATIONS_PIN_TYPE_GATE}, --
+		[17] = {n = "Illumination Academy", t = DESTINATIONS_PIN_TYPE_ESTATE}, --
+		[18] = {n = "Corgrad Wastes", t = DESTINATIONS_PIN_TYPE_CAMP}, --
+		[19] = {n = "King's Haven Pass", t = DESTINATIONS_PIN_TYPE_DELVE}, --
+		[20] = {n = "King's Haven Pass", t = DESTINATIONS_PIN_TYPE_DELVE}, --
+		[21] = {n = "Eton Nir", t = DESTINATIONS_PIN_TYPE_DELVE}, --
+		[22] = {n = "Archon's Grove", t = DESTINATIONS_PIN_TYPE_DELVE}, --
+		[23] = {n = "Tor-Hame-Khard", t = DESTINATIONS_PIN_TYPE_DELVE}, --
+		[24] = {n = "Wasten Coraldale", t = DESTINATIONS_PIN_TYPE_DELVE}, --
+		[25] = {n = "Sunhold", t = DESTINATIONS_PIN_TYPE_DUNGEON}, --
+		[26] = {n = "Karnwasten", t = DESTINATIONS_PIN_TYPE_DUNGEON}, --
+		[27] = {n = "Graveld's Hideaway", t = DESTINATIONS_PIN_TYPE_GROUPBOSS}, --
+		[28] = {n = "Keelsplitter's Nest", t = DESTINATIONS_PIN_TYPE_GROUPBOSS}, --
+		[29] = {n = "Gryphon Run", t = DESTINATIONS_PIN_TYPE_GROUPBOSS}, --
+		[30] = {n = "The Queen's Hatchery", t = DESTINATIONS_PIN_TYPE_GROUPBOSS}, --
+		[31] = {n = "Welenkin Cove", t = DESTINATIONS_PIN_TYPE_GROUPBOSS}, --
+		[32] = {n = "Indrik Frolic", t = DESTINATIONS_PIN_TYPE_GROUPBOSS}, --
+		[33] = {n = "Shimmerene Dockworks", t = DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_ADEPT_RIDER }, --
+		[34] = {n = "Augury Basin", t = DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_NOCTURNALS_FAVOR }, --
+		[35] = {n = "Cathedral of Webs", t = DESTINATIONS_PIN_TYPE_AOI}, --
+		[36] = {n = "Alinor Docks", t = DESTINATIONS_PIN_TYPE_AOI}, --
+		[37] = {n = "Ald Mora Ruins", t = DESTINATIONS_PIN_TYPE_AOI}, --
+		[38] = {n = "Gryphon Aerie", t = DESTINATIONS_PIN_TYPE_AOI}, --
+		[39] = {n = "Keep of the Eleven Forces", t = DESTINATIONS_PIN_TYPE_AOI}, --
+		[40] = {n = "Garden of the Sacred Numbers", t = DESTINATIONS_PIN_TYPE_AOI}, --
+		[41] = {n = "Alinor Wayshrine", t = DESTINATIONS_PIN_TYPE_WAYSHRINE}, --
+		[42] = {n = "Lillandril Wayshrine", t = DESTINATIONS_PIN_TYPE_WAYSHRINE}, --
+		[43] = {n = "Eastern Pass Wayshrine", t = DESTINATIONS_PIN_TYPE_WAYSHRINE}, --
+		[44] = {n = "Abyssal Geyser Direnni", t = DESTINATIONS_PIN_TYPE_PORTAL}, --
+		[45] = {n = "The Crystal Tower Wayshrine", t = DESTINATIONS_PIN_TYPE_WAYSHRINE}, --
+		[46] = {n = "Abyssal Geyser Sil'var Woad", t = DESTINATIONS_PIN_TYPE_PORTAL}, --
+		[47] = {n = "Eldbur Ruins Wayshrine", t = DESTINATIONS_PIN_TYPE_WAYSHRINE}, --
+		[48] = {n = "48", t = DESTINATIONS_PIN_TYPE_RAIDDUNGEON}, --
+		[49] = {n = "Abyssal Geyser Rellenthil", t = DESTINATIONS_PIN_TYPE_PORTAL}, --
+		[50] = {n = "Eldbur Ruins", t = DESTINATIONS_PIN_TYPE_AOI}, --
+		[51] = {n = "Abyssal Geyser Corgrad", t = DESTINATIONS_PIN_TYPE_PORTAL}, --
+		[52] = {n = "Abyssal Geyser Welenkin", t = DESTINATIONS_PIN_TYPE_PORTAL}, --
+		[53] = {n = "Dusk Keep", t = DESTINATIONS_PIN_TYPE_AOI}, --
+		[54] = {n = "Cloudrest", t = DESTINATIONS_PIN_TYPE_RAIDDUNGEON}, --
+		[55] = {n = "Sunhold Wayshrine", t = DESTINATIONS_PIN_TYPE_WAYSHRINE}, --
+		[56] = {n = "Alaxon'ald", t = DESTINATIONS_PIN_TYPE_AOI}, --
+		[57] = {n = "Veyond Wyte Wayshrine", t = DESTINATIONS_PIN_TYPE_WAYSHRINE}, --
+		[58] = {n = "Abyssal Geyser Sunhold", t = DESTINATIONS_PIN_TYPE_PORTAL}, --
+		[59] = {n = "Golden Gryphon Garret", t = DESTINATIONS_PIN_TYPE_HOUSING}, --
+		[60] = {n = "Alinor Crest Townhouse", t = DESTINATIONS_PIN_TYPE_HOUSING}, --
+		[61] = {n = "Colossal Aldmeri Grotto", t = DESTINATIONS_PIN_TYPE_HOUSING}, --
+        ["zoneName"] = "Summerset",
+	},
+	[1027] = -- Artaeum
+	{
+		[1] = {n = "Artaeum Craftworks", t = DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_SLOADS_SEMBLANCE }, --
+		[2] = {n = "Ceporah Tower", t = DESTINATIONS_PIN_TYPE_TOWER}, --
+		[3] = {n = "Artaeum Wayshrine", t = DESTINATIONS_PIN_TYPE_WAYSHRINE}, --
+		[4] = {n = "Traitor's Vault", t = DESTINATIONS_PIN_TYPE_DELVE}, --
+		[5] = {n = "Colosseum of the Old Ways", t = DESTINATIONS_PIN_TYPE_AOI}, --
+        ["zoneName"] = "Artaeum",
+	},
 }

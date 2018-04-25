@@ -366,6 +366,7 @@ do
 
 	--POI Types
 	Add("POITYPE_AOI",										"地点")
+	Add("POITYPE_HOUSING",									"家")
 	Add("POITYPE_CRAFTING",									"クラフト場所")
 	Add("POITYPE_DELVE",									"調査")
 	Add("POITYPE_DOLMEN",									"ドルメン")

@@ -359,6 +359,7 @@ ZO_CreateStringId("DEST_SETTINGS_RESET",											"Reset to default settings")
 		
 --POI Types			
 ZO_CreateStringId("POITYPE_AOI",														"Area of Interest")
+ZO_CreateStringId("POITYPE_HOUSING",														"House")
 ZO_CreateStringId("POITYPE_CRAFTING",												"Crafting Location")
 ZO_CreateStringId("POITYPE_DELVE",													"Delve")
 ZO_CreateStringId("POITYPE_DOLMEN",													"Dolmen")

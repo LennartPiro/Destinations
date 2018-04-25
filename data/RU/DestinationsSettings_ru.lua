@@ -366,6 +366,7 @@ do
 
 	--POI Types
 	Add("POITYPE_AOI",										"Oблacть интepecoв")
+	Add("POITYPE_HOUSING",									"Дом")
 	Add("POITYPE_CRAFTING",									"Peмecлeнныe cтaнки")
 	Add("POITYPE_DELVE",									"Вылaзки")
 	Add("POITYPE_DOLMEN",									"Дoльмeн/Тeмный якopь")

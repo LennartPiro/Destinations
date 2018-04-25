@@ -366,6 +366,7 @@ do
 
 	--POI Types
 	Add("POITYPE_AOI",										"Sehenswürdigkeit")
+	Add("POITYPE_HOUSING",									"Haus")
 	Add("POITYPE_CRAFTING",									"Handwerksstation")
 	Add("POITYPE_DELVE",									"Gewölbe")
 	Add("POITYPE_DOLMEN",									"Dolmen")

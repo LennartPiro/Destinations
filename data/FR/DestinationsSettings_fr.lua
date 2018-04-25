@@ -363,6 +363,7 @@ do
 			
 	--POI Types			
 	Add("POITYPE_AOI",													"Aire d'Intérêt")
+	Add("POITYPE_HOUSING",									"Maison")
 	Add("POITYPE_CRAFTING",												"Lieux d'Artisanat")
 	Add("POITYPE_DELVE",													"Donjon Solo")
 	Add("POITYPE_DOLMEN",												"Dolmen")
