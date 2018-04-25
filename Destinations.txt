@@ -1,0 +1,52 @@
+﻿; This Add-on is not created by, affiliated with or sponsored by ZeniMax
+; Media Inc. or its affiliates. The Elder Scrolls® and related logos are
+; registered trademarks or trademarks of ZeniMax Media Inc. in the United
+; States and/or other countries. All rights reserved.
+; You can read the full terms at https://account.elderscrollsonline.com/add-on-terms
+
+## Title: |cFFFFFFDestinations|r
+## Description: This addon adds various points of interest to your maps and compass.
+## Version: 2.9.5
+## Author: |c990000Snowman|r|cFFFFFFDK|r & Ayantir
+## APIVersion: 100022
+## SavedVariables: Destinations_Settings
+## OptionalDependsOn: LibAddonMenu-2.0 LibMapPins-1.0 CustomCompassPins
+
+Libs/LibStub/LibStub.lua
+Libs/LibCustomTitles/LibCustomTitles.lua
+Libs/LibAnnyoingUpdateNotificationInGame/LibAnnyoingUpdateNotificationInGame.lua
+Libs/LibMapPins-1.0/LibMapPins-1.0.lua
+Libs/CustomCompassPins/CustomCompassPins.lua
+
+Libs/LibAddonMenu-2.0/LibAddonMenu-2.0.lua
+Libs/LibAddonMenu-2.0/controls/panel.lua
+Libs/LibAddonMenu-2.0/controls/submenu.lua
+Libs/LibAddonMenu-2.0/controls/button.lua
+Libs/LibAddonMenu-2.0/controls/checkbox.lua
+Libs/LibAddonMenu-2.0/controls/colorpicker.lua
+Libs/LibAddonMenu-2.0/controls/custom.lua
+Libs/LibAddonMenu-2.0/controls/description.lua
+Libs/LibAddonMenu-2.0/controls/dropdown.lua
+Libs/LibAddonMenu-2.0/controls/editbox.lua
+Libs/LibAddonMenu-2.0/controls/header.lua
+Libs/LibAddonMenu-2.0/controls/slider.lua
+Libs/LibAddonMenu-2.0/controls/texture.lua
+Libs/LibAddonMenu-2.0/controls/iconpicker.lua
+
+data/$(language)/DestinationsCollectibles_$(language).lua
+data/$(language)/DestinationsMundusData_$(language).lua
+data/$(language)/DestinationsQuests_$(language).lua
+data/$(language)/DestinationsQuestgivers_$(language).lua
+data/$(language)/DestinationsSetData_$(language).lua
+data/$(language)/DestinationsSettings_$(language).lua
+data/$(language)/DestinationsTraders_$(language).lua
+
+data/DestinationsChampions.lua
+data/DestinationsFishData.lua
+data/DestinationsPOIData.lua
+data/DestinationsQuestData.lua
+data/DestinationsSharedData.lua
+data/DestinationsSharedDataIDs.lua
+data/DestinationsMundus.lua
+
+Destinations.lua
