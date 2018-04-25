@@ -6004,6 +6004,18 @@ local function InitSettings()
 			otherPreviewDone:SetDimensions(DestinationsSV.pins.pinTextureOtherDone.size, DestinationsSV.pins.pinTextureOtherDone.size)
 			otherPreviewDone:SetColor(unpack(DestinationsSV.pins.pinTextureOtherDone.tint))
 
+			ChampionPreview = WINDOW_MANAGER:CreateControl(nil, previewpinTextureChampion, CT_TEXTURE)
+			ChampionPreview:SetAnchor(RIGHT, previewpinTextureChampion.dropdown:GetControl(), LEFT, -40, 0)
+			ChampionPreview:SetTexture(pinTextures.paths.Champion[DestinationsSV.pins.pinTextureChampion.type])
+			ChampionPreview:SetDimensions(DestinationsSV.pins.pinTextureChampion.size, DestinationsSV.pins.pinTextureChampion.size)
+			ChampionPreview:SetColor(unpack(DestinationsSV.pins.pinTextureChampion.tint))
+
+			ChampionPreviewDone = WINDOW_MANAGER:CreateControl(nil, previewpinTextureChampion, CT_TEXTURE)
+			ChampionPreviewDone:SetAnchor(RIGHT, previewpinTextureChampion.dropdown:GetControl(), LEFT, -5, 0)
+			ChampionPreviewDone:SetTexture(pinTextures.paths.ChampionDone[DestinationsSV.pins.pinTextureChampionDone.type])
+			ChampionPreviewDone:SetDimensions(DestinationsSV.pins.pinTextureChampionDone.size, DestinationsSV.pins.pinTextureChampionDone.size)
+			ChampionPreviewDone:SetColor(unpack(DestinationsSV.pins.pinTextureChampion.tint))
+
 			MaiqPreview = WINDOW_MANAGER:CreateControl(nil, previewpinTextureMaiq, CT_TEXTURE)
 			MaiqPreview:SetAnchor(RIGHT, previewpinTextureMaiq.dropdown:GetControl(), LEFT, -40, 0)
 			MaiqPreview:SetTexture(pinTextures.paths.Maiq[DestinationsSV.pins.pinTextureMaiq.type])
@@ -6135,18 +6147,6 @@ local function InitSettings()
 			CutpursePreviewDone:SetTexture(pinTextures.paths.CutpurseDone[DestinationsSV.pins.pinTextureCutpurseDone.type])
 			CutpursePreviewDone:SetDimensions(DestinationsSV.pins.pinTextureCutpurseDone.size, DestinationsSV.pins.pinTextureCutpurseDone.size)
 			CutpursePreviewDone:SetColor(unpack(DestinationsSV.pins.pinTextureCutpurseDone.tint))
-
-			ChampionPreview = WINDOW_MANAGER:CreateControl(nil, previewpinTextureChampion, CT_TEXTURE)
-			ChampionPreview:SetAnchor(RIGHT, previewpinTextureChampion.dropdown:GetControl(), LEFT, -40, 0)
-			ChampionPreview:SetTexture(pinTextures.paths.Champion[DestinationsSV.pins.pinTextureChampion.type])
-			ChampionPreview:SetDimensions(DestinationsSV.pins.pinTextureChampion.size, DestinationsSV.pins.pinTextureChampion.size)
-			ChampionPreview:SetColor(unpack(DestinationsSV.pins.pinTextureChampion.tint))
-
-			ChampionPreviewDone = WINDOW_MANAGER:CreateControl(nil, previewpinTextureChampion, CT_TEXTURE)
-			ChampionPreviewDone:SetAnchor(RIGHT, previewpinTextureChampion.dropdown:GetControl(), LEFT, -5, 0)
-			ChampionPreviewDone:SetTexture(pinTextures.paths.ChampionDone[DestinationsSV.pins.pinTextureChampionDone.type])
-			ChampionPreviewDone:SetDimensions(DestinationsSV.pins.pinTextureChampionDone.size, DestinationsSV.pins.pinTextureChampionDone.size)
-			ChampionPreviewDone:SetColor(unpack(DestinationsSV.pins.pinTextureChampion.tint))
 
 			AyleidPreview = WINDOW_MANAGER:CreateControl(nil, previewpinTextureAyleid, CT_TEXTURE)
 			AyleidPreview:SetAnchor(RIGHT, previewpinTextureAyleid.dropdown:GetControl(), LEFT, -10, 0)
@@ -6500,6 +6500,123 @@ local function InitSettings()
 					not DestinationsCSSV.filters[DPINS.LB_GTTP_CP_DONE]
 				end,
 				default = defaults.pins.pinTextureOther.size
+			})
+
+			table.insert(submenu, { -- Champion Header
+				type = "header",
+				name = defaults.miscColorCodes.settingsTextAchHeaders:Colorize(GetString(DEST_SETTINGS_ACH_CHAMPION_PIN_HEADER)),
+			})
+			table.insert(submenu, { -- Champion global pin toggle
+				type = "checkbox",
+				name = defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_ACH_PIN_TOGGLE)).." "..defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_PER_CHAR)),
+				getFunc = function() return DestinationsCSSV.filters[DPINS.CHAMPION] end,
+				setFunc = function(state)
+					TogglePins(DPINS.CHAMPION, state)
+					RedrawAllPins(DPINS.CHAMPION)
+				end,
+				default = defaults.filters[DPINS.CHAMPION],
+			})
+			table.insert(submenu, { -- Champion Done global pin toggle
+				type = "checkbox",
+				name = defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_ACH_PIN_TOGGLE_DONE)).." "..defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_PER_CHAR)),
+				getFunc = function() return DestinationsCSSV.filters[DPINS.CHAMPION_DONE] end,
+				setFunc = function(state)
+					TogglePins(DPINS.CHAMPION_DONE, state)
+					RedrawAllPins(DPINS.CHAMPION_DONE)
+				end,
+				default = defaults.filters[DPINS.CHAMPION_DONE],
+			})
+			table.insert(submenu, { -- Champion zone pin toggle
+				type = "checkbox",
+				name = GetString(DEST_SETTINGS_ACH_CHAMPION_ZONE_PIN_TOGGLE),
+				getFunc = function() return DestinationsSV.settings.ShowDungeonBossesInZones end,
+				setFunc = function(state)
+					DestinationsSV.settings.ShowDungeonBossesInZones = state
+					RedrawAllPins(DPINS.CHAMPION)
+					RedrawAllPins(DPINS.CHAMPION_DONE)
+				end,
+				disabled = function() return
+					not DestinationsCSSV.filters[DPINS.CHAMPION] and
+					not DestinationsCSSV.filters[DPINS.CHAMPION_DONE]
+				end,
+				default = defaults.settings.ShowDungeonBossesInZones,
+			})
+			table.insert(submenu, { -- Champion zone pin to front/back
+				type = "checkbox",
+				name = GetString(DEST_SETTINGS_ACH_CHAMPION_FRONT_PIN_TOGGLE),
+				tooltip = GetString(DEST_SETTINGS_ACH_CHAMPION_FRONT_PIN_TOGGLE_TT),
+				getFunc = function() return DestinationsSV.settings.ShowDungeonBossesOnTop end,
+				setFunc = function(state)
+					if state == true then
+						DestinationsSV.pins.pinTextureChampion.level = 56 + 1
+						DestinationsSV.pins.pinTextureChampionDone.level = 56
+						LMP:SetLayoutKey(DPINS.CHAMPION, "level", 56 + 1)
+						LMP:SetLayoutKey(DPINS.CHAMPION_DONE, "level", 56)
+					else
+						DestinationsSV.pins.pinTextureChampion.level = 30 + 1
+						DestinationsSV.pins.pinTextureChampionDone.level = 30
+						LMP:SetLayoutKey(DPINS.CHAMPION, "level", 30 + 1)
+						LMP:SetLayoutKey(DPINS.CHAMPION_DONE, "level", 30)
+					end
+					DestinationsSV.settings.ShowDungeonBossesOnTop = state
+					RedrawAllPins(DPINS.CHAMPION)
+					RedrawAllPins(DPINS.CHAMPION_DONE)
+				end,
+				disabled = function() return
+					(not DestinationsCSSV.filters[DPINS.CHAMPION] and
+					not DestinationsCSSV.filters[DPINS.CHAMPION_DONE]) or
+					not DestinationsSV.settings.ShowDungeonBossesInZones
+				end,
+				default = defaults.settings.ShowDungeonBossesOnTop,
+			})
+			table.insert(submenu, { -- Champion pin style
+				type = "dropdown",
+				name = GetString(DEST_SETTINGS_ACH_PIN_STYLE),
+				reference = "previewpinTextureChampion",
+				choices = pinTextures.lists.Champion,
+				getFunc = function() return pinTextures.lists.Champion[DestinationsSV.pins.pinTextureChampion.type] end,
+				setFunc = function(selected)
+					for index, name in ipairs(pinTextures.lists.Champion) do
+						if name == selected then
+							DestinationsSV.pins.pinTextureChampion.type = index
+							DestinationsSV.pins.pinTextureChampionDone.type = index
+							LMP:SetLayoutKey(DPINS.CHAMPION, "texture", pinTextures.paths.Champion[index])
+							LMP:SetLayoutKey(DPINS.CHAMPION_DONE, "texture", pinTextures.paths.ChampionDone[index])
+							ChampionPreview:SetTexture(pinTextures.paths.Champion[index])
+							ChampionPreviewDone:SetTexture(pinTextures.paths.ChampionDone[index])
+							RedrawAllPins(DPINS.CHAMPION)
+							RedrawAllPins(DPINS.CHAMPION_DONE)
+							break
+						end
+					end
+				end,
+				disabled = function() return
+					not DestinationsCSSV.filters[DPINS.CHAMPION] and
+					not DestinationsCSSV.filters[DPINS.CHAMPION_DONE]
+				end,
+				default = pinTextures.lists.Champion[defaults.pins.pinTextureChampion.type],
+			})
+			table.insert(submenu, { -- Champion pin size
+				type = "slider",
+				name = GetString(DEST_SETTINGS_ACH_PIN_SIZE),
+				min = 20,
+				max = 70,
+				getFunc = function() return DestinationsSV.pins.pinTextureChampion.size end,
+				setFunc = function(size)
+					DestinationsSV.pins.pinTextureChampion.size = size
+					DestinationsSV.pins.pinTextureChampionDone.size = size
+					ChampionPreview:SetDimensions(size, size)
+					ChampionPreviewDone:SetDimensions(size, size)
+					LMP:SetLayoutKey(DPINS.CHAMPION, "size", size)
+					LMP:SetLayoutKey(DPINS.CHAMPION_DONE, "size", size)
+					RedrawAllPins(DPINS.CHAMPION)
+					RedrawAllPins(DPINS.CHAMPION_DONE)
+				end,
+				disabled = function() return
+					not DestinationsCSSV.filters[DPINS.CHAMPION] and
+					not DestinationsCSSV.filters[DPINS.CHAMPION_DONE]
+				end,
+				default = defaults.pins.pinTextureChampion.size
 			})
 			table.insert(submenu, { -- Achievement M'aiq Header
 				type = "header",
@@ -7303,123 +7420,6 @@ local function InitSettings()
 					not DestinationsCSSV.filters[DPINS.CUTPURSE_DONE]
 				end,
 				default = defaults.pins.pinTextureCutpurse.size
-			})
-
-			table.insert(submenu, { -- Champion Header
-				type = "header",
-				name = defaults.miscColorCodes.settingsTextAchHeaders:Colorize(GetString(DEST_SETTINGS_ACH_CHAMPION_PIN_HEADER)),
-			})
-			table.insert(submenu, { -- Champion global pin toggle
-				type = "checkbox",
-				name = defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_ACH_PIN_TOGGLE)).." "..defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_PER_CHAR)),
-				getFunc = function() return DestinationsCSSV.filters[DPINS.CHAMPION] end,
-				setFunc = function(state)
-					TogglePins(DPINS.CHAMPION, state)
-					RedrawAllPins(DPINS.CHAMPION)
-				end,
-				default = defaults.filters[DPINS.CHAMPION],
-			})
-			table.insert(submenu, { -- Champion Done global pin toggle
-				type = "checkbox",
-				name = defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_ACH_PIN_TOGGLE_DONE)).." "..defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_PER_CHAR)),
-				getFunc = function() return DestinationsCSSV.filters[DPINS.CHAMPION_DONE] end,
-				setFunc = function(state)
-					TogglePins(DPINS.CHAMPION_DONE, state)
-					RedrawAllPins(DPINS.CHAMPION_DONE)
-				end,
-				default = defaults.filters[DPINS.CHAMPION_DONE],
-			})
-			table.insert(submenu, { -- Champion zone pin toggle
-				type = "checkbox",
-				name = GetString(DEST_SETTINGS_ACH_CHAMPION_ZONE_PIN_TOGGLE),
-				getFunc = function() return DestinationsSV.settings.ShowDungeonBossesInZones end,
-				setFunc = function(state)
-					DestinationsSV.settings.ShowDungeonBossesInZones = state
-					RedrawAllPins(DPINS.CHAMPION)
-					RedrawAllPins(DPINS.CHAMPION_DONE)
-				end,
-				disabled = function() return
-					not DestinationsCSSV.filters[DPINS.CHAMPION] and
-					not DestinationsCSSV.filters[DPINS.CHAMPION_DONE]
-				end,
-				default = defaults.settings.ShowDungeonBossesInZones,
-			})
-			table.insert(submenu, { -- Champion zone pin to front/back
-				type = "checkbox",
-				name = GetString(DEST_SETTINGS_ACH_CHAMPION_FRONT_PIN_TOGGLE),
-				tooltip = GetString(DEST_SETTINGS_ACH_CHAMPION_FRONT_PIN_TOGGLE_TT),
-				getFunc = function() return DestinationsSV.settings.ShowDungeonBossesOnTop end,
-				setFunc = function(state)
-					if state == true then
-						DestinationsSV.pins.pinTextureChampion.level = 56 + 1
-						DestinationsSV.pins.pinTextureChampionDone.level = 56
-						LMP:SetLayoutKey(DPINS.CHAMPION, "level", 56 + 1)
-						LMP:SetLayoutKey(DPINS.CHAMPION_DONE, "level", 56)
-					else
-						DestinationsSV.pins.pinTextureChampion.level = 30 + 1
-						DestinationsSV.pins.pinTextureChampionDone.level = 30
-						LMP:SetLayoutKey(DPINS.CHAMPION, "level", 30 + 1)
-						LMP:SetLayoutKey(DPINS.CHAMPION_DONE, "level", 30)
-					end
-					DestinationsSV.settings.ShowDungeonBossesOnTop = state
-					RedrawAllPins(DPINS.CHAMPION)
-					RedrawAllPins(DPINS.CHAMPION_DONE)
-				end,
-				disabled = function() return 
-					(not DestinationsCSSV.filters[DPINS.CHAMPION] and
-					not DestinationsCSSV.filters[DPINS.CHAMPION_DONE]) or
-					not DestinationsSV.settings.ShowDungeonBossesInZones
-				end,
-				default = defaults.settings.ShowDungeonBossesOnTop,
-			})
-			table.insert(submenu, { -- Champion pin style
-				type = "dropdown",
-				name = GetString(DEST_SETTINGS_ACH_PIN_STYLE),
-				reference = "previewpinTextureChampion",
-				choices = pinTextures.lists.Champion,
-				getFunc = function() return pinTextures.lists.Champion[DestinationsSV.pins.pinTextureChampion.type] end,
-				setFunc = function(selected)
-					for index, name in ipairs(pinTextures.lists.Champion) do
-						if name == selected then
-							DestinationsSV.pins.pinTextureChampion.type = index
-							DestinationsSV.pins.pinTextureChampionDone.type = index
-							LMP:SetLayoutKey(DPINS.CHAMPION, "texture", pinTextures.paths.Champion[index])
-							LMP:SetLayoutKey(DPINS.CHAMPION_DONE, "texture", pinTextures.paths.ChampionDone[index])
-							ChampionPreview:SetTexture(pinTextures.paths.Champion[index])
-							ChampionPreviewDone:SetTexture(pinTextures.paths.ChampionDone[index])
-							RedrawAllPins(DPINS.CHAMPION)
-							RedrawAllPins(DPINS.CHAMPION_DONE)
-							break
-						end
-					end
-				end,
-				disabled = function() return
-					not DestinationsCSSV.filters[DPINS.CHAMPION] and
-					not DestinationsCSSV.filters[DPINS.CHAMPION_DONE]
-				end,
-				default = pinTextures.lists.Champion[defaults.pins.pinTextureChampion.type],
-			})
-			table.insert(submenu, { -- Champion pin size
-				type = "slider",
-				name = GetString(DEST_SETTINGS_ACH_PIN_SIZE),
-				min = 20,
-				max = 70,
-				getFunc = function() return DestinationsSV.pins.pinTextureChampion.size end,
-				setFunc = function(size)
-					DestinationsSV.pins.pinTextureChampion.size = size
-					DestinationsSV.pins.pinTextureChampionDone.size = size
-					ChampionPreview:SetDimensions(size, size)
-					ChampionPreviewDone:SetDimensions(size, size)
-					LMP:SetLayoutKey(DPINS.CHAMPION, "size", size)
-					LMP:SetLayoutKey(DPINS.CHAMPION_DONE, "size", size)
-					RedrawAllPins(DPINS.CHAMPION)
-					RedrawAllPins(DPINS.CHAMPION_DONE)
-				end,
-				disabled = function() return
-					not DestinationsCSSV.filters[DPINS.CHAMPION] and
-					not DestinationsCSSV.filters[DPINS.CHAMPION_DONE]
-				end,
-				default = defaults.pins.pinTextureChampion.size
 			})
 			
 		elseif menu == "Misc" then
