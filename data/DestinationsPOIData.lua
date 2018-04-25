@@ -1942,7 +1942,7 @@ Destinations.POIsStore = {
 		[3] = {n = "Restricted Brassworks", t = DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_FORTIFIED_BRASS }, --
 		[4] = {n = "Asylum Sanctorium", t = DESTINATIONS_PIN_TYPE_RAIDDUNGEON},
         ["zoneName"] = "Brass Fortress",
-	}
+	},
 	[1011] = -- Summerset
 	{
 		[1] = {n = "King's Haven Pass Wayshrine", t = DESTINATIONS_PIN_TYPE_WAYSHRINE}, --
