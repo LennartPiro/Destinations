@@ -2549,14 +2549,8 @@ end
 ----------------Quest Giver Data---------------
 local function QuestPinFilters(QuestID, dataName, questLine, questSeries)
 	local questInfo = nil
-	if GetUnitLevel("player") <= 49 and QuestID == 5033 then -- Hide Stargazer quest while not level 50+.
-		isQuestCompleted = false
-	end
 	local _, _, _, _, HoWcompleted, _, _ = GetAchievementInfo(1248)
 	if QuestID == 5479 and not HoWcompleted then -- Hide "A Cold Wind From the Mountain" while missing the achievement "Hero of Wrothgar".
-		isQuestCompleted = false
-	end
-	if GetUnitLevel("player") <= 4 and QuestID == 4831 then -- The Harborage
 		isQuestCompleted = false
 	end
 	if GetUnitLevel("player") <= 44 or (QuestID == 5312 and not dataName) then -- Undaunted pledges
@@ -2604,26 +2598,8 @@ local function QuestPinFilters(QuestID, dataName, questLine, questSeries)
 			isQuestCompleted = false
 		end
 	end
-	if questLine == 99999 then	-- Hide Harborage quest while not the required level.
-		if QuestID == 4831 and GetUnitLevel("player") <= 4 then	-- "The Harborage"
-			isQuestCompleted = false
-		elseif QuestID == 4474 and GetUnitLevel("player") <= 9 then	-- "Daughter of Giants"
-			isQuestCompleted = false
-		elseif QuestID == 4552 and GetUnitLevel("player") <= 14 then	-- "Chasing Shadows"
-			isQuestCompleted = false
-		elseif QuestID == 4607 and GetUnitLevel("player") <= 19 then	-- "Castle of the Worm"
-			isQuestCompleted = false
-		elseif QuestID == 4764 and GetUnitLevel("player") <= 24 then	-- "The Tharn Speaks"
-			isQuestCompleted = false
-		elseif QuestID == 4836 and GetUnitLevel("player") <= 29 then	-- "Halls of Torment"
-			isQuestCompleted = false
-		elseif QuestID == 4837 and GetUnitLevel("player") <= 34 then	-- "Valley of Blades"
-			isQuestCompleted = false
-		elseif QuestID == 4867 and GetUnitLevel("player") <= 39 then	-- "Shadow of Sancre Tor"
-			isQuestCompleted = false
-		elseif QuestID == 4832 and GetUnitLevel("player") <= 44 then	-- "Council of the Five Companions"
-			isQuestCompleted = false
-		elseif QuestID == 4847 and GetUnitLevel("player") <= 49 then	-- "God of Schemes"
+	if questLine == 99999 then	-- Hide Harborage/Cadwell quests if requirements are not fulfilled
+		if QuestID == 4847 then	-- "God of Schemes"
 			questInfo = GetCompletedQuestInfo(4758) -- Also requires "The Final Assault" in Coldharbour.
 			if string.len(questInfo) <= 1 then questInfo = nil end
 			if not questInfo then
@@ -2649,74 +2625,44 @@ local function QuestPinFilters(QuestID, dataName, questLine, questSeries)
 			isQuestCompleted = false
 		end
 	end
-	if QuestID == 5368 or QuestID == 5377 or QuestID == 5392 then -- Hide Blacksmith Writs if certification is not done or if in other alliances.
+	if QuestID == 5368 or QuestID == 5377 or QuestID == 5392 then -- Hide Blacksmith Writs if certification is not done
 		questInfo = GetCompletedQuestInfo(5249)
 		if string.len(questInfo) <= 1 then questInfo = nil end
-		if (playerAlliance == 1 and (zoneTextureName == "glenumbra_base_0" or zoneTextureName == "stonefalls_base_0"))  --Aldmeri Dominion
-		or (playerAlliance == 2 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "glenumbra_base_0"))	--Ebonheart Pact
-		or (playerAlliance == 3 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "stonefalls_base_0")) then--Daggerfall Covenant
-			questInfo = nil
-		end
 		if not questInfo then
 			isQuestCompleted = false
 		end
 	end
-	if QuestID == 5374 or QuestID == 5388 or QuestID == 5389 then -- Hide Clothier Writs if certification is not done or if in other alliances.
+	if QuestID == 5374 or QuestID == 5388 or QuestID == 5389 then -- Hide Clothier Writs if certification is not done
 		questInfo = GetCompletedQuestInfo(5310)
 		if string.len(questInfo) <= 1 then questInfo = nil end
-		if (playerAlliance == 1 and (zoneTextureName == "glenumbra_base_0" or zoneTextureName == "stonefalls_base_0"))  --Aldmeri Dominion
-		or (playerAlliance == 2 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "glenumbra_base_0"))	--Ebonheart Pact
-		or (playerAlliance == 3 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "stonefalls_base_0")) then--Daggerfall Covenant
-			questInfo = nil
-		end
 		if not questInfo then
 			isQuestCompleted = false
 		end
 	end
-	if QuestID == 5394 or QuestID == 5395 or QuestID == 5396 then -- Hide Woodworker Writs if certification is not done or if in other alliances.
+	if QuestID == 5394 or QuestID == 5395 or QuestID == 5396 then -- Hide Woodworker Writs if certification is not done
 		questInfo = GetCompletedQuestInfo(5302)
 		if string.len(questInfo) <= 1 then questInfo = nil end
-		if (playerAlliance == 1 and (zoneTextureName == "glenumbra_base_0" or zoneTextureName == "stonefalls_base_0"))  --Aldmeri Dominion
-		or (playerAlliance == 2 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "glenumbra_base_0"))	--Ebonheart Pact
-		or (playerAlliance == 3 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "stonefalls_base_0")) then--Daggerfall Covenant
-			questInfo = nil
-		end
 		if not questInfo then
 			isQuestCompleted = false
 		end
 	end
-	if QuestID == 5400 or QuestID == 5406 or QuestID == 5407 then -- Hide Enchanter Writs if certification is not done or if in other alliances.
+	if QuestID == 5400 or QuestID == 5406 or QuestID == 5407 then -- Hide Enchanter Writs if certification is not done
 		questInfo = GetCompletedQuestInfo(5314)
 		if string.len(questInfo) <= 1 then questInfo = nil end
-		if (playerAlliance == 1 and (zoneTextureName == "glenumbra_base_0" or zoneTextureName == "stonefalls_base_0"))  --Aldmeri Dominion
-		or (playerAlliance == 2 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "glenumbra_base_0"))	--Ebonheart Pact
-		or (playerAlliance == 3 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "stonefalls_base_0")) then--Daggerfall Covenant
-			questInfo = nil
-		end
 		if not questInfo then
 			isQuestCompleted = false
 		end
 	end
-	if QuestID == 5409 or QuestID == 5412 or QuestID == 5413 or QuestID == 5414 then -- Hide Provisioner Writs if certification is not done or if in other alliances.
+	if QuestID == 5409 or QuestID == 5412 or QuestID == 5413 or QuestID == 5414 then -- Hide Provisioner Writs if certification is not done
 		questInfo = GetCompletedQuestInfo(5289)
 		if string.len(questInfo) <= 1 then questInfo = nil end
-		if (playerAlliance == 1 and (zoneTextureName == "glenumbra_base_0" or zoneTextureName == "stonefalls_base_0"))  --Aldmeri Dominion
-		or (playerAlliance == 2 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "glenumbra_base_0"))	--Ebonheart Pact
-		or (playerAlliance == 3 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "stonefalls_base_0")) then--Daggerfall Covenant
-			questInfo = nil
-		end
 		if not questInfo then
 			isQuestCompleted = false
 		end
 	end
-	if QuestID == 5415 or QuestID == 5416 or QuestID == 5417 or QuestID == 5418 then -- Hide Alchemist Writs if certification is not done or if in other alliances.
+	if QuestID == 5415 or QuestID == 5416 or QuestID == 5417 or QuestID == 5418 then -- Hide Alchemist Writs if certification is not done
 		questInfo = GetCompletedQuestInfo(5315)
 		if string.len(questInfo) <= 1 then questInfo = nil end
-		if (playerAlliance == 1 and (zoneTextureName == "glenumbra_base_0" or zoneTextureName == "stonefalls_base_0"))  --Aldmeri Dominion
-		or (playerAlliance == 2 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "glenumbra_base_0"))	--Ebonheart Pact
-		or (playerAlliance == 3 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "stonefalls_base_0")) then--Daggerfall Covenant
-			questInfo = nil
-		end
 		if not questInfo then
 			isQuestCompleted = false
 		end
@@ -2735,13 +2681,6 @@ local function QuestPinFilters(QuestID, dataName, questLine, questSeries)
 		questInfo = GetCompletedQuestInfo(4960)
 		if string.len(questInfo) <= 1 then questInfo = nil end
 		if playerAlliance == 3 and not questInfo then -- Daggerfall Covenant
-			isQuestCompleted = false
-		end
-	end
-	if questSeries then -- Hide quests for other alliances
-		if (playerAlliance == 1 and questSeries ~=3 and questSeries ~= 0 and questSeries ~= 1)		-- Hide quests for other alliances (Aldmeri Dominion)
-		or (playerAlliance == 2 and questSeries ~=5 and questSeries ~= 0 and questSeries ~= 1)		-- Hide quests for other alliances (Ebonheart Pact)
-		or (playerAlliance == 3 and questSeries ~=4 and questSeries ~= 0 and questSeries ~= 1) then	-- Hide quests for other alliances (Daggerfall Covenant)
 			isQuestCompleted = false
 		end
 	end
