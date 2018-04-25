@@ -4554,12 +4554,12 @@ local function ShowQuestEditingMenu(pin)
 	end
 	
 	local questTableName
-	for _, questData in pairs(QTableStore) do
+	for questTableID, questData in pairs(QTableStore) do
 		questTableName = questData[1]
 		if questTableName then
 			questTableName = string.gsub(questTableName, "%-", " ")
 			if string.find(qName, questTableName) then
-				questID = questData
+				questID = questTableID
 				break
 			end
 		end
