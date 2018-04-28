@@ -2554,14 +2554,8 @@ end
 ----------------Quest Giver Data---------------
 local function QuestPinFilters(QuestID, dataName, questLine, questSeries)
 	local questInfo = nil
-	if GetUnitLevel("player") <= 49 and QuestID == 5033 then -- Hide Stargazer quest while not level 50+.
-		isQuestCompleted = false
-	end
 	local _, _, _, _, HoWcompleted, _, _ = GetAchievementInfo(1248)
 	if QuestID == 5479 and not HoWcompleted then -- Hide "A Cold Wind From the Mountain" while missing the achievement "Hero of Wrothgar".
-		isQuestCompleted = false
-	end
-	if GetUnitLevel("player") <= 4 and QuestID == 4831 then -- The Harborage
 		isQuestCompleted = false
 	end
 	if GetUnitLevel("player") <= 44 or (QuestID == 5312 and not dataName) then -- Undaunted pledges
@@ -2609,26 +2603,8 @@ local function QuestPinFilters(QuestID, dataName, questLine, questSeries)
 			isQuestCompleted = false
 		end
 	end
-	if questLine == 99999 then	-- Hide Harborage quest while not the required level.
-		if QuestID == 4831 and GetUnitLevel("player") <= 4 then	-- "The Harborage"
-			isQuestCompleted = false
-		elseif QuestID == 4474 and GetUnitLevel("player") <= 9 then	-- "Daughter of Giants"
-			isQuestCompleted = false
-		elseif QuestID == 4552 and GetUnitLevel("player") <= 14 then	-- "Chasing Shadows"
-			isQuestCompleted = false
-		elseif QuestID == 4607 and GetUnitLevel("player") <= 19 then	-- "Castle of the Worm"
-			isQuestCompleted = false
-		elseif QuestID == 4764 and GetUnitLevel("player") <= 24 then	-- "The Tharn Speaks"
-			isQuestCompleted = false
-		elseif QuestID == 4836 and GetUnitLevel("player") <= 29 then	-- "Halls of Torment"
-			isQuestCompleted = false
-		elseif QuestID == 4837 and GetUnitLevel("player") <= 34 then	-- "Valley of Blades"
-			isQuestCompleted = false
-		elseif QuestID == 4867 and GetUnitLevel("player") <= 39 then	-- "Shadow of Sancre Tor"
-			isQuestCompleted = false
-		elseif QuestID == 4832 and GetUnitLevel("player") <= 44 then	-- "Council of the Five Companions"
-			isQuestCompleted = false
-		elseif QuestID == 4847 and GetUnitLevel("player") <= 49 then	-- "God of Schemes"
+	if questLine == 99999 then	-- Hide Harborage/Cadwell quests if requirements are not fulfilled
+		if QuestID == 4847 then	-- "God of Schemes"
 			questInfo = GetCompletedQuestInfo(4758) -- Also requires "The Final Assault" in Coldharbour.
 			if string.len(questInfo) <= 1 then questInfo = nil end
 			if not questInfo then
@@ -2654,74 +2630,44 @@ local function QuestPinFilters(QuestID, dataName, questLine, questSeries)
 			isQuestCompleted = false
 		end
 	end
-	if QuestID == 5368 or QuestID == 5377 or QuestID == 5392 then -- Hide Blacksmith Writs if certification is not done or if in other alliances.
+	if QuestID == 5368 or QuestID == 5377 or QuestID == 5392 then -- Hide Blacksmith Writs if certification is not done
 		questInfo = GetCompletedQuestInfo(5249)
 		if string.len(questInfo) <= 1 then questInfo = nil end
-		if (playerAlliance == 1 and (zoneTextureName == "glenumbra_base_0" or zoneTextureName == "stonefalls_base_0"))  --Aldmeri Dominion
-		or (playerAlliance == 2 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "glenumbra_base_0"))	--Ebonheart Pact
-		or (playerAlliance == 3 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "stonefalls_base_0")) then--Daggerfall Covenant
-			questInfo = nil
-		end
 		if not questInfo then
 			isQuestCompleted = false
 		end
 	end
-	if QuestID == 5374 or QuestID == 5388 or QuestID == 5389 then -- Hide Clothier Writs if certification is not done or if in other alliances.
+	if QuestID == 5374 or QuestID == 5388 or QuestID == 5389 then -- Hide Clothier Writs if certification is not done
 		questInfo = GetCompletedQuestInfo(5310)
 		if string.len(questInfo) <= 1 then questInfo = nil end
-		if (playerAlliance == 1 and (zoneTextureName == "glenumbra_base_0" or zoneTextureName == "stonefalls_base_0"))  --Aldmeri Dominion
-		or (playerAlliance == 2 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "glenumbra_base_0"))	--Ebonheart Pact
-		or (playerAlliance == 3 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "stonefalls_base_0")) then--Daggerfall Covenant
-			questInfo = nil
-		end
 		if not questInfo then
 			isQuestCompleted = false
 		end
 	end
-	if QuestID == 5394 or QuestID == 5395 or QuestID == 5396 then -- Hide Woodworker Writs if certification is not done or if in other alliances.
+	if QuestID == 5394 or QuestID == 5395 or QuestID == 5396 then -- Hide Woodworker Writs if certification is not done
 		questInfo = GetCompletedQuestInfo(5302)
 		if string.len(questInfo) <= 1 then questInfo = nil end
-		if (playerAlliance == 1 and (zoneTextureName == "glenumbra_base_0" or zoneTextureName == "stonefalls_base_0"))  --Aldmeri Dominion
-		or (playerAlliance == 2 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "glenumbra_base_0"))	--Ebonheart Pact
-		or (playerAlliance == 3 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "stonefalls_base_0")) then--Daggerfall Covenant
-			questInfo = nil
-		end
 		if not questInfo then
 			isQuestCompleted = false
 		end
 	end
-	if QuestID == 5400 or QuestID == 5406 or QuestID == 5407 then -- Hide Enchanter Writs if certification is not done or if in other alliances.
+	if QuestID == 5400 or QuestID == 5406 or QuestID == 5407 then -- Hide Enchanter Writs if certification is not done
 		questInfo = GetCompletedQuestInfo(5314)
 		if string.len(questInfo) <= 1 then questInfo = nil end
-		if (playerAlliance == 1 and (zoneTextureName == "glenumbra_base_0" or zoneTextureName == "stonefalls_base_0"))  --Aldmeri Dominion
-		or (playerAlliance == 2 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "glenumbra_base_0"))	--Ebonheart Pact
-		or (playerAlliance == 3 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "stonefalls_base_0")) then--Daggerfall Covenant
-			questInfo = nil
-		end
 		if not questInfo then
 			isQuestCompleted = false
 		end
 	end
-	if QuestID == 5409 or QuestID == 5412 or QuestID == 5413 or QuestID == 5414 then -- Hide Provisioner Writs if certification is not done or if in other alliances.
+	if QuestID == 5409 or QuestID == 5412 or QuestID == 5413 or QuestID == 5414 then -- Hide Provisioner Writs if certification is not done
 		questInfo = GetCompletedQuestInfo(5289)
 		if string.len(questInfo) <= 1 then questInfo = nil end
-		if (playerAlliance == 1 and (zoneTextureName == "glenumbra_base_0" or zoneTextureName == "stonefalls_base_0"))  --Aldmeri Dominion
-		or (playerAlliance == 2 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "glenumbra_base_0"))	--Ebonheart Pact
-		or (playerAlliance == 3 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "stonefalls_base_0")) then--Daggerfall Covenant
-			questInfo = nil
-		end
 		if not questInfo then
 			isQuestCompleted = false
 		end
 	end
-	if QuestID == 5415 or QuestID == 5416 or QuestID == 5417 or QuestID == 5418 then -- Hide Alchemist Writs if certification is not done or if in other alliances.
+	if QuestID == 5415 or QuestID == 5416 or QuestID == 5417 or QuestID == 5418 then -- Hide Alchemist Writs if certification is not done
 		questInfo = GetCompletedQuestInfo(5315)
 		if string.len(questInfo) <= 1 then questInfo = nil end
-		if (playerAlliance == 1 and (zoneTextureName == "glenumbra_base_0" or zoneTextureName == "stonefalls_base_0"))  --Aldmeri Dominion
-		or (playerAlliance == 2 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "glenumbra_base_0"))	--Ebonheart Pact
-		or (playerAlliance == 3 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "stonefalls_base_0")) then--Daggerfall Covenant
-			questInfo = nil
-		end
 		if not questInfo then
 			isQuestCompleted = false
 		end
@@ -2740,13 +2686,6 @@ local function QuestPinFilters(QuestID, dataName, questLine, questSeries)
 		questInfo = GetCompletedQuestInfo(4960)
 		if string.len(questInfo) <= 1 then questInfo = nil end
 		if playerAlliance == 3 and not questInfo then -- Daggerfall Covenant
-			isQuestCompleted = false
-		end
-	end
-	if questSeries then -- Hide quests for other alliances
-		if (playerAlliance == 1 and questSeries ~=3 and questSeries ~= 0 and questSeries ~= 1)		-- Hide quests for other alliances (Aldmeri Dominion)
-		or (playerAlliance == 2 and questSeries ~=5 and questSeries ~= 0 and questSeries ~= 1)		-- Hide quests for other alliances (Ebonheart Pact)
-		or (playerAlliance == 3 and questSeries ~=4 and questSeries ~= 0 and questSeries ~= 1) then	-- Hide quests for other alliances (Daggerfall Covenant)
 			isQuestCompleted = false
 		end
 	end
@@ -5878,7 +5817,7 @@ local function HookPoiTooltips()
 			
 			local mapData = POIsStore[zoneId]
 			
-			if mapData[poiIndex] then
+			if mapData and mapData[poiIndex] then
 				local englishName = mapData[poiIndex].n
 				if englishName then
 					local localizedName = ZO_WorldMapMouseoverName:GetText()
@@ -6072,6 +6011,18 @@ local function InitSettings()
 			otherPreviewDone:SetDimensions(DestinationsSV.pins.pinTextureOtherDone.size, DestinationsSV.pins.pinTextureOtherDone.size)
 			otherPreviewDone:SetColor(unpack(DestinationsSV.pins.pinTextureOtherDone.tint))
 
+			ChampionPreview = WINDOW_MANAGER:CreateControl(nil, previewpinTextureChampion, CT_TEXTURE)
+			ChampionPreview:SetAnchor(RIGHT, previewpinTextureChampion.dropdown:GetControl(), LEFT, -40, 0)
+			ChampionPreview:SetTexture(pinTextures.paths.Champion[DestinationsSV.pins.pinTextureChampion.type])
+			ChampionPreview:SetDimensions(DestinationsSV.pins.pinTextureChampion.size, DestinationsSV.pins.pinTextureChampion.size)
+			ChampionPreview:SetColor(unpack(DestinationsSV.pins.pinTextureChampion.tint))
+
+			ChampionPreviewDone = WINDOW_MANAGER:CreateControl(nil, previewpinTextureChampion, CT_TEXTURE)
+			ChampionPreviewDone:SetAnchor(RIGHT, previewpinTextureChampion.dropdown:GetControl(), LEFT, -5, 0)
+			ChampionPreviewDone:SetTexture(pinTextures.paths.ChampionDone[DestinationsSV.pins.pinTextureChampionDone.type])
+			ChampionPreviewDone:SetDimensions(DestinationsSV.pins.pinTextureChampionDone.size, DestinationsSV.pins.pinTextureChampionDone.size)
+			ChampionPreviewDone:SetColor(unpack(DestinationsSV.pins.pinTextureChampion.tint))
+
 			MaiqPreview = WINDOW_MANAGER:CreateControl(nil, previewpinTextureMaiq, CT_TEXTURE)
 			MaiqPreview:SetAnchor(RIGHT, previewpinTextureMaiq.dropdown:GetControl(), LEFT, -40, 0)
 			MaiqPreview:SetTexture(pinTextures.paths.Maiq[DestinationsSV.pins.pinTextureMaiq.type])
@@ -6203,18 +6154,6 @@ local function InitSettings()
 			CutpursePreviewDone:SetTexture(pinTextures.paths.CutpurseDone[DestinationsSV.pins.pinTextureCutpurseDone.type])
 			CutpursePreviewDone:SetDimensions(DestinationsSV.pins.pinTextureCutpurseDone.size, DestinationsSV.pins.pinTextureCutpurseDone.size)
 			CutpursePreviewDone:SetColor(unpack(DestinationsSV.pins.pinTextureCutpurseDone.tint))
-
-			ChampionPreview = WINDOW_MANAGER:CreateControl(nil, previewpinTextureChampion, CT_TEXTURE)
-			ChampionPreview:SetAnchor(RIGHT, previewpinTextureChampion.dropdown:GetControl(), LEFT, -40, 0)
-			ChampionPreview:SetTexture(pinTextures.paths.Champion[DestinationsSV.pins.pinTextureChampion.type])
-			ChampionPreview:SetDimensions(DestinationsSV.pins.pinTextureChampion.size, DestinationsSV.pins.pinTextureChampion.size)
-			ChampionPreview:SetColor(unpack(DestinationsSV.pins.pinTextureChampion.tint))
-
-			ChampionPreviewDone = WINDOW_MANAGER:CreateControl(nil, previewpinTextureChampion, CT_TEXTURE)
-			ChampionPreviewDone:SetAnchor(RIGHT, previewpinTextureChampion.dropdown:GetControl(), LEFT, -5, 0)
-			ChampionPreviewDone:SetTexture(pinTextures.paths.ChampionDone[DestinationsSV.pins.pinTextureChampionDone.type])
-			ChampionPreviewDone:SetDimensions(DestinationsSV.pins.pinTextureChampionDone.size, DestinationsSV.pins.pinTextureChampionDone.size)
-			ChampionPreviewDone:SetColor(unpack(DestinationsSV.pins.pinTextureChampion.tint))
 
 			AyleidPreview = WINDOW_MANAGER:CreateControl(nil, previewpinTextureAyleid, CT_TEXTURE)
 			AyleidPreview:SetAnchor(RIGHT, previewpinTextureAyleid.dropdown:GetControl(), LEFT, -10, 0)
@@ -6495,7 +6434,123 @@ local function InitSettings()
 			})
 			
 		elseif menu == "Achievements" then
-		
+
+			table.insert(submenu, { -- Champion Header
+				type = "header",
+				name = defaults.miscColorCodes.settingsTextAchHeaders:Colorize(GetString(DEST_SETTINGS_ACH_CHAMPION_PIN_HEADER)),
+			})
+			table.insert(submenu, { -- Champion global pin toggle
+				type = "checkbox",
+				name = defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_ACH_PIN_TOGGLE)).." "..defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_PER_CHAR)),
+				getFunc = function() return DestinationsCSSV.filters[DPINS.CHAMPION] end,
+				setFunc = function(state)
+					TogglePins(DPINS.CHAMPION, state)
+					RedrawAllPins(DPINS.CHAMPION)
+				end,
+				default = defaults.filters[DPINS.CHAMPION],
+			})
+			table.insert(submenu, { -- Champion Done global pin toggle
+				type = "checkbox",
+				name = defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_ACH_PIN_TOGGLE_DONE)).." "..defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_PER_CHAR)),
+				getFunc = function() return DestinationsCSSV.filters[DPINS.CHAMPION_DONE] end,
+				setFunc = function(state)
+					TogglePins(DPINS.CHAMPION_DONE, state)
+					RedrawAllPins(DPINS.CHAMPION_DONE)
+				end,
+				default = defaults.filters[DPINS.CHAMPION_DONE],
+			})
+			table.insert(submenu, { -- Champion zone pin toggle
+				type = "checkbox",
+				name = GetString(DEST_SETTINGS_ACH_CHAMPION_ZONE_PIN_TOGGLE),
+				getFunc = function() return DestinationsSV.settings.ShowDungeonBossesInZones end,
+				setFunc = function(state)
+					DestinationsSV.settings.ShowDungeonBossesInZones = state
+					RedrawAllPins(DPINS.CHAMPION)
+					RedrawAllPins(DPINS.CHAMPION_DONE)
+				end,
+				disabled = function() return
+					not DestinationsCSSV.filters[DPINS.CHAMPION] and
+					not DestinationsCSSV.filters[DPINS.CHAMPION_DONE]
+				end,
+				default = defaults.settings.ShowDungeonBossesInZones,
+			})
+			table.insert(submenu, { -- Champion zone pin to front/back
+				type = "checkbox",
+				name = GetString(DEST_SETTINGS_ACH_CHAMPION_FRONT_PIN_TOGGLE),
+				tooltip = GetString(DEST_SETTINGS_ACH_CHAMPION_FRONT_PIN_TOGGLE_TT),
+				getFunc = function() return DestinationsSV.settings.ShowDungeonBossesOnTop end,
+				setFunc = function(state)
+					if state == true then
+						DestinationsSV.pins.pinTextureChampion.level = 56 + 1
+						DestinationsSV.pins.pinTextureChampionDone.level = 56
+						LMP:SetLayoutKey(DPINS.CHAMPION, "level", 56 + 1)
+						LMP:SetLayoutKey(DPINS.CHAMPION_DONE, "level", 56)
+					else
+						DestinationsSV.pins.pinTextureChampion.level = 30 + 1
+						DestinationsSV.pins.pinTextureChampionDone.level = 30
+						LMP:SetLayoutKey(DPINS.CHAMPION, "level", 30 + 1)
+						LMP:SetLayoutKey(DPINS.CHAMPION_DONE, "level", 30)
+					end
+					DestinationsSV.settings.ShowDungeonBossesOnTop = state
+					RedrawAllPins(DPINS.CHAMPION)
+					RedrawAllPins(DPINS.CHAMPION_DONE)
+				end,
+				disabled = function() return
+					(not DestinationsCSSV.filters[DPINS.CHAMPION] and
+					not DestinationsCSSV.filters[DPINS.CHAMPION_DONE]) or
+					not DestinationsSV.settings.ShowDungeonBossesInZones
+				end,
+				default = defaults.settings.ShowDungeonBossesOnTop,
+			})
+			table.insert(submenu, { -- Champion pin style
+				type = "dropdown",
+				name = GetString(DEST_SETTINGS_ACH_PIN_STYLE),
+				reference = "previewpinTextureChampion",
+				choices = pinTextures.lists.Champion,
+				getFunc = function() return pinTextures.lists.Champion[DestinationsSV.pins.pinTextureChampion.type] end,
+				setFunc = function(selected)
+					for index, name in ipairs(pinTextures.lists.Champion) do
+						if name == selected then
+							DestinationsSV.pins.pinTextureChampion.type = index
+							DestinationsSV.pins.pinTextureChampionDone.type = index
+							LMP:SetLayoutKey(DPINS.CHAMPION, "texture", pinTextures.paths.Champion[index])
+							LMP:SetLayoutKey(DPINS.CHAMPION_DONE, "texture", pinTextures.paths.ChampionDone[index])
+							ChampionPreview:SetTexture(pinTextures.paths.Champion[index])
+							ChampionPreviewDone:SetTexture(pinTextures.paths.ChampionDone[index])
+							RedrawAllPins(DPINS.CHAMPION)
+							RedrawAllPins(DPINS.CHAMPION_DONE)
+							break
+						end
+					end
+				end,
+				disabled = function() return
+					not DestinationsCSSV.filters[DPINS.CHAMPION] and
+					not DestinationsCSSV.filters[DPINS.CHAMPION_DONE]
+				end,
+				default = pinTextures.lists.Champion[defaults.pins.pinTextureChampion.type],
+			})
+			table.insert(submenu, { -- Champion pin size
+				type = "slider",
+				name = GetString(DEST_SETTINGS_ACH_PIN_SIZE),
+				min = 20,
+				max = 70,
+				getFunc = function() return DestinationsSV.pins.pinTextureChampion.size end,
+				setFunc = function(size)
+					DestinationsSV.pins.pinTextureChampion.size = size
+					DestinationsSV.pins.pinTextureChampionDone.size = size
+					ChampionPreview:SetDimensions(size, size)
+					ChampionPreviewDone:SetDimensions(size, size)
+					LMP:SetLayoutKey(DPINS.CHAMPION, "size", size)
+					LMP:SetLayoutKey(DPINS.CHAMPION_DONE, "size", size)
+					RedrawAllPins(DPINS.CHAMPION)
+					RedrawAllPins(DPINS.CHAMPION_DONE)
+				end,
+				disabled = function() return
+					not DestinationsCSSV.filters[DPINS.CHAMPION] and
+					not DestinationsCSSV.filters[DPINS.CHAMPION_DONE]
+				end,
+				default = defaults.pins.pinTextureChampion.size
+			})
 			table.insert(submenu, { -- Achievement Other Header
 				type = "header",
 				name = defaults.miscColorCodes.settingsTextAchHeaders:Colorize(GetString(DEST_SETTINGS_ACH_OTHER_HEADER)),
@@ -7371,123 +7426,6 @@ local function InitSettings()
 					not DestinationsCSSV.filters[DPINS.CUTPURSE_DONE]
 				end,
 				default = defaults.pins.pinTextureCutpurse.size
-			})
-
-			table.insert(submenu, { -- Champion Header
-				type = "header",
-				name = defaults.miscColorCodes.settingsTextAchHeaders:Colorize(GetString(DEST_SETTINGS_ACH_CHAMPION_PIN_HEADER)),
-			})
-			table.insert(submenu, { -- Champion global pin toggle
-				type = "checkbox",
-				name = defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_ACH_PIN_TOGGLE)).." "..defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_PER_CHAR)),
-				getFunc = function() return DestinationsCSSV.filters[DPINS.CHAMPION] end,
-				setFunc = function(state)
-					TogglePins(DPINS.CHAMPION, state)
-					RedrawAllPins(DPINS.CHAMPION)
-				end,
-				default = defaults.filters[DPINS.CHAMPION],
-			})
-			table.insert(submenu, { -- Champion Done global pin toggle
-				type = "checkbox",
-				name = defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_ACH_PIN_TOGGLE_DONE)).." "..defaults.miscColorCodes.settingsTextAccountWide:Colorize(GetString(DEST_SETTINGS_PER_CHAR)),
-				getFunc = function() return DestinationsCSSV.filters[DPINS.CHAMPION_DONE] end,
-				setFunc = function(state)
-					TogglePins(DPINS.CHAMPION_DONE, state)
-					RedrawAllPins(DPINS.CHAMPION_DONE)
-				end,
-				default = defaults.filters[DPINS.CHAMPION_DONE],
-			})
-			table.insert(submenu, { -- Champion zone pin toggle
-				type = "checkbox",
-				name = GetString(DEST_SETTINGS_ACH_CHAMPION_ZONE_PIN_TOGGLE),
-				getFunc = function() return DestinationsSV.settings.ShowDungeonBossesInZones end,
-				setFunc = function(state)
-					DestinationsSV.settings.ShowDungeonBossesInZones = state
-					RedrawAllPins(DPINS.CHAMPION)
-					RedrawAllPins(DPINS.CHAMPION_DONE)
-				end,
-				disabled = function() return
-					not DestinationsCSSV.filters[DPINS.CHAMPION] and
-					not DestinationsCSSV.filters[DPINS.CHAMPION_DONE]
-				end,
-				default = defaults.settings.ShowDungeonBossesInZones,
-			})
-			table.insert(submenu, { -- Champion zone pin to front/back
-				type = "checkbox",
-				name = GetString(DEST_SETTINGS_ACH_CHAMPION_FRONT_PIN_TOGGLE),
-				tooltip = GetString(DEST_SETTINGS_ACH_CHAMPION_FRONT_PIN_TOGGLE_TT),
-				getFunc = function() return DestinationsSV.settings.ShowDungeonBossesOnTop end,
-				setFunc = function(state)
-					if state == true then
-						DestinationsSV.pins.pinTextureChampion.level = 56 + 1
-						DestinationsSV.pins.pinTextureChampionDone.level = 56
-						LMP:SetLayoutKey(DPINS.CHAMPION, "level", 56 + 1)
-						LMP:SetLayoutKey(DPINS.CHAMPION_DONE, "level", 56)
-					else
-						DestinationsSV.pins.pinTextureChampion.level = 30 + 1
-						DestinationsSV.pins.pinTextureChampionDone.level = 30
-						LMP:SetLayoutKey(DPINS.CHAMPION, "level", 30 + 1)
-						LMP:SetLayoutKey(DPINS.CHAMPION_DONE, "level", 30)
-					end
-					DestinationsSV.settings.ShowDungeonBossesOnTop = state
-					RedrawAllPins(DPINS.CHAMPION)
-					RedrawAllPins(DPINS.CHAMPION_DONE)
-				end,
-				disabled = function() return 
-					(not DestinationsCSSV.filters[DPINS.CHAMPION] and
-					not DestinationsCSSV.filters[DPINS.CHAMPION_DONE]) or
-					not DestinationsSV.settings.ShowDungeonBossesInZones
-				end,
-				default = defaults.settings.ShowDungeonBossesOnTop,
-			})
-			table.insert(submenu, { -- Champion pin style
-				type = "dropdown",
-				name = GetString(DEST_SETTINGS_ACH_PIN_STYLE),
-				reference = "previewpinTextureChampion",
-				choices = pinTextures.lists.Champion,
-				getFunc = function() return pinTextures.lists.Champion[DestinationsSV.pins.pinTextureChampion.type] end,
-				setFunc = function(selected)
-					for index, name in ipairs(pinTextures.lists.Champion) do
-						if name == selected then
-							DestinationsSV.pins.pinTextureChampion.type = index
-							DestinationsSV.pins.pinTextureChampionDone.type = index
-							LMP:SetLayoutKey(DPINS.CHAMPION, "texture", pinTextures.paths.Champion[index])
-							LMP:SetLayoutKey(DPINS.CHAMPION_DONE, "texture", pinTextures.paths.ChampionDone[index])
-							ChampionPreview:SetTexture(pinTextures.paths.Champion[index])
-							ChampionPreviewDone:SetTexture(pinTextures.paths.ChampionDone[index])
-							RedrawAllPins(DPINS.CHAMPION)
-							RedrawAllPins(DPINS.CHAMPION_DONE)
-							break
-						end
-					end
-				end,
-				disabled = function() return
-					not DestinationsCSSV.filters[DPINS.CHAMPION] and
-					not DestinationsCSSV.filters[DPINS.CHAMPION_DONE]
-				end,
-				default = pinTextures.lists.Champion[defaults.pins.pinTextureChampion.type],
-			})
-			table.insert(submenu, { -- Champion pin size
-				type = "slider",
-				name = GetString(DEST_SETTINGS_ACH_PIN_SIZE),
-				min = 20,
-				max = 70,
-				getFunc = function() return DestinationsSV.pins.pinTextureChampion.size end,
-				setFunc = function(size)
-					DestinationsSV.pins.pinTextureChampion.size = size
-					DestinationsSV.pins.pinTextureChampionDone.size = size
-					ChampionPreview:SetDimensions(size, size)
-					ChampionPreviewDone:SetDimensions(size, size)
-					LMP:SetLayoutKey(DPINS.CHAMPION, "size", size)
-					LMP:SetLayoutKey(DPINS.CHAMPION_DONE, "size", size)
-					RedrawAllPins(DPINS.CHAMPION)
-					RedrawAllPins(DPINS.CHAMPION_DONE)
-				end,
-				disabled = function() return
-					not DestinationsCSSV.filters[DPINS.CHAMPION] and
-					not DestinationsCSSV.filters[DPINS.CHAMPION_DONE]
-				end,
-				default = defaults.pins.pinTextureChampion.size
 			})
 			
 		elseif menu == "Misc" then
