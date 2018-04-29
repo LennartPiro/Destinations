@@ -8,7 +8,7 @@
 ## Description: This addon adds various points of interest to your maps and compass.
 ## Version: 3.0.0
 ## Author: |c990000Snowman|r|cFFFFFFDK|r & MasterLenman & Ayantir
-## APIVersion: 100023
+## APIVersion: 100022 100023
 ## SavedVariables: Destinations_Settings
 ## OptionalDependsOn: LibAddonMenu-2.0 LibMapPins-1.0 CustomCompassPins
 
