@@ -3763,7 +3763,7 @@ local function MapCallback_unknown()
 	for poiIndex = 1, GetNumPOIs(zoneIndex) do
 		
 		local normalizedX, normalizedY, poiType = GetPOIMapInfo(zoneIndex, poiIndex)
-		local unknown = poiType == MAP_PIN_TYPE_INVALID
+		local unknown = poiType == MAP_PIN_TYPE_INVALID or poiType == MAP_PIN_TYPE_POI_SEEN
 		
 		if unknown and mapData[poiIndex] then
 			
