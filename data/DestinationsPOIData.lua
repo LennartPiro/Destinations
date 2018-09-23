@@ -2017,4 +2017,31 @@ Destinations.POIsStore = {
 		[5] = {n = "Colosseum of the Old Ways", t = DESTINATIONS_PIN_TYPE_AOI}, --
         ["zoneName"] = "Artaeum",
 	},
+	[726] = -- Murkmire
+	{
+		[1] = {n = "Lilmoth", t=DESTINATIONS_PIN_TYPE_CITY},
+		[2] = {n = "Bright-Throat Village", t=DESTINATIONS_PIN_TYPE_TOWN},
+		[3] = {n = "Dead-Water Village", t=DESTINATIONS_PIN_TYPE_TOWN},
+		[4] = {n = "Alten Meerhleel", t=DESTINATIONS_PIN_TYPE_AOI},
+		[5] = {n = "Lilmoth Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE},
+		[6] = {n = "Bright-Throat Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE},
+		[7] = {n = "Dead-Water Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE},
+		[8] = {n = "Blackrose Prison", t=DESTINATIONS_PIN_TYPE_GROUPINSTANCE},
+		[9] = {n = "Echoing Hollow", t=DESTINATIONS_PIN_TYPE_GROUPBOSS},
+		[10] = {n = "Bok-Xul", t=DESTINATIONS_PIN_TYPE_GROUPBOSS},
+		[11] = {n = "Tsofeer Cavern", t=DESTINATIONS_PIN_TYPE_DELVE},
+		[12] = {n = "Teeth of Sithis", t=DESTINATIONS_PIN_TYPE_DELVE},
+		[13] = {n = "The Dominus Fatum", t=DESTINATIONS_PIN_TYPE_AOI},
+		[14] = {n = "Ruined Guardhouse", t=DESTINATIONS_PIN_TYPE_AOI},
+		[15] = {n = "Root-Whisper Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE},
+		[16] = {n = "Root-Whisper Village", t=DESTINATIONS_PIN_TYPE_AOI}, --TODO
+		[17] = {n = "Ruined Village", t = DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_SLOADS_SEMBLANCE }, -- TODO CRAFTING!
+		[18] = {n = "Deep Swamp Forge", t = DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_SLOADS_SEMBLANCE }, -- TODO CRAFTING!
+		[19] = {n = "Sweet Breeze Overlook", t = DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_SLOADS_SEMBLANCE }, -- TODO CRAFTING!
+		[20] = {n = "Xinchei-Konu Monument", t=DESTINATIONS_PIN_TYPE_AOI},
+		[21] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN},
+		[22] = {n = "Path of the Lily", t=DESTINATIONS_PIN_TYPE_AOI},
+		[23] = {n = "Blackrose Prison Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE},
+		[24] = {n = "Lakemire Xanmeer Manor", t=DESTINATIONS_PIN_TYPE_HOUSING},
+	}
 }
