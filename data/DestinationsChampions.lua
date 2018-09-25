@@ -659,6 +659,10 @@ Destinations.ChampionTableStore =	{
 		{0.6211919188,	0.3587947488,	540,	1},
 		{0.6211919188,	0.3587947488,	540,	1},
 	},
+	["murkmire_base_0"] = {
+		{0.2029, 0.5157, 2286, 1},
+		{0.4681, 0.3780, 2287, 1},
+	},
 
 	["narilnagaia_base_0"] = { --
 		{0.7569,	0.6188,	567,	1},
@@ -1022,6 +1026,15 @@ Destinations.ChampionTableStore =	{
 		{0.4297,	0.1458,	2095,	1},
 	},
 
+	--["teethofsithis01_base_0"] = {
+	--	{0, 0, 2287, 1},
+	--},
+	["teethofsithis02a_base_0"] = {
+		{0.8200, 0.5077, 2287, 1},
+	},
+	["teethofsithis02b_base_0"] = {
+		{0.5349, 0.6802, 2287, 1},
+	},
 	["thebastardstomb_base_0"] = {
 		{0.8034646511,	0.7353978157,	256,	1},
 	},
@@ -1125,6 +1138,9 @@ Destinations.ChampionTableStore =	{
 	["trollstoothpick_base_0"] = {
 		{0.5781766176,	0.5203699470,	539,	1},
 	},
+    ["tsofeercavern01_base_0"] = {
+        {0.7699, 0.3632, 2286, 1},
+    },
 
 	["underpallcave_base_0"] = {
 		{0.301235,	0.172840,	741,	1 },
