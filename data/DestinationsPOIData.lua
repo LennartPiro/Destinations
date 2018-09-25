@@ -133,6 +133,10 @@ local CRAFTINGSET_ADEPT_RIDER = 42
 local CRAFTINGSET_SLOADS_SEMBLANCE = 43
 local CRAFTINGSET_NOCTURNALS_FAVOR = 44
 
+local CRAFTINGSET_NAGA_SHAMAN = 45
+local CRAFTINGSET_MIGHT_LOST_LEGION = 46
+local CRAFTINGSET_GRAVESTAKE_COLLECTOR = 47
+
 -- itemId, numberOfTraitsRequired	
 Destinations.SetsStore = {	
 		
@@ -203,6 +207,11 @@ Destinations.SetsStore = {
 	[CRAFTINGSET_ADEPT_RIDER]						= {135717, 3},
 	[CRAFTINGSET_SLOADS_SEMBLANCE]					= {136102, 6},
 	[CRAFTINGSET_NOCTURNALS_FAVOR]					= {136417, 9},
+
+	--Murkmire
+	[CRAFTINGSET_NAGA_SHAMAN]					    = {143161, 2},
+	[CRAFTINGSET_MIGHT_LOST_LEGION]					= {143531, 4},
+	[CRAFTINGSET_GRAVESTAKE_COLLECTOR]				= {142791, 7},
 }
 
 Destinations.KeepsStore = {
@@ -2034,10 +2043,10 @@ Destinations.POIsStore = {
 		[13] = {n = "The Dominus Fatum", t=DESTINATIONS_PIN_TYPE_AOI},
 		[14] = {n = "Ruined Guardhouse", t=DESTINATIONS_PIN_TYPE_AOI},
 		[15] = {n = "Root-Whisper Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE},
-		[16] = {n = "Root-Whisper Village", t=DESTINATIONS_PIN_TYPE_AOI}, --TODO
-		[17] = {n = "Ruined Village", t = DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_SLOADS_SEMBLANCE }, -- TODO CRAFTING!
-		[18] = {n = "Deep Swamp Forge", t = DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_SLOADS_SEMBLANCE }, -- TODO CRAFTING!
-		[19] = {n = "Sweet Breeze Overlook", t = DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_SLOADS_SEMBLANCE }, -- TODO CRAFTING!
+		[16] = {n = "Root-Whisper Village", t=DESTINATIONS_PIN_TYPE_AOI},
+		[17] = {n = "Ruined Village", t = DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_MIGHT_LOST_LEGION },
+		[18] = {n = "Deep Swamp Forge", t = DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_NAGA_SHAMAN },
+		[19] = {n = "Sweet Breeze Overlook", t = DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_GRAVESTAKE_COLLECTOR },
 		[20] = {n = "Xinchei-Konu Monument", t=DESTINATIONS_PIN_TYPE_AOI},
 		[21] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN},
 		[22] = {n = "Path of the Lily", t=DESTINATIONS_PIN_TYPE_AOI},
