@@ -3678,10 +3678,10 @@ local function MapCallback_fakeKnown()
 
     for poiIndex = 1, GetNumPOIs(zoneIndex) do
 
-        local normalizedX, normalizedY, poiType = GetPOIMapInfo(zoneIndex, poiIndex)
+        local normalizedX, normalizedY, poiType, icon, isShownInCurrentMap, linkedCollectibleIsLocked, isDiscovered, isNearby = GetPOIMapInfo(zoneIndex, poiIndex)
+        local unknown = not (isDiscovered or isNearby)
 
-        local unknown = poiType == MAP_PIN_TYPE_INVALID
-        local seen = poiType == MAP_PIN_TYPE_POI_SEEN
+        local seen = isDiscovered
 
         if not unknown and mapData[poiIndex] then
 
@@ -3764,9 +3764,9 @@ local function MapCallback_unknown()
     local zoneIndex = GetCurrentMapZoneIndex()
 
     for poiIndex = 1, GetNumPOIs(zoneIndex) do
-
-        local normalizedX, normalizedY, poiType = GetPOIMapInfo(zoneIndex, poiIndex)
-        local unknown = poiType == MAP_PIN_TYPE_INVALID or poiType == MAP_PIN_TYPE_POI_SEEN
+        -- local normalizedX, normalizedY, poiType = GetPOIMapInfo(zoneIndex, poiIndex)
+        local normalizedX, normalizedY, poiType, icon, isShownInCurrentMap, linkedCollectibleIsLocked, isDiscovered, isNearby = GetPOIMapInfo(zoneIndex, poiIndex)
+        local unknown = not (isDiscovered or isNearby)
 
         if unknown and mapData[poiIndex] then
 
