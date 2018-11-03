@@ -2,7 +2,7 @@
 
 local ADDON_NAME = "Destinations"
 local ADDON_AUTHOR = "|c990000Snowman|r|cFFFFFFDK|r & MasterLenman & Ayantir"
-local ADDON_VERSION = "3.0.0"
+local ADDON_VERSION = "3.1.1"
 local ADDON_WEBSITE = "http://www.esoui.com/downloads/info667-Destinations.html"
 
 local LMP = LibStub("LibMapPins-1.0")
@@ -3756,15 +3756,15 @@ local function MapCallback_unknown()
     mapData, mapTextureName, zoneTextureName = nil, nil, nil
     if LMP:IsEnabled(drtv.pinName) and DestinationsCSSV.filters[drtv.pinName] then
         GetMapTextureName()
-        mapData = POIsStore[GetZoneId(GetCurrentMapZoneIndex())] or {}
+		mapData = POIsStore[GetZoneId(GetCurrentMapZoneIndex())]
     end
 
-    -- if not mapData then return end
+    if not mapData then return end
 
     local zoneIndex = GetCurrentMapZoneIndex()
 
     for poiIndex = 1, GetNumPOIs(zoneIndex) do
-        -- local normalizedX, normalizedY, poiType = GetPOIMapInfo(zoneIndex, poiIndex)
+
         local normalizedX, normalizedY, poiType, icon, isShownInCurrentMap, linkedCollectibleIsLocked, isDiscovered, isNearby = GetPOIMapInfo(zoneIndex, poiIndex)
         local unknown = not (isDiscovered or isNearby)
 
@@ -3810,36 +3810,6 @@ local function MapCallback_unknown()
                     },
                 }
             end
-
-            if DestinationsSV.pins.pinTextureUnknown.type == 7 then
-                pinTag.texture = GetDestinationUnknownPOITexture(destinationsPinType)
-            else
-                pinTag.texture = pinTextures.paths.Unknown[DestinationsSV.pins.pinTextureUnknown.type]
-            end
-
-            LMP:CreatePin(DPINS.UNKNOWN, pinTag, normalizedX, normalizedY)
-
-        elseif unknown then
-
-            local englishName = poiIndex
-            local destinationsPinType = DESTINATIONS_PIN_TYPE_AOI
-            local objectiveName = zo_strformat(SI_WORLD_MAP_LOCATION_NAME, GetPOIInfo(zoneIndex, poiIndex))
-
-            local pinTag = {
-                newFormat = true,
-                objectiveName = objectiveName,
-                englishName = englishName,
-            }
-
-            -- IC icons don't have same meaning than standard ones
-            if mapTextureName == "imperialcity_base_0" then
-                pinTag.poiTypeName = GetICPoiTypeName(destinationsPinType)
-            else
-                pinTag.poiTypeName = GetPoiTypeName(destinationsPinType)
-            end
-
-            --Future usage
-            pinTag.destinationsPinType = destinationsPinType
 
             if DestinationsSV.pins.pinTextureUnknown.type == 7 then
                 pinTag.texture = GetDestinationUnknownPOITexture(destinationsPinType)
