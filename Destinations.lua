@@ -2,7 +2,7 @@
 
 local ADDON_NAME = "Destinations"
 local ADDON_AUTHOR = "|c990000Snowman|r|cFFFFFFDK|r & MasterLenman & Ayantir"
-local ADDON_VERSION = "3.1.1"
+local ADDON_VERSION = "3.1.2"
 local ADDON_WEBSITE = "http://www.esoui.com/downloads/info667-Destinations.html"
 
 local LMP = LibStub("LibMapPins-1.0")
