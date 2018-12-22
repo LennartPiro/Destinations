@@ -1382,6 +1382,26 @@ local achTypes = {
     [55] = GetString(POITYPE_UNKNOWN),
 }
 
+-- Slash commands -------------------------------------------------------------
+local function ShowMyPosition()
+	if SetMapToPlayerLocation() == SET_MAP_RESULT_MAP_CHANGED then
+		CALLBACK_MANAGER:FireCallbacks("OnWorldMapChanged")
+	end
+
+	local x, y = GetMapPlayerPosition("player")
+
+	local locX = ("%0.04f"):format(zo_round(x*10000)/10000)
+	local locY = ("%0.04f"):format(zo_round(y*10000)/10000)
+
+	local mapname = GetMapTileTexture():lower()
+
+	d(zo_strformat('["<<1>>"] = { ' .. '{<<2>>, <<3>>,	xx,	yyyy,	1,	"X"}, --3.1.3	> AssemblerManiac', mapname, locX, locY))
+
+end
+
+SLASH_COMMANDS["/fishloc"] = ShowMyPosition
+
+
 local function GetPoiTypeName(poiTypeId)
     return poiTypes[poiTypeId] or poiTypes[99]
 end
