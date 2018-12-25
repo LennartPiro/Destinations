@@ -10,11 +10,28 @@
 ## Author: |c990000Snowman|r|cFFFFFFDK|r & MasterLenman & Ayantir
 ## APIVersion: 100025
 ## SavedVariables: Destinations_Settings
-## DependsOn: LibStub LibAddonMenu-2.0 LibMapPins-1.0
-## OptionalDependsOn: CustomCompassPins
+## OptionalDependsOn: LibAddonMenu-2.0 LibMapPins-1.0 CustomCompassPins
 
-Libs/LibAnnyoingUpdateNotificationInGame/LibAnnyoingUpdateNotificationInGame.lua
+Libs/LibStub/LibStub.lua
 Libs/LibCustomTitles/LibCustomTitles.lua
+Libs/LibAnnyoingUpdateNotificationInGame/LibAnnyoingUpdateNotificationInGame.lua
+Libs/LibMapPins-1.0/LibMapPins-1.0.lua
+Libs/CustomCompassPins/CustomCompassPins.lua
+
+Libs/LibAddonMenu-2.0/LibAddonMenu-2.0.lua
+Libs/LibAddonMenu-2.0/controls/panel.lua
+Libs/LibAddonMenu-2.0/controls/submenu.lua
+Libs/LibAddonMenu-2.0/controls/button.lua
+Libs/LibAddonMenu-2.0/controls/checkbox.lua
+Libs/LibAddonMenu-2.0/controls/colorpicker.lua
+Libs/LibAddonMenu-2.0/controls/custom.lua
+Libs/LibAddonMenu-2.0/controls/description.lua
+Libs/LibAddonMenu-2.0/controls/dropdown.lua
+Libs/LibAddonMenu-2.0/controls/editbox.lua
+Libs/LibAddonMenu-2.0/controls/header.lua
+Libs/LibAddonMenu-2.0/controls/slider.lua
+Libs/LibAddonMenu-2.0/controls/texture.lua
+Libs/LibAddonMenu-2.0/controls/iconpicker.lua
 
 data/$(language)/DestinationsCollectibles_$(language).lua
 data/$(language)/DestinationsMundusData_$(language).lua
