@@ -1383,7 +1383,7 @@ local achTypes = {
 }
 
 -- Slash commands -------------------------------------------------------------
-local function ShowMyPosition()
+local function ShowMyPosition(exclMap)
 	if SetMapToPlayerLocation() == SET_MAP_RESULT_MAP_CHANGED then
 		CALLBACK_MANAGER:FireCallbacks("OnWorldMapChanged")
 	end
@@ -1394,13 +1394,24 @@ local function ShowMyPosition()
 	local locY = ("%0.04f"):format(zo_round(y*10000)/10000)
 
 	local mapname = GetMapTileTexture():lower()
+	local atName = GetDisplayName()
 
-	d(zo_strformat('["<<1>>"] = { ' .. '{<<2>>, <<3>>,	xx,	yyyy,	1,	"X"}, --3.1.3	> AssemblerManiac', mapname, locX, locY))
-
+	if exclMap then
+		d(zo_strformat('["<<1>>"] = { ' .. '{<<2>>, <<3>>,	xx,	yyyy,	1,	"X"}, --3.1.x	> <<4>>', mapname, locX, locY, atName))
+	else
+		d(zo_strformat('{<<1>>, <<2>>,	xx,	yyyy,	1,	"X"}, --3.1.x	> <<3>>', locX, locY, atName))
+	end
 end
 
-SLASH_COMMANDS["/fishloc"] = ShowMyPosition
+local function ShowMyPosWithMap()
+	ShowMyPosition(true)
+end
+SLASH_COMMANDS["/fishlocnew"] = ShowMyPosWithMap
 
+local function ShowMyPosOnly()
+	ShowMyPosition(false)
+end
+SLASH_COMMANDS["/fishloc"] = ShowMyPosOnly
 
 local function GetPoiTypeName(poiTypeId)
     return poiTypes[poiTypeId] or poiTypes[99]
