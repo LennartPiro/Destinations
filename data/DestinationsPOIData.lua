@@ -447,7 +447,7 @@ Destinations.POIsStore = {
         [45] = { n = "Dragon's Hallow", t = DESTINATIONS_PIN_TYPE_GROUPBOSS},
         [46] = { n = "Ammabani's Pride", t = DESTINATIONS_PIN_TYPE_GROUPBOSS},
         [47] = { n = "Swiftblade's Camp", t = DESTINATIONS_PIN_TYPE_GROUPBOSS},
-        [48] = { n = "Darkwater Crossing", t = DESTINATIONS_PIN_TYPE_TOWN},
+        [48] = { n = "Darkwater Crossing", t = DESTINATIONS_PIN_TYPE_AOI},
         [49] = { n = "Giant's Heart", t = DESTINATIONS_PIN_TYPE_AOI},
         [50] = { n = "Ragnthar", t = DESTINATIONS_PIN_TYPE_AOI},
         [51] = { n = "Cragwallow Cave", t = DESTINATIONS_PIN_TYPE_AOI},
