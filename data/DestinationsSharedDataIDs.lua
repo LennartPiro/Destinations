@@ -62,6 +62,10 @@ Destinations.FishIDs = {
 	[1339] = (GetAchievementInfo(1339)),	--"Hooking Wrothgar's Biggest Catch"
 	[1351] = (GetAchievementInfo(1351)),	--"Hew's Bane Master Angler"
 	[1431] = (GetAchievementInfo(1431)),	--"Gold Coast Master Angler"
+	[2027] = (GetAchievementInfo(2027)),	--"Clockwork City Master Angler"
+	[2191] = (GetAchievementInfo(2191)),	--"Summerset Master Angler"
+	[2240] = (GetAchievementInfo(2240)),	--"Artaeum Master Angler"
+
 }
 Destinations.FishLocs = {
 	["glenumbra_base_0"] = 			471,		--"Glenumbra Angler"
@@ -93,4 +97,8 @@ Destinations.FishLocs = {
 	["wrothgar_base_0"] = 			1340,		--"Wrothgar Master Angler"
 	["hewsbane_base_0"] = 			1351,		--"Hew's Bane Master Angler"
 	["goldcoast_base_0"] = 			1431,		--"Gold Coast Master Angler"
+
+	["clockwork_base_0"] =			2027,		--"Clockwork City Master Angler"
+	["summerset_base_0"] = 			2191,		--"Summerset Master Angler"
+	["artaeum_base_0"] = 			2240,		--"Artaeum Master Angler"
 }
