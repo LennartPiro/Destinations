@@ -1092,7 +1092,7 @@ Destinations.QuestDataStore = {
 	},
 
 	["eastelsweyrgate_base_0"] = {				-- East Elsweyr Gate (Cyrodiil)
-		{0.4849,	0.4499,	42297,	0,	0,	4722,	14722,	10001,	3},
+		{0.4849,	0.4499,	42297,	0,	0,	4704,	14722,	10001,	3},
 	},
 	["eastmarch_base_0"] = {					-- Eastmarch -- (Eastmarch)
 		--0.5020,	0.3351,	Outlaws Refuge
@@ -2691,7 +2691,7 @@ Destinations.QuestDataStore = {
 		{0.8409,	0.3404,	13156,	0,	0,	2997,	14466,	10092,	1},
 	},
 	["southhighrockgate_base_0"] = {			-- Southern High Rock Gate (Cyrodiil)
-		{0.4462,	0.5446,	42579,	0,	0,	4722,	14722,	10001,	4},
+		{0.4462,	0.5446,	42579,	0,	0,	4725,	14722,	10001,	4},
 	},
 	["southmorrowgate_base_0"] = {				-- Southern Morrowind Gate (Cyrodiil)
 		{0.4801,	0.5050,	42577,	0,	0,	4722,	114722,	10001,	5},
