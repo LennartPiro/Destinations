@@ -77,7 +77,7 @@ local MUNDUS_STONE_ATRONACH							= 13982 -- Boon: The Atronach
 local MUNDUS_STONE_SHADOW								= 13984 -- Boon: The Shadow
 local MUNDUS_STONE_TOWER								= 13985 -- Boon: The Tower
 
-local	CRAFTINGSET_ASHEN_GRIP							= 1
+local CRAFTINGSET_ASHEN_GRIP							= 1
 local CRAFTINGSET_DEATHS_WIND							= 2
 local CRAFTINGSET_NIGHTS_SILENCE						= 3
 local CRAFTINGSET_TORUGS_PACT							= 4
@@ -136,6 +136,10 @@ local CRAFTINGSET_NOCTURNALS_FAVOR = 44
 local CRAFTINGSET_NAGA_SHAMAN = 45
 local CRAFTINGSET_MIGHT_LOST_LEGION = 46
 local CRAFTINGSET_GRAVESTAKE_COLLECTOR = 47
+
+local CRAFTINGSET_SENCHERAHTS_GRIT = 48
+local CRAFTINGSET_VASTARIES_TUTELAGE = 49
+local CRAFTINGSET_COLDHARBOURS_FAVORITE = 50
 
 -- itemId, numberOfTraitsRequired	
 Destinations.SetsStore = {
@@ -212,6 +216,11 @@ Destinations.SetsStore = {
     [CRAFTINGSET_NAGA_SHAMAN]					    = {143161, 2},
     [CRAFTINGSET_MIGHT_LOST_LEGION]					= {143531, 4},
     [CRAFTINGSET_GRAVESTAKE_COLLECTOR]				= {142791, 7},
+
+    --Elsweyr
+    [CRAFTINGSET_VASTARIES_TUTELAGE]					= {148688, 3},
+    [CRAFTINGSET_SENCHERAHTS_GRIT]					    = {148318, 5},
+    [CRAFTINGSET_COLDHARBOURS_FAVORITE]				= {147948, 8},
 }
 
 Destinations.KeepsStore = {
@@ -2052,5 +2061,61 @@ Destinations.POIsStore = {
         [22] = {n = "Path of the Lily", t=DESTINATIONS_PIN_TYPE_AOI},
         [23] = {n = "Blackrose Prison Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE},
         [24] = {n = "Lakemire Xanmeer Manor", t=DESTINATIONS_PIN_TYPE_HOUSING},
+    },
+    [1086] = -- Elsweyr
+    {
+        [1] = {n = "The Bone Pit", t=DESTINATIONS_PIN_TYPE_GROUPBOSS },
+        [2] = {n = "Scar's Edge", t=DESTINATIONS_PIN_TYPE_GROUPBOSS },
+        [3] = {n = "Red Hands Run", t=DESTINATIONS_PIN_TYPE_GROUPBOSS },
+        [4] = {n = "Hill of Shattered Swords", t=DESTINATIONS_PIN_TYPE_GROUPBOSS },
+        [5] = {n = "Talon Gulch", t=DESTINATIONS_PIN_TYPE_GROUPBOSS },
+        [6] = {n = "Nightmare Plateau", t=DESTINATIONS_PIN_TYPE_GROUPBOSS },
+        [7] = {n = "Abode of Ignominy", t=DESTINATIONS_PIN_TYPE_DELVE },
+        [8] = {n = "Predator Mesa", t=DESTINATIONS_PIN_TYPE_DELVE },
+        [9] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+        [10] = {n = "Tomb of Serpents", t=DESTINATIONS_PIN_TYPE_DELVE },
+        [11] = {n = "Darkpool Mine", t=DESTINATIONS_PIN_TYPE_DELVE },
+        [12] = {n = "The Tangle", t=DESTINATIONS_PIN_TYPE_DELVE },
+        [13] = {n = "Rimmen Necropolis", t=DESTINATIONS_PIN_TYPE_DUNGEON },
+        [14] = {n = "Orcrest", t=DESTINATIONS_PIN_TYPE_DUNGEON },
+        [15] = {n = "Riverhold", t=DESTINATIONS_PIN_TYPE_TOWN },
+        [16] = {n = "Rimmen", t=DESTINATIONS_PIN_TYPE_CITY },
+        [17] = {n = "Hakoshae", t=DESTINATIONS_PIN_TYPE_TOWN },
+        [18] = {n = "The Prowl", t=DESTINATIONS_PIN_TYPE_BATTLEFIELD },
+        [19] = {n = "Anequina Aqueduct", t=DESTINATIONS_PIN_TYPE_KEEP },
+        [20] = {n = "Weeping Scar", t=DESTINATIONS_PIN_TYPE_CAVE },
+        [21] = {n = "Cicatrice", t=DESTINATIONS_PIN_TYPE_CAVE },
+        [22] = {n = "Ashen Scar", t=DESTINATIONS_PIN_TYPE_CEMETERY },
+        [23] = {n = "The Stitches", t=DESTINATIONS_PIN_TYPE_TOWN },
+        [24] = {n = "Two Moons at Tenmar Temple", t=DESTINATIONS_PIN_TYPE_ESTATE },
+        [25] = {n = "Merryvale Farms", t=DESTINATIONS_PIN_TYPE_FARM },
+        [26] = {n = "Starlight Adeptorium", t=DESTINATIONS_PIN_TYPE_CRAFTING, s=CRAFTINGSET_SENCHERAHTS_GRIT },
+        [27] = {n = "Valenwood Border Artisan Camp", t=DESTINATIONS_PIN_TYPE_CRAFTING, s=CRAFTINGSET_VASTARIES_TUTELAGE },
+        [28] = {n = "Rimmen Masterworks", t=DESTINATIONS_PIN_TYPE_CRAFTING, s=CRAFTINGSET_VASTARIES_TUTELAGE },
+        [29] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+        [30] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+        [31] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+        [32] = {n = "Star Haven Adeptorium", t=DESTINATIONS_PIN_TYPE_AOI },
+        [33] = {n = "Shadow Dance Ruins", t=DESTINATIONS_PIN_TYPE_AOI },
+        [34] = {n = "Moon Gate of Anequina", t=DESTINATIONS_PIN_TYPE_AOI },
+        [35] = {n = "Sleepy Senche Mine", t=DESTINATIONS_PIN_TYPE_AOI },
+        [36] = {n = "Defense Force Outpost", t=DESTINATIONS_PIN_TYPE_AOI },
+        [37] = {n = "Sandswirl Manor", t=DESTINATIONS_PIN_TYPE_AOI },
+        [38] = {n = "Riverhold Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [39] = {n = "Rimmen Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [40] = {n = "The Stitches Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [41] = {n = "Tenmar Temple Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [42] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+        [43] = {n = "Scar's End Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [44] = {n = "Hakoshae Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [45] = {n = "Desert Wind Caverns", t=DESTINATIONS_PIN_TYPE_DELVE },
+        [46] = {n = "Valenwood Gate", t=DESTINATIONS_PIN_TYPE_AOI },
+        [47] = {n = "Sunspire", t=DESTINATIONS_PIN_TYPE_RAIDDUNGEON },
+        [48] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+        [49] = {n = "Sugar Bowl Suite", t=DESTINATIONS_PIN_TYPE_HOUSING },
+        [50] = {n = "Jode's Embrace", t=DESTINATIONS_PIN_TYPE_HOUSING },
+        [51] = {n = "Hall of the Lunar Champion", t=DESTINATIONS_PIN_TYPE_HOUSING },
+        [52] = {n = "Star Haven Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        ["zoneName"] = "Elsweyr",
     }
 }
