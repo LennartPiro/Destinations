@@ -12,6 +12,9 @@ Destinations.ChampionTableStore =	{
     ["aba-loria_base_0"] = {
         {0.7525064349,	0.6323403120,	432,	1},
     },
+    ["abodeofignominy_base_0"] = {
+        {0.1716,	0.7519,	2396,	1},
+    },
     ["aldunz_base_0"] = {
         {0.7193776369,	0.5545969009,	416,	1},
     },
@@ -354,6 +357,9 @@ Destinations.ChampionTableStore =	{
     ["depravedgrotto_base_0"] = {
         {0.7076259255,	0.5801438689,	433,	1},
     },
+    ["DesertWind_Base_0"] = {
+        {0.5481,	0.1716,	2398,	1},
+    },
     ["deshaan_base_0"] = {
         {0.7284,	0.3906,	269,	1},
         {0.9127,	0.4384,	268,	1},
@@ -403,6 +409,14 @@ Destinations.ChampionTableStore =	{
     },
     ["echocave_base_0"] = {
         {0.280,	0.188,	737,	1 },
+    },
+    ["elsweyr_base_0"] = {
+        {0.4051, 0.2273, 2396, 1},
+        {0.2672, 0.4277, 2397, 1},
+        {0.3973, 0.4328, 2398, 1},
+        {0.6163, 0.2365, 2399, 1},
+        {0.1533, 0.6115, 2400, 1},
+        {0.6278, 0.5886, 2401, 1},
     },
     ["emberflintmine_base_0"] = {
         {0.4250916839,	0.6833420396,	203,	1},
@@ -799,6 +813,9 @@ Destinations.ChampionTableStore =	{
         {0.604938,	0.697531,	734,	2 },
         {0.5370,	0.1333,	734,	3 },
     },
+    ["predatorrise_base_0"] = {
+        {0.5605, 0.4284, 2397,	1},
+    },
     ["pulklower_base_0"] = {
         {0.8006, 0.5107, 1862,	1},
     },
@@ -1068,11 +1085,17 @@ Destinations.ChampionTableStore =	{
         {0.0587,	0.4265,	374,	7},
         {0.0587,	0.4265,	371,	1},
     },
+    ["thetangle_base_0"] = {
+        {0.4543,	0.6210,	2401,	1},
+    },
     ["theunderroot_base_0"] = {
         {0.3396,	0.2708,	550,	1},
     },
     ["thefrigidgrotto_base_0"] = {
         {0.7299327850,	0.3013048768,	254,	1},
+    },
+    ["thescab_base_0"] = {
+        {0.4580, 0.2099, 2400, 1},
     },
     ["thevilemansefirstfloor_base_0"] = {
         {0.36,	0.55,	1052,	2},
@@ -1102,6 +1125,9 @@ Destinations.ChampionTableStore =	{
     },
     ["tomboftheapostates_base_0"] = {
         {0.6166,	0.5978,	297,	1},
+    },
+    ["tombofserpents_base_0"] = {
+        {0.5000,	0.4593,	2399,	1},
     },
     ["toothmaulgully_base_0"] = {
         {0.48,	0.78,	390,	1},
