@@ -6,32 +6,11 @@
 
 ## Title: |cFFFFFFDestinations|r
 ## Description: This addon adds various points of interest to your maps and compass.
-## Version: 3.1.6
+## Version: 3.2.0
 ## Author: |c990000Snowman|r|cFFFFFFDK|r & MasterLenman & Ayantir
-## APIVersion: 100026 100027
+## APIVersion: 100027
 ## SavedVariables: Destinations_Settings
-## OptionalDependsOn: LibAddonMenu-2.0 LibMapPins-1.0 CustomCompassPins
-
-Libs/LibStub/LibStub.lua
-Libs/LibCustomTitles/LibCustomTitles.lua
-Libs/LibAnnyoingUpdateNotificationInGame/LibAnnyoingUpdateNotificationInGame.lua
-Libs/LibMapPins-1.0/LibMapPins-1.0.lua
-Libs/CustomCompassPins/CustomCompassPins.lua
-
-Libs/LibAddonMenu-2.0/LibAddonMenu-2.0.lua
-Libs/LibAddonMenu-2.0/controls/panel.lua
-Libs/LibAddonMenu-2.0/controls/submenu.lua
-Libs/LibAddonMenu-2.0/controls/button.lua
-Libs/LibAddonMenu-2.0/controls/checkbox.lua
-Libs/LibAddonMenu-2.0/controls/colorpicker.lua
-Libs/LibAddonMenu-2.0/controls/custom.lua
-Libs/LibAddonMenu-2.0/controls/description.lua
-Libs/LibAddonMenu-2.0/controls/dropdown.lua
-Libs/LibAddonMenu-2.0/controls/editbox.lua
-Libs/LibAddonMenu-2.0/controls/header.lua
-Libs/LibAddonMenu-2.0/controls/slider.lua
-Libs/LibAddonMenu-2.0/controls/texture.lua
-Libs/LibAddonMenu-2.0/controls/iconpicker.lua
+## DependsOn: LibAddonMenu-2.0 LibMapPins-1.0 CustomCompassPins LibStub
 
 data/$(language)/DestinationsCollectibles_$(language).lua
 data/$(language)/DestinationsMundusData_$(language).lua
