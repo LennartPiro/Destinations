@@ -2090,7 +2090,7 @@ Destinations.POIsStore = {
         [24] = {n = "Two Moons at Tenmar Temple", t=DESTINATIONS_PIN_TYPE_ESTATE },
         [25] = {n = "Merryvale Farms", t=DESTINATIONS_PIN_TYPE_FARM },
         [26] = {n = "Starlight Adeptorium", t=DESTINATIONS_PIN_TYPE_CRAFTING, s=CRAFTINGSET_SENCHERAHTS_GRIT },
-        [27] = {n = "Valenwood Border Artisan Camp", t=DESTINATIONS_PIN_TYPE_CRAFTING, s=CRAFTINGSET_VASTARIES_TUTELAGE },
+        [27] = {n = "Valenwood Border Artisan Camp", t=DESTINATIONS_PIN_TYPE_CRAFTING, s=CRAFTINGSET_COLDHARBOURS_FAVORITE },
         [28] = {n = "Rimmen Masterworks", t=DESTINATIONS_PIN_TYPE_CRAFTING, s=CRAFTINGSET_VASTARIES_TUTELAGE },
         [29] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
         [30] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
