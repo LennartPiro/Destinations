@@ -2037,7 +2037,7 @@ Destinations.POIsStore = {
         [10] = {n = "Direnni Acropolis", t = DESTINATIONS_PIN_TYPE_GATE}, --
         [11] = {n = "Russafeld", t = DESTINATIONS_PIN_TYPE_FARM}, --
         [12] = {n = "Sil-Var-Woad", t = DESTINATIONS_PIN_TYPE_GROVE}, --
-        [13] = {n = "Rellenthil", t = DESTINATIONS_PIN_TYPE_RUIN}, --
+        [13] = {n = "Rellenthil", t = DESTINATIONS_PIN_TYPE_TOWN}, --
         [14] = {n = "Cey-Tarn Keep", t = DESTINATIONS_PIN_TYPE_GATE}, --
         [15] = {n = "Ebon Stadmont", t = DESTINATIONS_PIN_TYPE_GROVE}, --
         [16] = {n = "Sea Keep", t = DESTINATIONS_PIN_TYPE_GATE}, --
@@ -2072,7 +2072,7 @@ Destinations.POIsStore = {
         [45] = {n = "The Crystal Tower Wayshrine", t = DESTINATIONS_PIN_TYPE_WAYSHRINE}, --
         [46] = {n = "Abyssal Geyser Sil'var Woad", t = DESTINATIONS_PIN_TYPE_PORTAL}, --
         [47] = {n = "Eldbur Ruins Wayshrine", t = DESTINATIONS_PIN_TYPE_WAYSHRINE}, --
-        [48] = {n = "48", t = DESTINATIONS_PIN_TYPE_RAIDDUNGEON}, --
+        [48] = {n = "", t = DESTINATIONS_PIN_TYPE_RAIDDUNGEON}, --
         [49] = {n = "Abyssal Geyser Rellenthil", t = DESTINATIONS_PIN_TYPE_PORTAL}, --
         [50] = {n = "Eldbur Ruins", t = DESTINATIONS_PIN_TYPE_AOI}, --
         [51] = {n = "Abyssal Geyser Corgrad", t = DESTINATIONS_PIN_TYPE_PORTAL}, --
