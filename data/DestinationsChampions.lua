@@ -245,6 +245,22 @@ Destinations.ChampionTableStore =	{
     ["molavar_base_0"] = {
         {0.47,	0.41,	884,	1}, -- Molavar
     },
+	 -- Moonlit Cove
+	["moonlitcove01_base_0"] = {
+		{0.4070, 0.4062, 2558, 1},
+	},
+	["moonlitcove02_base_0"] = {
+		{0.4070, 0.4062, 2558, 1},
+	},
+	["moonlitcove03_base_0"] = {
+		{0.4070, 0.4062, 2558, 1},
+	},
+	["moonlitcove04_base_0"] = {
+		{0.4070, 0.4062, 2558, 1},
+	},
+	["moonlitcove05_base_0"] = {
+		{0.4070, 0.4062, 2558, 1},
+	},
     ["rkundzelft_base_0"] = {
         {0.49,	0.37,	885,	1}, -- Rkundzelft
     },
@@ -569,6 +585,9 @@ Destinations.ChampionTableStore =	{
     ["hoarvorpit_base_0"] = {
         {0.6814,	0.4517,	298,	1},
     },
+	["houseofembersoutside_base_0"] = {
+		{ 0.4765, 0.2222, 2557, 1 }, -- Forsaken Citadel, Southern Elsweyr
+	},
     ["hrotacave_base_0"] = {
         {0.8643,	0.7979,	1426,	1},
     },
@@ -1018,6 +1037,10 @@ Destinations.ChampionTableStore =	{
     ["softloamcavern_base_0"] = {
         {0.6876024008,	0.6597487926,	207,	1},
     },
+	["southernelsweyr_base_0"] = {
+		{0.5140, 0.2907, 2557, 1}, -- Forsaken Citadel
+		{0.1620, 0.6224, 2558, 1}, -- Moonlit Cove
+	},
     ["stonefalls_base_0"] = {
         {0.6445,	0.5947,	203,	1},
         {0.3582,	0.4520,	206,	1},
