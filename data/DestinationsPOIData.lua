@@ -2186,5 +2186,40 @@ Destinations.POIsStore = {
         [52] = {n = "Star Haven Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
         [53] = {n = "Moon-Sugar Meadow", t=DESTINATIONS_PIN_TYPE_HOUSING },
         ["zoneName"] = "Elsweyr",
-    }
+    },
+    [1133] = -- Southern Elsweyr (Dragonhold)
+    {
+        [1] = {n = "Senchal Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [2] = {n = "South Guard Ruins Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [3] = {n = "Western Plains Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [4] = {n = "Black Heights Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [5] = {n = "Pridehome Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [6] = {n = "Senchal", t=DESTINATIONS_PIN_TYPE_CITY },
+        [7] = {n = "Sout Guard Ruins", t=DESTINATIONS_PIN_TYPE_RUIN },
+        [8] = {n = "Black Heights", t=DESTINATIONS_PIN_TYPE_TOWN },
+        [9] = {n = "Moonlit Cove", t=DESTINATIONS_PIN_TYPE_DELVE },
+        [10] = {n = "Forsaken Citadel", t=DESTINATIONS_PIN_TYPE_DELVE },
+        [11] = {n = "Fur-Forge Cove", t=DESTINATIONS_PIN_TYPE_CRAFTING, s=0 },
+        [12] = {n = "Cat's Claw Station", t=DESTINATIONS_PIN_TYPE_CRAFTING, s=0 },
+        [13] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+        [14] = {n = "Shrine of the Reforged", t=DESTINATIONS_PIN_TYPE_GROUPBOSS },
+        [15] = {n = "Ri'Atahrashi's Training Ground", t=DESTINATIONS_PIN_TYPE_GROUPBOSS },
+        [16] = {n = "Zazaradi's Quarry and Mine", t=DESTINATIONS_PIN_TYPE_AOI },
+        [17] = {n = "Pridehome", t=DESTINATIONS_PIN_TYPE_AOI },
+        [18] = {n = "Doomstone Keep", t=DESTINATIONS_PIN_TYPE_AOI },
+        [19] = {n = "The Forgotten Mane", t=DESTINATIONS_PIN_TYPE_AOI },
+        [20] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+        [21] = {n = "Purring Rock", t=DESTINATIONS_PIN_TYPE_AOI },
+        [22] = {n = "Khenarthi's Arch", t=DESTINATIONS_PIN_TYPE_AOI },
+        [23] = {n = "Lucky Cat Landing", t=DESTINATIONS_PIN_TYPE_HOUSING },
+        [24] = {n = "Potentate's Retreat", t=DESTINATIONS_PIN_TYPE_HOUSING },
+        ["zoneName"] = "Southern Elsweyr",
+    },
+    [1146] = -- Tideholm, Southern Elsweyr (Dragonhold)
+    {
+        [1] = {n = "???", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+        [2] = {n = "???", t=DESTINATIONS_PIN_TYPE_UNKNOWN }, -- ?? Dragonguard Sanctum Wayshrine ??
+        [3] = {n = "???", t=DESTINATIONS_PIN_TYPE_UNKNOWN }, -- ?? Dragonguard Armory ??
+        ["zoneName"] = "Tideholm",
+    },
 }
