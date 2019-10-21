@@ -141,7 +141,11 @@ local CRAFTINGSET_SENCHERAHTS_GRIT = 48
 local CRAFTINGSET_VASTARIES_TUTELAGE = 49
 local CRAFTINGSET_COLDHARBOURS_FAVORITE = 50
 
--- itemId, numberOfTraitsRequired	
+local CRAFTINGSET_NEW_MOON_ACOLYTE = 51
+local CRAFTINGSET_DARING_CORSAIR = 52
+local CRAFTINGSET_ANCIENT_DRAGONGUARD = 53
+
+-- itemId, numberOfTraitsRequired
 Destinations.SetsStore = {
 
     -- Base
@@ -221,6 +225,11 @@ Destinations.SetsStore = {
     [CRAFTINGSET_VASTARIES_TUTELAGE]					= {148688, 3},
     [CRAFTINGSET_SENCHERAHTS_GRIT]					    = {148318, 5},
     [CRAFTINGSET_COLDHARBOURS_FAVORITE]				= {147948, 8},
+
+	-- Dragonhold
+	[CRAFTINGSET_NEW_MOON_ACOLYTE] = {156159, 9},
+	[CRAFTINGSET_DARING_CORSAIR] = {155410, 999},
+	[CRAFTINGSET_ANCIENT_DRAGONGUARD] = {155780, 999},
 }
 
 Destinations.KeepsStore = {
@@ -2199,8 +2208,8 @@ Destinations.POIsStore = {
         [8] = {n = "Black Heights", t=DESTINATIONS_PIN_TYPE_TOWN },
         [9] = {n = "Moonlit Cove", t=DESTINATIONS_PIN_TYPE_DELVE },
         [10] = {n = "Forsaken Citadel", t=DESTINATIONS_PIN_TYPE_DELVE },
-        [11] = {n = "Fur-Forge Cove", t=DESTINATIONS_PIN_TYPE_CRAFTING, s=0 },
-        [12] = {n = "Cat's Claw Station", t=DESTINATIONS_PIN_TYPE_CRAFTING, s=0 },
+        [11] = {n = "Fur-Forge Cove", t=DESTINATIONS_PIN_TYPE_CRAFTING, s=CRAFTINGSET_NEW_MOON_ACOLYTE },
+        [12] = {n = "Cat's Claw Station", t=DESTINATIONS_PIN_TYPE_CRAFTING, s=CRAFTINGSET_DARING_CORSAIR },
         [13] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
         [14] = {n = "Shrine of the Reforged", t=DESTINATIONS_PIN_TYPE_GROUPBOSS },
         [15] = {n = "Ri'Atahrashi's Training Ground", t=DESTINATIONS_PIN_TYPE_GROUPBOSS },
@@ -2218,8 +2227,10 @@ Destinations.POIsStore = {
     [1146] = -- Tideholm, Southern Elsweyr (Dragonhold)
     {
         [1] = {n = "???", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
-        [2] = {n = "???", t=DESTINATIONS_PIN_TYPE_UNKNOWN }, -- ?? Dragonguard Sanctum Wayshrine ??
-        [3] = {n = "???", t=DESTINATIONS_PIN_TYPE_UNKNOWN }, -- ?? Dragonguard Armory ??
+        [2] = {n = "???", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+        [3] = {n = "???", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+        --[] = {n = "Dragonguard Sanctum Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        --[] = {n = "Dragonguard Armory", t=DESTINATIONS_PIN_TYPE_CRAFTING, s=CRAFTINGSET_ANCIENT_DRAGONGUARD },
         ["zoneName"] = "Tideholm",
     },
 }
