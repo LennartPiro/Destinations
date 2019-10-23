@@ -3692,9 +3692,16 @@ local function MapCallback_fakeKnown()
     GetMapTextureName()
     mapData = POIsStore[GetZoneId(GetCurrentMapZoneIndex())]
 
-    if not mapData then return end
-
     local zoneIndex = GetCurrentMapZoneIndex()
+
+    if not mapData then
+        mapData = { ["zoneName"] = "unknown zone" }
+    end
+    for poiIndex = 1, GetNumPOIs(zoneIndex) do
+        if not mapData[poiIndex] then
+            mapData[poiIndex] = {n = "unknown " .. poiIndex, t=DESTINATIONS_PIN_TYPE_UNKNOWN }
+        end
+    end
 
     for poiIndex = 1, GetNumPOIs(zoneIndex) do
 
@@ -3779,9 +3786,16 @@ local function MapCallback_unknown()
 		mapData = POIsStore[GetZoneId(GetCurrentMapZoneIndex())]
     end
 
-    if not mapData then return end
-
     local zoneIndex = GetCurrentMapZoneIndex()
+
+    if not mapData then
+        mapData = { ["zoneName"] = "unknown zone" }
+    end
+    for poiIndex = 1, GetNumPOIs(zoneIndex) do
+        if not mapData[poiIndex] then
+            mapData[poiIndex] = {n = "unknown " .. poiIndex, t=DESTINATIONS_PIN_TYPE_UNKNOWN }
+        end
+    end
 
     for poiIndex = 1, GetNumPOIs(zoneIndex) do
 
