@@ -1,4 +1,4 @@
---[[
+﻿--[[
 DestinationsPOIData.lua
 Author: Ayantir
 
@@ -228,7 +228,7 @@ Destinations.SetsStore = {
 
 	-- Dragonhold
 	[CRAFTINGSET_NEW_MOON_ACOLYTE] = {156159, 9},
-	[CRAFTINGSET_DARING_CORSAIR] = {155410, 999},
+	[CRAFTINGSET_DARING_CORSAIR] = {155410, 3},
 	[CRAFTINGSET_ANCIENT_DRAGONGUARD] = {155780, 999},
 }
 
