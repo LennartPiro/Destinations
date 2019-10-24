@@ -2226,11 +2226,9 @@ Destinations.POIsStore = {
     },
     [1146] = -- Tideholm, Southern Elsweyr (Dragonhold)
     {
-    --    [1] = {n = "???", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
-    --    [2] = {n = "???", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
-    --    [3] = {n = "???", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
-        --[] = {n = "Dragonguard Sanctum Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
-        --[] = {n = "Dragonguard Armory", t=DESTINATIONS_PIN_TYPE_CRAFTING, s=CRAFTINGSET_ANCIENT_DRAGONGUARD },
+        [1] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+        [2] = {n = "Dragonguard Armory", t=DESTINATIONS_PIN_TYPE_CRAFTING, s=CRAFTINGSET_ANCIENT_DRAGONGUARD },
+        [3] = {n = "Dragonguard Sanctum Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
         ["zoneName"] = "Tideholm",
     },
 }
