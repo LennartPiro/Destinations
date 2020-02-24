@@ -1,4 +1,4 @@
---[[
+﻿--[[
 DestinationsPOIData.lua
 Author: Ayantir
 
@@ -145,6 +145,10 @@ local CRAFTINGSET_NEW_MOON_ACOLYTE = 51
 local CRAFTINGSET_DARING_CORSAIR = 52
 local CRAFTINGSET_ANCIENT_DRAGONGUARD = 53
 
+local CRAFTINGSET_DAUNTLESS_COMBATANT = 54
+local CRAFTINGSET_CRITICAL_RIPOSTE = 55
+local CRAFTINGSET_UNCHAINED_AGGRESSOR = 56
+
 -- itemId, numberOfTraitsRequired
 Destinations.SetsStore = {
 
@@ -230,6 +234,11 @@ Destinations.SetsStore = {
 	[CRAFTINGSET_NEW_MOON_ACOLYTE] = {156159, 9},
 	[CRAFTINGSET_DARING_CORSAIR] = {155410, 3},
 	[CRAFTINGSET_ANCIENT_DRAGONGUARD] = {155780, 999},
+
+    --Update 25 Cyrodiil
+    [CRAFTINGSET_DAUNTLESS_COMBATANT]						= { 159107, 3 },
+    [CRAFTINGSET_CRITICAL_RIPOSTE]						= { 158316, 3 },
+    [CRAFTINGSET_UNCHAINED_AGGRESSOR]							= { 158698, 3 },
 }
 
 Destinations.KeepsStore = {
@@ -1401,6 +1410,9 @@ Destinations.POIsStore = {
         [104] = { n = "Dungeon: Imperial City Prison", t = DESTINATIONS_PIN_TYPE_GROUPINSTANCE},
         [105] = { n = "Dungeon: White-Gold Tower", t = DESTINATIONS_PIN_TYPE_GROUPINSTANCE},
         [106] = { n = "Bruma", t = DESTINATIONS_PIN_TYPE_PORTAL},
+        [107] = { n = "Cropsford Armory", t = DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_DAUNTLESS_COMBATANT},
+        [108] = { n = "Vlastrus Armory", t = DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_CRITICAL_RIPOSTE},
+        [109] = { n = "Bruma Armory", t = DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_UNCHAINED_AGGRESSOR},
         ["zoneName"] = "Cyrodiil",
     },
     [534]		= --Stros M'Kai
