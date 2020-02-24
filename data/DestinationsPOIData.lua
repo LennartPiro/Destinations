@@ -1,4 +1,4 @@
-﻿--[[
+--[[
 DestinationsPOIData.lua
 Author: Ayantir
 
@@ -752,6 +752,8 @@ Destinations.POIsStore = {
         [56] = { n = "", t = DESTINATIONS_PIN_TYPE_UNKNOWN},
         [57] = { n = "", t = DESTINATIONS_PIN_TYPE_UNKNOWN},
         [58] = { n = "Pariah's Pinnacle", t = DESTINATIONS_PIN_TYPE_HOUSING},
+        [59] = { n = "Icereach", t = DESTINATIONS_PIN_TYPE_GROUPINSTANCE},
+        [60] = { n = "Forgemaster Falls", t = DESTINATIONS_PIN_TYPE_HOUSING},
         ["zoneName"] = "Wrothgar",
     },
     [888]		= --Craglorn
@@ -1703,6 +1705,8 @@ Destinations.POIsStore = {
         [62] = { n = "Mournoth Keep", t = DESTINATIONS_PIN_TYPE_HOUSING},
         [63] = { n = "Twin Arches", t = DESTINATIONS_PIN_TYPE_HOUSING},
         [64] = { n = "Dungeon: Fang Lair", t = DESTINATIONS_PIN_TYPE_GROUPINSTANCE},
+        [65] = { n = "Unhallowed Grave", t = DESTINATIONS_PIN_TYPE_GROUPINSTANCE},
+        [66] = { n = "Thieves’ Oasis", t = DESTINATIONS_PIN_TYPE_HOUSING},
         ["zoneName"] = "Bangkorai",
     },
     [381]		= --Auridon
