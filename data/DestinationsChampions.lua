@@ -866,8 +866,8 @@ Destinations.ChampionTableStore =	{
     },
 
     ["quickwatercave_base_0"] = {
-        {0.3292,	0.4431,	746,	1 },
-        {0.4022,	0.4379,	746,	2 },
+        {0.4010,	0.9164,	746,	1 },
+        {0.3900,	0.8400,	746,	2 },
     },
     ["quickwaterdepths_base_0"] = {
         {0.1830,	0.4569,		746,	2 },
