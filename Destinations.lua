@@ -5,7 +5,7 @@ local ADDON_AUTHOR = "|c990000Snowman|r|cFFFFFFDK|r & MasterLenman & Ayantir"
 local ADDON_VERSION = "25.0"
 local ADDON_WEBSITE = "http://www.esoui.com/downloads/info667-Destinations.html"
 
-local LMP = LibStub("LibMapPins-1.0")
+local LMP = LibMapPins
 
 local isQuestCompleted = true
 local mapTextureName, zoneTextureName, mapData
@@ -6002,7 +6002,7 @@ end
 
 local function InitSettings()
 
-    local LAM = LibStub("LibAddonMenu-2.0")
+    local LAM = LibAddonMenu2
 
     local panelData = {
         type = "panel",

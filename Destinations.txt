@@ -10,7 +10,7 @@
 ## Author: |c990000Snowman|r|cFFFFFFDK|r & MasterLenman & Ayantir
 ## APIVersion: 100030
 ## SavedVariables: Destinations_Settings
-## DependsOn: LibAddonMenu-2.0 LibMapPins-1.0 CustomCompassPins LibStub
+## DependsOn: LibAddonMenu-2.0 LibMapPins-1.0 CustomCompassPins
 
 data/$(language)/DestinationsCollectibles_$(language).lua
 data/$(language)/DestinationsMundusData_$(language).lua
