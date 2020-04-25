@@ -1393,7 +1393,7 @@ local function ShowMyPosition()
 	local locX = ("%0.04f"):format(zo_round(x*10000)/10000)
 	local locY = ("%0.04f"):format(zo_round(y*10000)/10000)
 
-	local mapname = GetMapTileTexture():lower()
+	local mapname = LMP:GetZoneAndSubzone(true)
 
 	d(zo_strformat('["<<1>>"] = { ' .. '{<<2>>, <<3>>,	xx,	yyyy,	1,	"X"}, --3.1.3	> AssemblerManiac', mapname, locX, locY))
 
