@@ -1033,7 +1033,56 @@ Destinations.QuestGiverStore = {
 	 [70459] = {"Elam Drals^M"},
 	 [70472] = {"Nevusa^F"},
 	 [72001] = {"Amelie Crowe^F"},
-	[500000] = {"Ayleid Sarcophagus"},
+    -- Shar Morrowind
+	 [78000] = {"Vivec^M"},
+    -- Shar Crown Store
+	 [79000] = {"Imperial Missive^M"}, --??
+    -- Shar Misc
+	 [80000] = {"Adelle Montagne^F"},
+	 [80001] = {"Ulliceta gra-Kogg^F"},
+	 [80002] = {"Josajeh^F"},
+	 [80003] = {"Roguzog^M"},
+	 [80004] = {"Bolgrul^M"},
+	 [80005] = {"Beleru Omoril^F"},
+	 [80006] = {"Lyris Titanborn^F"},
+	 [80007] = {"Adelle Montagne^F"},
+	 [80008] = {"Igeke Rat-Bite^F"},
+	 [80009] = {"Alessio Guillon^M"},
+	 [80010] = {"Cardea Gallus^F"},
+	 [80011] = {"Alvur Baren^M"},
+	 [80012] = {"Llonas Givyn^M"},
+    -- Shar Elsweyr
+	 [81000] = {"Nisuzi^F"},
+	 [81001] = {"Elianna Pevengius^F"},
+	 [81002] = {"Anais Davaux^F"},
+	 [81003] = {"Iraya^F"},
+	 [81004] = {"Abnur Tharn^M"},
+	 [81005] = {"Bebbia Sleek-Fur^F"},
+	 [81006] = {"Isadati^M"},
+	 [81007] = {"Bruccius Baenius^M"},
+	 [81008] = {"Moon-Priest Haduras^F"},
+	 [81009] = {"Iokkas^M"},
+	 [81010] = {"Khamira^F"},
+    -- Shar Skyrim
+	 [90000] = {"Lieutenant Korleva^F"},
+    -- Summerset
+	 [91000] = {"Lanarie^F"},
+	 [91001] = {"Valsirenn^F"},
+	 [91002] = {"Tindoria^F"},
+	 [91003] = {"Ritemaster Iachesis^M"},
+	 [91004] = {"Seeks-the-Dark^F"}, -- Shar ?? sex
+	 [91005] = {"Naliara^F"},
+	 [91006] = {"Calibar^M"},
+	 [91007] = {"Hiranesse^F"},
+	 [91008] = {"Kinlady Helenaere^F"},
+	 [91009] = {"Rinyde^F"},
+    -- Clockwork City
+	 [92001] = {"Sotha Sil^M"},
+	 [92002] = {"Brengolin^M"},
+	 [92003] = {"Proctor Luciana Pullo^F"},
+	 [92004] = {"Lilatha^F"},
+    -- Existing
+ 	[500000] = {"Ayleid Sarcophagus"},
 	[500001] = {"Heist Board"},
 	[500002] = {"Reacquisition Board"},
 	[500003] = {"Tharayya's Journal, Entry 10"},
