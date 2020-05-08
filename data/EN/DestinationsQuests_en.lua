@@ -1995,6 +1995,7 @@ Destinations.QuestTableStore = {
 	[6304] = {"Two Queens"}, -- Shar
 	[6305] = {"Cadwell the Betrayer"}, -- Shar
 	[6308] = {"Thick as Thieves"}, -- Shar
+	[6315] = {"Jode's Core"}, -- Shar
 	[6319] = {"The Song of Kingdoms"}, -- Shar
 	[6325] = {"Home Sweet Home"}, -- Shar
 	[6336] = {"A Rage of Dragons"}, -- Shar
