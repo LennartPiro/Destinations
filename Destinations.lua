@@ -1436,7 +1436,9 @@ local function GetMapTextureName()
     local counter = 1
     local rNumber = 0
 
-    for word in string.gmatch(tileTexture, "[%w%._%-]+") do
+    -- Can not add a %. or the map name preserves the .dds
+    -- Need to account for map names with .base in place of _base
+    for word in string.gmatch(tileTexture, "[%w_%-]+") do
         if counter == 1 then path = "/" .. word end
         if counter == 2 then path = tostring(path .. "/" .. word) end
         if counter == 3 then path = tostring(path .. "/" .. word) end
