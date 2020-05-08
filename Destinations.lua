@@ -1414,6 +1414,14 @@ local function GetAchTypeName(TYPE)
     return achTypes[TYPE] or achTypes[55]
 end
 
+--[[ Various map names
+   "/art/maps/southernelsweyr/els_dragonguard_island05_base_8.dds",
+   "/art/maps/murkmire/tsofeercavern01_1.dds",
+   "/art/maps/housing/blackreachcrypts.base_0.dds",
+   "/art/maps/housing/blackreachcrypts.base_1.dds",
+   "Art/maps/skyrim/blackreach_base_0.dds",
+   "Textures/maps/summerset/alinor_base.dds",
+]]--
 local function GetMapTextureName()
 
     local tileTexture = GetMapTileTexture()
@@ -1424,7 +1432,7 @@ local function GetMapTextureName()
     local counter = 1
     local rNumber = 0
 
-    for word in string.gmatch(tileTexture, "[%w_%-]+") do
+    for word in string.gmatch(tileTexture, "[%w%._%-]+") do
         if counter == 1 then path = "/" .. word end
         if counter == 2 then path = tostring(path .. "/" .. word) end
         if counter == 3 then path = tostring(path .. "/" .. word) end
