@@ -1393,7 +1393,7 @@ local function ShowMyPosition()
 	local locX = ("%0.04f"):format(zo_round(x*10000)/10000)
 	local locY = ("%0.04f"):format(zo_round(y*10000)/10000)
 
-	local mapname = LMP:GetZoneAndSubzone(true)
+	local mapname = LMP:GetZoneAndSubzone(true, true, true)
 
 	d(zo_strformat('["<<1>>"] = { ' .. '{<<2>>, <<3>>,	xx,	yyyy,	1,	"X"}, --3.1.3	> AssemblerManiac', mapname, locX, locY))
 
@@ -1415,12 +1415,16 @@ local function GetAchTypeName(TYPE)
 end
 
 --[[ Various map names
+    Reference https://wiki.esoui.com/Texture_List/ESO/art/maps
+    
    "/art/maps/southernelsweyr/els_dragonguard_island05_base_8.dds",
    "/art/maps/murkmire/tsofeercavern01_1.dds",
    "/art/maps/housing/blackreachcrypts.base_0.dds",
    "/art/maps/housing/blackreachcrypts.base_1.dds",
    "Art/maps/skyrim/blackreach_base_0.dds",
    "Textures/maps/summerset/alinor_base.dds",
+   "art/maps/murkmire/ui_map_tsofeercavern01_0.dds",
+   "art/maps/elsweyr/jodesembrace1.base_0.dds",
 ]]--
 local function GetMapTextureName()
 
