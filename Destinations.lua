@@ -64,6 +64,8 @@ local DESTINATIONS_PIN_TYPE_GROUPCEMETERY = 46
 local DESTINATIONS_PIN_TYPE_GROUPKEEP = 47
 local DESTINATIONS_PIN_TYPE_GROUPAREAOFINTEREST = 48
 local DESTINATIONS_PIN_TYPE_HOUSING = 49
+local DESTINATIONS_PIN_TYPE_DWEMERGEAR = 50
+local DESTINATIONS_PIN_TYPE_NORDBOAT = 51
 local DESTINATIONS_PIN_TYPE_UNKNOWN = 99
 
 local ENGLISH_POI_COLOR, ENGLISH_KEEP_COLOR
@@ -1244,6 +1246,8 @@ local poiTypes = {
     [DESTINATIONS_PIN_TYPE_GROUPKEEP] = GetString(POITYPE_QUESTHUB),
     [DESTINATIONS_PIN_TYPE_GROUPAREAOFINTEREST] = GetString(POITYPE_AOI),
     [DESTINATIONS_PIN_TYPE_HOUSING] = GetString(POITYPE_HOUSING),
+	[DESTINATIONS_PIN_TYPE_DWEMERGEAR] = GetString(POITYPE_QUESTHUB),
+	[DESTINATIONS_PIN_TYPE_NORDBOAT] = GetString(POITYPE_QUESTHUB),
     [DESTINATIONS_PIN_TYPE_UNKNOWN] = GetString(POITYPE_UNKNOWN),
 }
 
@@ -3568,7 +3572,7 @@ local function GetDestinationKnownPOITexture(poiTypeId)
         [DESTINATIONS_PIN_TYPE_GUILDKIOSK] 				= "/esoui/art/icons/servicemappins/servicepin_guildkiosk.dds",
         [DESTINATIONS_PIN_TYPE_PLANARARMORSCRAPS]		= "/esoui/art/icons/poi/poi_ic_planararmorscraps_complete.dds",
         [DESTINATIONS_PIN_TYPE_TINYCLAW]					= "/esoui/art/icons/poi/poi_ic_tinyclaw_complete.dds",
-        [DESTINATIONS_PIN_TYPE_MONSTROUSTEETH] 		= "/esoui/art/icons/poi/poi_ic_monstrousteeth_complete.dds",
+        [DESTINATIONS_PIN_TYPE_MONSTROUSTEETH] 		    = "/esoui/art/icons/poi/poi_ic_monstrousteeth_complete.dds",
         [DESTINATIONS_PIN_TYPE_BONESHARD]				= "/esoui/art/icons/poi/poi_ic_boneshard_complete.dds",
         [DESTINATIONS_PIN_TYPE_MARKLEGION]				= "/esoui/art/icons/poi/poi_ic_marklegion_complete.dds",
         [DESTINATIONS_PIN_TYPE_DARKETHER]				= "/esoui/art/icons/poi/poi_ic_darkether_complete.dds",
@@ -3580,7 +3584,9 @@ local function GetDestinationKnownPOITexture(poiTypeId)
         [DESTINATIONS_PIN_TYPE_GROUPCEMETERY] 			= "/esoui/art/icons/poi/poi_group_cemetery_complete.dds",
         [DESTINATIONS_PIN_TYPE_GROUPKEEP] 				= "/esoui/art/icons/poi/poi_group_keep_complete.dds",
         [DESTINATIONS_PIN_TYPE_GROUPAREAOFINTEREST] 	= "/esoui/art/icons/poi/poi_group_areaofinterest_complete.dds",
-        [DESTINATIONS_PIN_TYPE_HOUSING] = "/esoui/art/icons/poi/poi_group_house_owned.dds",
+        [DESTINATIONS_PIN_TYPE_HOUSING]                 = "/esoui/art/icons/poi/poi_group_house_owned.dds",
+		[DESTINATIONS_PIN_TYPE_DWEMERGEAR]              = "/esoui/art/icons/poi/poi_u26_dwemergear_complete.dds",		
+		[DESTINATIONS_PIN_TYPE_NORDBOAT]                = "/esoui/art/icons/poi/poi_u26_nord_boat_complete.dds",		
         [DESTINATIONS_PIN_TYPE_UNKNOWN]					= "Destinations/pins/poi_unknown_pintype.dds",
     }
 
@@ -3643,7 +3649,9 @@ local function GetDestinationUnknownPOITexture(poiTypeId)
         [DESTINATIONS_PIN_TYPE_GROUPCEMETERY] 			= "/esoui/art/icons/poi/poi_group_cemetery_complete.dds",
         [DESTINATIONS_PIN_TYPE_GROUPKEEP] 				= "/esoui/art/icons/poi/poi_group_keep_complete.dds",
         [DESTINATIONS_PIN_TYPE_GROUPAREAOFINTEREST] 	= "/esoui/art/icons/poi/poi_group_areaofinterest_complete.dds",
-        [DESTINATIONS_PIN_TYPE_HOUSING] = "/esoui/art/icons/poi/poi_group_house_unowned.dds",
+        [DESTINATIONS_PIN_TYPE_HOUSING]                 = "/esoui/art/icons/poi/poi_group_house_unowned.dds",
+		[DESTINATIONS_PIN_TYPE_DWEMERGEAR]              = "/esoui/art/icons/poi/poi_u26_dwemergear_incomplete.dds",
+		[DESTINATIONS_PIN_TYPE_NORDBOAT]                = "/esoui/art/icons/poi/poi_u26_nord_boat_incomplete.dds",		
         [DESTINATIONS_PIN_TYPE_UNKNOWN]					= "Destinations/pins/poi_unknown_pintype.dds",
     }
 
