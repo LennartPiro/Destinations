@@ -147,9 +147,10 @@ local CRAFTINGSET_NEW_MOON_ACOLYTE = 51
 local CRAFTINGSET_DARING_CORSAIR = 52
 local CRAFTINGSET_ANCIENT_DRAGONGUARD = 53
 
-local CRAFTINGSET_DAUNTLESS_COMBATANT = 54
-local CRAFTINGSET_CRITICAL_RIPOSTE = 55
-local CRAFTINGSET_UNCHAINED_AGGRESSOR = 56
+local CRAFTINGSET_DRAGONS_APPETITE = 54
+local CRAFTINGSET_STUHNS_FAVOR = 55
+
+local CRAFTINGSET_SPELL_PARASITE = 56
 
 -- itemId, numberOfTraitsRequired
 Destinations.SetsStore = {
@@ -235,12 +236,14 @@ Destinations.SetsStore = {
 	-- Dragonhold
 	[CRAFTINGSET_NEW_MOON_ACOLYTE] = {156159, 9},
 	[CRAFTINGSET_DARING_CORSAIR] = {155410, 3},
-	[CRAFTINGSET_ANCIENT_DRAGONGUARD] = {155780, 999},
-
-    --Update 25 Cyrodiil
-    [CRAFTINGSET_DAUNTLESS_COMBATANT]						= { 159107, 3 },
-    [CRAFTINGSET_CRITICAL_RIPOSTE]						= { 158316, 3 },
-    [CRAFTINGSET_UNCHAINED_AGGRESSOR]							= { 158698, 3 },
+	[CRAFTINGSET_ANCIENT_DRAGONGUARD] = {155780, 6},
+	
+	-- Western Skyrim
+	[CRAFTINGSET_DRAGONS_APPETITE] = {161630, 7},
+	[CRAFTINGSET_STUHNS_FAVOR] = {161232, 5},
+	
+	-- Blackreach
+	[CRAFTINGSET_SPELL_PARASITE] = { 163076, 3},
 }
 
 Destinations.KeepsStore = {
@@ -2248,5 +2251,98 @@ Destinations.POIsStore = {
         [2] = {n = "Dragonguard Armory", t=DESTINATIONS_PIN_TYPE_CRAFTING, s=CRAFTINGSET_ANCIENT_DRAGONGUARD },
         [3] = {n = "Dragonguard Sanctum Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
         ["zoneName"] = "Tideholm",
+    },
+	[1160] = -- Western Skyrim (Greymoor)
+    {
+        [1] = {n = "Solitude", t=DESTINATIONS_PIN_TYPE_CITY },
+        [2] = {n = "Morthal", t=DESTINATIONS_PIN_TYPE_TOWN },
+        [3] = {n = "Karthwatch", t=DESTINATIONS_PIN_TYPE_TOWN },
+        [4] = {n = "Dragon Bridge", t=DESTINATIONS_PIN_TYPE_TOWN },
+        [5] = {n = "Kilkreath Temple", t=DESTINATIONS_PIN_TYPE_DAEDRICRUIN },
+        [6] = {n = "Mor Khazgur", t=DESTINATIONS_PIN_TYPE_MINE },
+        [7] = {n = "The Silver Cormorant", t=DESTINATIONS_PIN_TYPE_NORDBOAT },
+        [8] = {n = "Frozen Coast", t=DESTINATIONS_PIN_TYPE_DELVE },
+        [9] = {n = "Shadowgreen", t=DESTINATIONS_PIN_TYPE_DELVE },
+        [10] = {n = "Chillwind Depths", t=DESTINATIONS_PIN_TYPE_DELVE },
+        [11] = {n = "Dragonhome", t=DESTINATIONS_PIN_TYPE_DELVE },
+        [12] = {n = "Labyrinthian", t=DESTINATIONS_PIN_TYPE_DUNGEON },
+        [13] = {n = "Karthald Great Lift", t=DESTINATIONS_PIN_TYPE_DWEMERGEAR },
+        --[14] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+        [15] = {n = "Hjaalmarch Great Lift", t=DESTINATIONS_PIN_TYPE_DWEMERGEAR },
+        [16] = {n = "Eastern Great Lift", t=DESTINATIONS_PIN_TYPE_DWEMERGEAR },
+        [17] = {n = "Kilkreath Temple Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [18] = {n = "Morthal Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [19] = {n = "Mor Khazgur Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [20] = {n = "Dragon Bridge Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },		
+        [21] = {n = "Southern Watch Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [22] = {n = "Frozen Coast Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [23] = {n = "Solitude Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [24] = {n = "Hordrek's Hunting Grounds", t=DESTINATIONS_PIN_TYPE_GROUPBOSS },
+		--[25] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+		[26] = {n = "Circle of Champions", t=DESTINATIONS_PIN_TYPE_GROUPBOSS },
+		[27] = {n = "Ysmgar's Beach", t=DESTINATIONS_PIN_TYPE_GROUPBOSS },
+		[28] = {n = "Shademother's Haven", t=DESTINATIONS_PIN_TYPE_GROUPBOSS },
+		[29] = {n = "Old Karth Ritual Site", t=DESTINATIONS_PIN_TYPE_PORTAL },
+		[30] = {n = "Black Morass Ritual Site", t=DESTINATIONS_PIN_TYPE_PORTAL },
+		[31] = {n = "Giant's Coast Ritual Site", t=DESTINATIONS_PIN_TYPE_PORTAL },
+		[32] = {n = "Chilblain Peak Ritual Site", t=DESTINATIONS_PIN_TYPE_PORTAL },
+		[33] = {n = "Hailstone Valley Ritual Site", t=DESTINATIONS_PIN_TYPE_PORTAL },
+		[34] = {n = "Northern Watch Ritual Site", t=DESTINATIONS_PIN_TYPE_PORTAL },
+		[35] = {n = "Coastal Giant Camp", t=DESTINATIONS_PIN_TYPE_CAMP },
+		[36] = {n = "Karthald Giant Camp", t=DESTINATIONS_PIN_TYPE_CAMP },
+		[37] = {n = "Kilkreath Giant Camp", t=DESTINATIONS_PIN_TYPE_CAMP},
+		[38] = {n = "Highland Giant Camp", t=DESTINATIONS_PIN_TYPE_CAMP },
+		[39] = {n = "Trial: Kyne's Aegis", t=DESTINATIONS_PIN_TYPE_RAIDDUNGEON },
+		[40] = {n = "Solitude Docks Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+		--[41] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+		[42] = {n = "Deepwood Vale Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+		[43] = {n = "Deepwood Giant Camp", t=DESTINATIONS_PIN_TYPE_CAMP },
+		--[44] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+		--[45] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+		--[46] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+		--[47] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+		[48] = {n = "Hunter's House", t=DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_STUHNS_FAVOR },
+		[49] = {n = "Dragon's Belly", t=DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_DRAGONS_APPETITE },
+		[50] = {n = "Lendoran Ruin", t=DESTINATIONS_PIN_TYPE_AOI },
+		[51] = {n = "Storm-Hawk's Altar", t=DESTINATIONS_PIN_TYPE_AOI },
+		[52] = {n = "Sword's Point Watchtower", t=DESTINATIONS_PIN_TYPE_AOI },
+		[53] = {n = "Wolf's Eye Lighthouse", t=DESTINATIONS_PIN_TYPE_AOI },
+		[54] = {n = "Mor Khazgur Giant Camp", t=DESTINATIONS_PIN_TYPE_CAMP },
+		[55] = {n = "Proudspire Manor", t=DESTINATIONS_PIN_TYPE_HOUSING },
+		[56] = {n = "Snowmelt Suite", t=DESTINATIONS_PIN_TYPE_HOUSING },
+        ["zoneName"] = "Western Skyrim",
+    },
+	[1161] = -- Western Skyrim (Blackreach: Greymoor Caverns)
+    {
+        [1] = {n = "Dusktown", t=DESTINATIONS_PIN_TYPE_TOWN },
+        [2] = {n = "Greymoor Keep", t=DESTINATIONS_PIN_TYPE_ESTATE },
+        [3] = {n = "The Lightless Hollow", t=DESTINATIONS_PIN_TYPE_CAVE },
+        [4] = {n = "Dusktown Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [5] = {n = "Greymoor Keep Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [6] = {n = "Lightless Hollow Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [7] = {n = "Dark Moon Grotto Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [8] = {n = "Dark Moon Grotto", t=DESTINATIONS_PIN_TYPE_CAVE },
+        [9] = {n = "Lightless Hollow Great Lift", t=DESTINATIONS_PIN_TYPE_DWEMERGEAR },
+        [10] = {n = "Dark Moon Grotto Great Lift", t=DESTINATIONS_PIN_TYPE_DWEMERGEAR },
+        --[11] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
+        [12] = {n = "Greymoor Cavern Great Lift", t=DESTINATIONS_PIN_TYPE_DWEMERGEAR },
+        [13] = {n = "Midnight Barrow", t=DESTINATIONS_PIN_TYPE_DELVE },
+        [14] = {n = "The Scraps", t=DESTINATIONS_PIN_TYPE_DELVE },
+        [15] = {n = "Vampire Feeding Grounds", t=DESTINATIONS_PIN_TYPE_GROUPBOSS },
+        [16] = {n = "Colossus Charging Station", t=DESTINATIONS_PIN_TYPE_GROUPBOSS },
+        [17] = {n = "Nchuthnkarst", t=DESTINATIONS_PIN_TYPE_DUNGEON },
+        [18] = {n = "Gloomforest Ritual Site", t=DESTINATIONS_PIN_TYPE_PORTAL },
+        [19] = {n = "Dwarf's Bane Ritual Site", t=DESTINATIONS_PIN_TYPE_PORTAL },
+        [20] = {n = "Miner's Lament Ritual Site", t=DESTINATIONS_PIN_TYPE_PORTAL },		
+        [21] = {n = "Nightstone Ritual Site", t=DESTINATIONS_PIN_TYPE_PORTAL },
+        [22] = {n = "Parasite's Cave", t=DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_SPELL_PARASITE },
+        [23] = {n = "Dwarven Run Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+        [24] = {n = "Grotto Falls Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+		[25] = {n = "Deep Overlook Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+		[26] = {n = "Western Greymoor Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
+		[27] = {n = "Darkrise Overlook", t=DESTINATIONS_PIN_TYPE_AOI },
+		[28] = {n = "Gloomstalker Village", t=DESTINATIONS_PIN_TYPE_AOI },
+		[29] = {n = "Bastion Sanguinaris", t=DESTINATIONS_PIN_TYPE_HOUSING },
+        ["zoneName"] = "Blackreach: Greymoor Caverns",
     },
 }
