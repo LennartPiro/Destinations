@@ -1321,5 +1321,42 @@ Destinations.ChampionTableStore =	{
 
     ["Zthenganaz_base_0"] = {
         {0.8934,	0.3325,	1302,	1},
+    },	
+	-- Greymoor
+    ["chillwinddepths_base_0"] = {
+       { 0.4416, 0.1946, 2639, 1}, -- Frozen Coast
+    },
+    ["dragonhome_base_0"] = {
+       { 0.3493, 0.2985, 2640, 1}, -- Dragonhome
+    },
+    ["frozencoast_base_0"] = {
+       { 0.7215, 0.1912, 2641, 1}, -- Frozen Coast
+    },
+    ["midnightbarrow_base_0"] = {
+       { 0.6324, 0.1261, 2642, 1}, -- Midnight Barrow
+    },
+    ["shadowgreen_lower_0"] = {
+       { 0.3592, 0.4852, 2643, 1}, -- Shadowgreen
+    },
+    ["thescraps_base_0"] = {
+       { 0.2866, 0.5739, 2644, 1}, -- The Scraps
+    },
+    ["labyrinthian_base_0"] = { -- Labyrinthian
+       { 0.8182, 0.6971, 2717, 1}, -- Blackmaw
+       { 0.8411, 0.2733, 2717, 2}, -- Tulnir
+    },
+    ["labyrinthianb_base_0"] = { -- Labyrinthian Temple
+   	   { 0.1398, 0.5149, 2714, 1}, -- Labyrinthian Group Event
+       { 0.4017, 0.5902, 2717, 3}, -- Gralthum the Tormented
+       { 0.6934, 0.4034, 2717, 4}, -- Andumgar
+	   { 0.8342, 0.5666, 2717, 5}, -- Hjarnnir and Sleeraak
+    },
+    ["nchuthnkarst_base_0"] = { -- Nchuthnkarst
+   	   { 0.7754, 0.5131, 2715, 1}, -- Nchuthnkarst Group Event
+   	   { 0.0994, 0.5589, 2718, 1}, -- Dwarf-light the Destroyer
+       { 0.3784, 0.1132, 2718, 2}, -- Imperfect Iteration
+       { 0.6147, 0.2491, 2718, 3}, -- Shahmar
+	   { 0.6268, 0.4190, 2718, 4}, -- Brsssp the Behemoth
+	   { 0.3436, 0.4805, 2718, 5}, -- Krodunth the Mantikora
     },
 }
