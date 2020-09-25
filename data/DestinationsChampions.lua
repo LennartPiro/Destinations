@@ -280,7 +280,8 @@ Destinations.ChampionTableStore =	{
         {0.74,	0.30,	893,	1}, -- Buried Sand
     },
     ["mtharnaz_base_0"] = {
-        {0.17,	0.62,	894,	1}, -- Mtharnaz
+        {0.1778,	0.63,	894,	1}, -- Mtharnaz
+        {0.3716,	0.5247,	894,	1},
     },
     ["balamath_base_0"] = {
         {0.77,	0.26,	896,	1}, -- Balamath
