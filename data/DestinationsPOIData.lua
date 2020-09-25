@@ -152,6 +152,10 @@ local CRAFTINGSET_STUHNS_FAVOR = 55
 
 local CRAFTINGSET_SPELL_PARASITE = 56
 
+local CRAFTINGSET_RED_EAGLES_FURY = 57
+local CRAFTINGSET_AETHERIAL_ASCENSION = 58
+local CRAFTINGSET_LEGACY_OF_KARTH = 59
+
 -- itemId, numberOfTraitsRequired
 Destinations.SetsStore = {
 
@@ -242,8 +246,13 @@ Destinations.SetsStore = {
 	[CRAFTINGSET_DRAGONS_APPETITE] = {161630, 7},
 	[CRAFTINGSET_STUHNS_FAVOR] = {161232, 5},
 	
-	-- Blackreach
+	-- Blackreach: Greymoor Caverns
 	[CRAFTINGSET_SPELL_PARASITE] = { 163076, 3},
+
+    -- Markarth and Blackreach: Arkthzand
+	[CRAFTINGSET_RED_EAGLES_FURY] = {168000, 3},
+	[CRAFTINGSET_AETHERIAL_ASCENSION] = {168748, 9},
+	[CRAFTINGSET_LEGACY_OF_KARTH] = {168375, 6},
 }
 
 Destinations.KeepsStore = {
@@ -2357,7 +2366,7 @@ Destinations.POIsStore = {
         [1] = {n = "Markarth", t=DESTINATIONS_PIN_TYPE_CITY },
         [2] = {n = "Karthwasten", t=DESTINATIONS_PIN_TYPE_TOWN },
         [3] = {n = "Briar Rock Ruins", t=DESTINATIONS_PIN_TYPE_DELVE },
-        [4] = {n = "Druadach Redoubt", t=DESTINATIONS_PIN_TYPE_CRAFTING, s = nil },
+        [4] = {n = "Druadach Redoubt", t=DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_LEGACY_OF_KARTH },
 --        [5] = {n = "", t=DESTINATIONS_PIN_TYPE_UNKNOWN },
         [6] = {n = "Arkthzand Great Lift", t=DESTINATIONS_PIN_TYPE_DWEMERGEAR },
         [7] = {n = "Four Skull Lookout", t=DESTINATIONS_PIN_TYPE_GROUPBOSS },
@@ -2370,7 +2379,7 @@ Destinations.POIsStore = {
         [14] = {n = "Reachwind Ritual Site", t=DESTINATIONS_PIN_TYPE_PORTAL },
         [15] = {n = "Understone Keep", t=DESTINATIONS_PIN_TYPE_ESTATE },
         [16] = {n = "Bthardamz", t=DESTINATIONS_PIN_TYPE_AOI },
-        [17] = {n = "Red Eagle Redoubt", t=DESTINATIONS_PIN_TYPE_CRAFTING, s = nil },
+        [17] = {n = "Red Eagle Redoubt", t=DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_RED_EAGLES_FURY },
         [18] = {n = "Reachwind Depths", t=DESTINATIONS_PIN_TYPE_DWEMERRUIN },
         [19] = {n = "Vateshran Hollows", t=DESTINATIONS_PIN_TYPE_RAIDDUNGEON },
         [20] = {n = "Wildspear Clan Camp", t=DESTINATIONS_PIN_TYPE_CAMP },
@@ -2403,7 +2412,7 @@ Destinations.POIsStore = {
         [8] = {n = "Arkthzand Great Lift", t=DESTINATIONS_PIN_TYPE_DWEMERGEAR },
         [9] = {n = "Arkthzand Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
         [10] = {n = "Nighthollow Wayshrine", t=DESTINATIONS_PIN_TYPE_WAYSHRINE },
-        [11] = {n = "Philosopher's Cradle", t=DESTINATIONS_PIN_TYPE_CRAFTING, s = nil },
+        [11] = {n = "Philosopher's Cradle", t=DESTINATIONS_PIN_TYPE_CRAFTING, s = CRAFTINGSET_AETHERIAL_ASCENSION },
         [12] = {n = "Ghostlight Grotto", t=DESTINATIONS_PIN_TYPE_AOI },
         [13] = {n = "Mistgloom Thicket", t=DESTINATIONS_PIN_TYPE_AOI },
         ["zoneName"] = "Blackreach: Arkthzand Cavern",
