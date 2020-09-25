@@ -1324,7 +1324,7 @@ Destinations.ChampionTableStore =	{
     },	
 	-- Greymoor
     ["chillwinddepths_base_0"] = {
-       { 0.4416, 0.1946, 2639, 1}, -- Frozen Coast
+       { 0.4416, 0.1946, 2639, 1}, -- Chillwind Depths
     },
     ["dragonhome_base_0"] = {
        { 0.3493, 0.2985, 2640, 1}, -- Dragonhome
@@ -1358,5 +1358,15 @@ Destinations.ChampionTableStore =	{
        { 0.6147, 0.2491, 2718, 3}, -- Shahmar
 	   { 0.6268, 0.4190, 2718, 4}, -- Brsssp the Behemoth
 	   { 0.3436, 0.4805, 2718, 5}, -- Krodunth the Mantikora
+    },
+    ["westernskryim_base_0"] = { -- West Skyrim Overview
+        {0.3680,	0.6126,	2639,	1},
+        {0.1189,	0.4400,	2640,	1},
+        {0.7456,	0.3259,	2641,	1},
+        {0.4865,	0.3047,	2643,	1},
+    },
+    ["blackreach_base_0"] = { -- Blackreach Greymmor Cavern Overview
+        {0.7667,	0.3702,	2642,	1},
+        {0.0842,	0.3673,	2644,	1},
     },
 }
