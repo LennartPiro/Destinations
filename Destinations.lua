@@ -1963,6 +1963,8 @@ local newzones = {
     ["southernelsweyr_base_0"] = true,
     ["westernskryim_base_0"] = true,
     ["blackreach_base_0"] = true,
+    ["reach_base_0"] = true,
+    ["U28_blackreach_base_0"] = true,
 }
 local function ChampionpinTypeCallback()
     if GetMapType() >= MAPTYPE_WORLD then return end
