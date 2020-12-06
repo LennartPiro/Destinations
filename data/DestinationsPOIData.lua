@@ -162,11 +162,11 @@ local CRAFTINGSET_STUHNS_FAVOR                  = 58
 local CRAFTINGSET_SPELL_PARASITE                = 59
 
 -- The Reach
-local CRAFTINGSET_RED_EAGLES_FURY]              = 60
-local CRAFTINGSET_LEGACY_OF_KARTH]              = 61
+local CRAFTINGSET_RED_EAGLES_FURY               = 60
+local CRAFTINGSET_LEGACY_OF_KARTH               = 61
 
 -- Blackreach: Arkthzand Cavern
-local CRAFTINGSET_AETHERIAL_ASCENSION]          = 62
+local CRAFTINGSET_AETHERIAL_ASCENSION           = 62
 
 -- itemId, numberOfTraitsRequired
 Destinations.SetsStore                          = {
