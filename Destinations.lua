@@ -1,15 +1,45 @@
--- Destinations
+-------------------------------------------------
+----- early helper                          -----
+-------------------------------------------------
+
+local function is_in(search_value, search_table)
+    for k, v in pairs(search_table) do
+        if search_value == v then return true end
+        if type(search_value) == "string" then
+            if string.find(string.lower(v), string.lower(search_value)) then return true end
+        end
+    end
+    return false
+end
+
+-------------------------------------------------
+----- lang setup                            -----
+-------------------------------------------------
+
+Destinations.client_lang = GetCVar("language.2")
+Destinations.effective_lang = nil
+Destinations.supported_lang = { "de", "en", "fr", "fx","jp", "pl", "ru", }
+if is_in(Destinations.client_lang, Destinations.supported_lang) then
+  Destinations.effective_lang = Destinations.client_lang
+else
+  Destinations.effective_lang = "en"
+end
+Destinations.supported_lang = Destinations.client_lang == Destinations.effective_lang
+
+-------------------------------------------------
+----- Destinations                          -----
+-------------------------------------------------
 
 local ADDON_NAME = "Destinations"
 local ADDON_AUTHOR = "Sharlikran |c990000Snowman|r|cFFFFFFDK|r & MasterLenman & Ayantir"
-local ADDON_VERSION = "27.3"
+local ADDON_VERSION = "27.4"
 local ADDON_WEBSITE = "http://www.esoui.com/downloads/info667-Destinations.html"
 
 local LMP = LibMapPins
 
 local isQuestCompleted = true
 local mapTextureName, zoneTextureName, mapData
-local DestinationsSV, DestinationsCSSV, DestinationsAWSV, localLanguage, playerAlliance
+local DestinationsSV, DestinationsCSSV, DestinationsAWSV, playerAlliance
 
 local destinationsSetsData = {}
 
@@ -5984,12 +6014,12 @@ end
 
 local function ShowLanguageWarning()
     EVENT_MANAGER:UnregisterForEvent(ADDON_NAME, EVENT_PLAYER_ACTIVATED)
-    d("Destinations is not properly localized for " .. localLanguage .. ".  English terms will be used and not all POIs may be properly classified.")
+    CHAT_ROUTER:AddSystemMessage("Destinations is not properly localized for " .. Destinations.client_lang .. ".  English terms will be used and not all POIs may be properly classified.")
 end
 
 local function DisableEnglishFunctionnalities()
 
-    if localLanguage == "en" then
+    if Destinations.effective_lang == "en" then
         DestinationsSV.settings.AddEnglishOnUnknwon = false
         DestinationsSV.settings.AddEnglishOnKeeps = false
     end
@@ -6309,7 +6339,7 @@ local function InitSettings()
                     getFunc = function() return DestinationsSV.settings.AddEnglishOnUnknwon end,
                     setFunc = function(state) DestinationsSV.settings.AddEnglishOnUnknwon = state end,
                     default = defaults.settings.AddEnglishOnUnknwon,
-                    disabled = function() return localLanguage == "en" end,
+                    disabled = function() return Destinations.effective_lang == "en" end,
                 },
                 { -- Color of English name
                     type = "colorpicker",
@@ -6330,7 +6360,7 @@ local function InitSettings()
                     getFunc = function() return DestinationsSV.settings.AddEnglishOnKeeps end,
                     setFunc = function(state) DestinationsSV.settings.AddEnglishOnKeeps = state end,
                     default = defaults.settings.AddEnglishOnKeeps,
-                    disabled = function() return localLanguage == "en" end,
+                    disabled = function() return Destinations.effective_lang == "en" end,
                 },
                 { -- Color for English name on Keeps
                     type = "colorpicker",
@@ -9434,10 +9464,7 @@ local function OnLoad(eventCode, name)
         DestinationsCSSV = ZO_SavedVars:NewCharacterNameSettings("Destinations_Settings", 1, nil, defaults)
         DestinationsAWSV = ZO_SavedVars:NewAccountWide("Destinations_Settings", 1, nil, defaults) -- AccountWide
 
-        --Check Language, Addon not yet localized
-        localLanguage = GetCVar("language.2") or "en"
-
-        if not (localLanguage == "en" or localLanguage == "es" or localLanguage == "de" or localLanguage == "fr" or localLanguage == "jp" or localLanguage == "ru") then
+        if not Destinations.supported_lang then
             --chat messages aren't shown before player is activated
             EVENT_MANAGER:RegisterForEvent(ADDON_NAME, EVENT_PLAYER_ACTIVATED, ShowLanguageWarning)
         end
