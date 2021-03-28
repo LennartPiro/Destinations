@@ -1,15 +1,45 @@
--- Destinations
+-------------------------------------------------
+----- early helper                          -----
+-------------------------------------------------
+
+local function is_in(search_value, search_table)
+    for k, v in pairs(search_table) do
+        if search_value == v then return true end
+        if type(search_value) == "string" then
+            if string.find(string.lower(v), string.lower(search_value)) then return true end
+        end
+    end
+    return false
+end
+
+-------------------------------------------------
+----- lang setup                            -----
+-------------------------------------------------
+
+Destinations.client_lang = GetCVar("language.2")
+Destinations.effective_lang = nil
+Destinations.supported_lang = { "de", "en", "fr", "fx","jp", "pl", "ru", }
+if is_in(Destinations.client_lang, Destinations.supported_lang) then
+  Destinations.effective_lang = Destinations.client_lang
+else
+  Destinations.effective_lang = "en"
+end
+Destinations.supported_lang = Destinations.client_lang == Destinations.effective_lang
+
+-------------------------------------------------
+----- Destinations                          -----
+-------------------------------------------------
 
 local ADDON_NAME = "Destinations"
-local ADDON_AUTHOR = "|c990000Snowman|r|cFFFFFFDK|r & MasterLenman & Ayantir"
-local ADDON_VERSION = "27.0"
+local ADDON_AUTHOR = "Sharlikran |c990000Snowman|r|cFFFFFFDK|r & MasterLenman & Ayantir"
+local ADDON_VERSION = "27.4"
 local ADDON_WEBSITE = "http://www.esoui.com/downloads/info667-Destinations.html"
 
 local LMP = LibMapPins
 
 local isQuestCompleted = true
 local mapTextureName, zoneTextureName, mapData
-local DestinationsSV, DestinationsCSSV, DestinationsAWSV, localLanguage, playerAlliance
+local DestinationsSV, DestinationsCSSV, DestinationsAWSV, playerAlliance
 
 local destinationsSetsData = {}
 
@@ -580,30 +610,30 @@ local defaults = {
         },
     },
     miscColorCodes = {
-        settingsTextAccountWide =		ZO_ColorDef:New("FFFF00"),
-        settingsTextImprove =			ZO_ColorDef:New("993333"),
-        settingsTextUnknown =			ZO_ColorDef:New("005500"),
-        settingsTextEnglish =			ZO_ColorDef:New("AA5500"),
-        settingsTextOnlyText =			ZO_ColorDef:New("CCCC00"),
-        settingsTextWarn =				ZO_ColorDef:New("FF3333"),
-        settingsTextEvenLine = 			ZO_ColorDef:New("EDEDCC"),
-        settingsTextOddLine = 			ZO_ColorDef:New("FFFFFF"),
-        settingsTextAchievements =		ZO_ColorDef:New("008800"),
-        settingsTextAchHeaders =		ZO_ColorDef:New("00AAAA"),
-        settingsTextMiscellaneous =	ZO_ColorDef:New("00CC00"),
-        settingsTextVWW =					ZO_ColorDef:New("44DD44"),
-        settingsTextQuests =				ZO_ColorDef:New("66FF66"),
-        settingsTextCollectibles =		ZO_ColorDef:New("99FF99"),
-        settingsTextFish =				ZO_ColorDef:New("CCFFCC"),
-        settingsTextInstructions =		ZO_ColorDef:New("CCFFFF"),
-        settingsTextReloadWarning =	ZO_ColorDef:New("FF0000"),
-        mapFilterTextUndone1 =			ZO_ColorDef:New("DDC29E"),
-        mapFilterTextDone1 =				ZO_ColorDef:New("C5DD9E"),
-        mapFilterTextUndone2 =			ZO_ColorDef:New("FF9988"),
-        mapFilterTextDone2 =				ZO_ColorDef:New("99FF88"),
-        mapFilterTextQUndone =			ZO_ColorDef:New("FF5555"),
-        mapFilterTextQProg =				ZO_ColorDef:New("FFAA55"),
-        mapFilterTextQDone =				ZO_ColorDef:New("55FF55"),
+        settingsTextAccountWide =       ZO_ColorDef:New("FFFF00"),
+        settingsTextImprove =           ZO_ColorDef:New("993333"),
+        settingsTextUnknown =           ZO_ColorDef:New("005500"),
+        settingsTextEnglish =           ZO_ColorDef:New("AA5500"),
+        settingsTextOnlyText =          ZO_ColorDef:New("CCCC00"),
+        settingsTextWarn =              ZO_ColorDef:New("FF3333"),
+        settingsTextEvenLine =          ZO_ColorDef:New("EDEDCC"),
+        settingsTextOddLine =           ZO_ColorDef:New("FFFFFF"),
+        settingsTextAchievements =      ZO_ColorDef:New("008800"),
+        settingsTextAchHeaders =        ZO_ColorDef:New("00AAAA"),
+        settingsTextMiscellaneous = ZO_ColorDef:New("00CC00"),
+        settingsTextVWW =                   ZO_ColorDef:New("44DD44"),
+        settingsTextQuests =                ZO_ColorDef:New("66FF66"),
+        settingsTextCollectibles =      ZO_ColorDef:New("99FF99"),
+        settingsTextFish =              ZO_ColorDef:New("CCFFCC"),
+        settingsTextInstructions =      ZO_ColorDef:New("CCFFFF"),
+        settingsTextReloadWarning = ZO_ColorDef:New("FF0000"),
+        mapFilterTextUndone1 =          ZO_ColorDef:New("DDC29E"),
+        mapFilterTextDone1 =                ZO_ColorDef:New("C5DD9E"),
+        mapFilterTextUndone2 =          ZO_ColorDef:New("FF9988"),
+        mapFilterTextDone2 =                ZO_ColorDef:New("99FF88"),
+        mapFilterTextQUndone =          ZO_ColorDef:New("FF5555"),
+        mapFilterTextQProg =                ZO_ColorDef:New("FFAA55"),
+        mapFilterTextQDone =                ZO_ColorDef:New("55FF55"),
     },
     settings = {
         useAccountWide = false,
@@ -1246,8 +1276,8 @@ local poiTypes = {
     [DESTINATIONS_PIN_TYPE_GROUPKEEP] = GetString(POITYPE_QUESTHUB),
     [DESTINATIONS_PIN_TYPE_GROUPAREAOFINTEREST] = GetString(POITYPE_AOI),
     [DESTINATIONS_PIN_TYPE_HOUSING] = GetString(POITYPE_HOUSING),
-	[DESTINATIONS_PIN_TYPE_DWEMERGEAR] = GetString(POITYPE_QUESTHUB),
-	[DESTINATIONS_PIN_TYPE_NORDBOAT] = GetString(POITYPE_QUESTHUB),
+    [DESTINATIONS_PIN_TYPE_DWEMERGEAR] = GetString(POITYPE_QUESTHUB),
+    [DESTINATIONS_PIN_TYPE_NORDBOAT] = GetString(POITYPE_QUESTHUB),
     [DESTINATIONS_PIN_TYPE_UNKNOWN] = GetString(POITYPE_UNKNOWN),
 }
 
@@ -1327,35 +1357,48 @@ local ZoneToAchievements = {
 }
 --------- ZoneId to mapTile name conversion ---------
 local ZoneIDsToFileNames = {
-    [104] = "alikr_base_0",
     [381] = "auridon_base_0",
-    [281] = "balfoyen_base_0",
-    [92] = "bangkorai_base_0",
-    [535] = "betnihk_base_0",
-    [280] = "bleakrock_base_0",
-    [347] = "coldharbour_base_0",
-    [888] = "craglorn_base_0",
-    [181] = "ava_whole_0",
-    [57] = "deshaan_base_0",
-    [101] = "eastmarch_base_0",
-    [3] = "glenumbra_base_0",
-    [823] = "goldcoast_base_0",
     [383] = "grahtwood_base_0",
     [108] = "greenshade_base_0",
-    [816] = "hewsbane_base_0",
     [537] = "khenarthisroost_base_0",
     [58] = "malabaltor_base_0",
     [382] = "reapersmarch_base_0",
-    [20] = "rivenspire_base_0",
+    [281] = "balfoyen_base_0",
+    [280] = "bleakrock_base_0",
+    [57] = "deshaan_base_0",
+    [101] = "eastmarch_base_0",
     [117] = "shadowfen_base_0",
     [41] = "stonefalls_base_0",
+    [103] = "therift_base_0",
+    [104] = "alikr_base_0",
+    [92] = "bangkorai_base_0",
+    [535] = "betnihk_base_0",
+    [3] = "glenumbra_base_0",
+    [20] = "rivenspire_base_0",
     [19] = "stormhaven_base_0",
     [534] = "strosmkai_base_0",
-    [103] = "therift_base_0",
-    [684] = "wrothgar_base_0",
-    [849] = "vvardenfell_base_0",
-    [1011] = "summerset_base_0",
     [1027] = "artaeum_base_0",
+    [1161] = "blackreach_base_0",
+    [980] = "clockwork_base_0",
+    [981] = "brassfortress_base_0",
+    [982] = "clockworkoutlawsrefuge_base_0",
+    [347] = "coldharbour_base_0",
+    [888] = "craglorn_base_0",
+    [823] = "goldcoast_base_0",
+    [816] = "hewsbane_base_0",
+    [726] = "murkmire_base_0",
+    [1072] = "swampisland_ext_base_0",
+    [1086] = "elsweyr_base_0",
+    [1133] = "southernelsweyr_base_0",
+    [1011] = "summerset_base_0",
+    [849] = "vvardenfell_base_0",
+    [1160] = "westernskryim_base_0",
+    [684] = "wrothgar_base_0",
+    [181] = "ava_whole_0",
+    [584] = "imperialcity_base_0",
+    [267] = "eyevea_base_0",
+    [1207] = "reach_base_0",
+    [1208] = "u28_blackreach_base_0",
 }
 
 local achTypes = {
@@ -1388,18 +1431,18 @@ local achTypes = {
 
 -- Slash commands -------------------------------------------------------------
 local function ShowMyPosition()
-	if SetMapToPlayerLocation() == SET_MAP_RESULT_MAP_CHANGED then
-		CALLBACK_MANAGER:FireCallbacks("OnWorldMapChanged")
-	end
+    if SetMapToPlayerLocation() == SET_MAP_RESULT_MAP_CHANGED then
+        CALLBACK_MANAGER:FireCallbacks("OnWorldMapChanged")
+    end
 
-	local x, y = GetMapPlayerPosition("player")
+    local x, y = GetMapPlayerPosition("player")
 
-	local locX = ("%0.04f"):format(zo_round(x*10000)/10000)
-	local locY = ("%0.04f"):format(zo_round(y*10000)/10000)
+    local locX = ("%0.09f"):format(zo_round(x*10000)/10000)
+    local locY = ("%0.09f"):format(zo_round(y*10000)/10000)
 
-	local mapname = GetMapTileTexture():lower()
+    local mapname = LMP:GetZoneAndSubzone(true, true, true)
 
-	d(zo_strformat('["<<1>>"] = { ' .. '{<<2>>, <<3>>,	xx,	yyyy,	1,	"X"}, --3.1.3	> AssemblerManiac', mapname, locX, locY))
+    d(zo_strformat('["<<1>>"] = <<2>>, <<3>>', mapname, locX, locY))
 
 end
 
@@ -1418,50 +1461,26 @@ local function GetAchTypeName(TYPE)
     return achTypes[TYPE] or achTypes[55]
 end
 
+--[[ Various map names
+    Reference https://wiki.esoui.com/Texture_List/ESO/art/maps
+
+   "/art/maps/southernelsweyr/els_dragonguard_island05_base_8.dds",
+   "/art/maps/murkmire/tsofeercavern01_1.dds",
+   "/art/maps/housing/blackreachcrypts.base_0.dds",
+   "/art/maps/housing/blackreachcrypts.base_1.dds",
+   "Art/maps/skyrim/blackreach_base_0.dds",
+   "Textures/maps/summerset/alinor_base.dds",
+   "art/maps/murkmire/ui_map_tsofeercavern01_0.dds",
+   "art/maps/elsweyr/jodesembrace1.base_0.dds",
+]]--
 local function GetMapTextureName()
-
-    local tileTexture = GetMapTileTexture()
-    local stringEnd = string.sub(tileTexture,-6)
-    local number = ""
-    local nameNoNum = ""
-    local path = ""
-    local counter = 1
-    local rNumber = 0
-
-    for word in string.gmatch(tileTexture, "[%w_%-]+") do
-        if counter == 1 then path = "/" .. word end
-        if counter == 2 then path = tostring(path .. "/" .. word) end
-        if counter == 3 then path = tostring(path .. "/" .. word) end
-        if counter == 4 then mapTextureName = word end
-        counter = counter + 1
-    end
-
-    if string.gmatch(stringEnd, "%d+") ~= nil then
-        for mapNum in string.gmatch(stringEnd, "%d+") do
-            number = mapNum
-        end
-    end
-
-    if number == nil then
-        number = ""
-    else
-        rNumber = tonumber(number)
-    end
-
-    if number == "" then
-        nameNoNum = tostring(mapTextureName)
-    elseif rNumber < 10 then
-        local onedigit = string.sub(mapTextureName, 1,-2)
-        nameNoNum = onedigit
-    elseif rNumber > 9 then
-        local twodigit = string.sub(mapTextureName, 1,-3)
-        nameNoNum = twodigit
-    end
-
     zoneTextureName = ZoneIDsToFileNames[GetZoneId(GetCurrentMapZoneIndex())]
+    _, mapTextureName = LMP:GetZoneAndSubzone(false, true, true)
+    if not zoneTextureName then
+        zoneTextureName = mapTextureName
+    end
 
     return mapTextureName, zoneTextureName
-
 end
 
 ------------------- MAP PINS -------------------
@@ -1956,17 +1975,9 @@ local function CutpursepinTypeCallbackDone()
 end
 
 ------------------Achievements------------------
--- TODO: New zones starting with murkmire have zoneTextureName == nil. Find a better way to handle this.
-local newzones = {
-    ["murkmire_base_0"] = true,
-    ["elsweyr_base_0"] = true,
-    ["southernelsweyr_base_0"] = true,
-    ["westernskryim_base_0"] = true,
-    ["blackreach_base_0"] = true,
-}
 local function ChampionpinTypeCallback()
     if GetMapType() >= MAPTYPE_WORLD then return end
-    if (zoneTextureName == mapTextureName or newzones[mapTextureName]) and DestinationsSV.settings.ShowDungeonBossesInZones == false then return end
+    if (zoneTextureName == mapTextureName) and DestinationsSV.settings.ShowDungeonBossesInZones == false then return end
     drtv.pinName = DPINS.CHAMPION
     if LMP:IsEnabled(drtv.pinName) then
         GetMapTextureName()
@@ -1988,7 +1999,7 @@ end
 local function ChampionpinTypeCallbackDone()
     if GetMapType() >= MAPTYPE_WORLD then return end
     -- TODO: New zones starting with murkmire have zoneTextureName == nil. Find a better way to handle this.
-    if (zoneTextureName == mapTextureName or newzones[mapTextureName]) and DestinationsSV.settings.ShowDungeonBossesInZones == false then return end
+    if (zoneTextureName == mapTextureName) and DestinationsSV.settings.ShowDungeonBossesInZones == false then return end
     drtv.pinName = DPINS.CHAMPION_DONE
     if LMP:IsEnabled(drtv.pinName) then
         GetMapTextureName()
@@ -2261,23 +2272,23 @@ local function FishpinTypeCallback()
         local numLures = GetNumFishingLures()
         for lureIndex=1, numLures do
             local name, icon, stack, _, _  = GetFishingLureInfo(lureIndex)
-            if     string.find(icon, "centipede") then	--Crawlers
+            if     string.find(icon, "centipede") then  --Crawlers
                 defaults.data.FoulBaitLeft = stack
-            elseif string.find(icon, "fish_roe") then	--Fish Roe
+            elseif string.find(icon, "fish_roe") then   --Fish Roe
                 defaults.data.FoulSBaitLeft = stack
-            elseif string.find(icon, "torchbug") then	--Insect Parts
+            elseif string.find(icon, "torchbug") then   --Insect Parts
                 defaults.data.RiverBaitLeft = stack
-            elseif string.find(icon, "shad") then	--Shad
+            elseif string.find(icon, "shad") then   --Shad
                 defaults.data.RiverSBaitLeft = stack
-            elseif string.find(icon, "worms") then	--Worms
+            elseif string.find(icon, "worms") then  --Worms
                 defaults.data.OceanBaitLeft = stack
-            elseif string.find(icon, "fish_tail") and not (string.find(name, "simple") or string.find(name, "einfacher") or string.find(name, "appât")) then	--Chub
+            elseif string.find(icon, "fish_tail") and not (string.find(name, "simple") or string.find(name, "einfacher") or string.find(name, "appât")) then    --Chub
                 defaults.data.OceanSBaitLeft = stack
-            elseif string.find(icon, "guts") then	--Guts
+            elseif string.find(icon, "guts") then   --Guts
                 defaults.data.LakeBaitLeft = stack
-            elseif string.find(icon, "river_betty") then	--Minnow
+            elseif string.find(icon, "river_betty") then    --Minnow
                 defaults.data.LakeSBaitLeft = stack
-            elseif string.find(icon, "fish_tail") and (string.find(name, "simple") or string.find(name, "einfacher") or string.find(name, "appât")) then	--Simle Bait
+            elseif string.find(icon, "fish_tail") and (string.find(name, "simple") or string.find(name, "einfacher") or string.find(name, "appât")) then    --Simle Bait
                 defaults.data.GeneralBait = stack
             end
         end
@@ -2596,19 +2607,19 @@ local function QuestPinFilters(QuestID, dataName, questLine, questSeries)
             isQuestCompleted = false
         end
     end
-    if GetUnitLevel("player") <= 5 then	-- Hide certifications while not lvl 6+.
+    if GetUnitLevel("player") <= 5 then -- Hide certifications while not lvl 6+.
         if QuestID == 5249 or QuestID == 5259 or QuestID == 5289 or QuestID == 5302 or QuestID == 5310 or QuestID == 5314 or QuestID == 5315 then
             isQuestCompleted = false
         end
     end
-    if QuestID == 5249 or QuestID == 5259 or QuestID == 5289 or QuestID == 5302 or QuestID == 5310 or QuestID == 5314 or QuestID == 5315 then	-- Hide certifications in other alliances.
+    if QuestID == 5249 or QuestID == 5259 or QuestID == 5289 or QuestID == 5302 or QuestID == 5310 or QuestID == 5314 or QuestID == 5315 then   -- Hide certifications in other alliances.
         if (playerAlliance == 1 and (zoneTextureName == "glenumbra_base_0" or zoneTextureName == "stonefalls_base_0"))  --Aldmeri Dominion
-                or (playerAlliance == 2 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "glenumbra_base_0"))	--Ebonheart Pact
+                or (playerAlliance == 2 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "glenumbra_base_0")) --Ebonheart Pact
                 or (playerAlliance == 3 and (zoneTextureName == "auridon_base_0" or zoneTextureName == "stonefalls_base_0")) then--Daggerfall Covenant
             isQuestCompleted = false
         end
     end
-    if questLine == 99990 then	-- Hide Mage's Guild quest while not the required rank in the guild.
+    if questLine == 99990 then  -- Hide Mage's Guild quest while not the required rank in the guild.
         local skillLineLevel = nil
         local SkillLine = QGiverStore[500114]
         for i=1, GetNumSkillLines(SKILL_TYPE_GUILD) do
@@ -2622,7 +2633,7 @@ local function QuestPinFilters(QuestID, dataName, questLine, questSeries)
             isQuestCompleted = false
         end
     end
-    if questLine == 99995 then	-- Hide Fighter's Guild quest while not the required rank in the guild.
+    if questLine == 99995 then  -- Hide Fighter's Guild quest while not the required rank in the guild.
         local skillLineLevel = nil
         local SkillLine = QGiverStore[500115]
         for i=1, GetNumSkillLines(SKILL_TYPE_GUILD) do
@@ -2636,20 +2647,20 @@ local function QuestPinFilters(QuestID, dataName, questLine, questSeries)
             isQuestCompleted = false
         end
     end
-    if questLine == 99999 then	-- Hide Harborage/Cadwell quests if requirements are not fulfilled
-        if QuestID == 4847 then	-- "God of Schemes"
+    if questLine == 99999 then  -- Hide Harborage/Cadwell quests if requirements are not fulfilled
+        if QuestID == 4847 then -- "God of Schemes"
             questInfo = GetCompletedQuestInfo(4758) -- Also requires "The Final Assault" in Coldharbour.
             if string.len(questInfo) <= 1 then questInfo = nil end
             if not questInfo then
                 isQuestCompleted = false
             end
-        elseif QuestID == 4998 then	-- "Cadwell's Silver"
+        elseif QuestID == 4998 then -- "Cadwell's Silver"
             questInfo = GetCompletedQuestInfo(4847) -- "God of Schemes"
             if string.len(questInfo) <= 1 then questInfo = nil end
             if not questInfo then
                 isQuestCompleted = false
             end
-        elseif QuestID == 5000 then	-- "Cadwell's Gold"
+        elseif QuestID == 5000 then -- "Cadwell's Gold"
             questInfo = GetCompletedQuestInfo(4998) -- "Cadwell's Silver"
             if string.len(questInfo) <= 1 then questInfo = nil end
             if not questInfo then
@@ -2657,7 +2668,7 @@ local function QuestPinFilters(QuestID, dataName, questLine, questSeries)
             end
         end
     end
-    if DestinationsSV.filters[DPINS.QUESTS_WRITS] == false then	  -- Hide Writs or if Certifications if set as not shown.
+    if DestinationsSV.filters[DPINS.QUESTS_WRITS] == false then   -- Hide Writs or if Certifications if set as not shown.
         if (QuestID == 5400) or (QuestID >= 5406 and QuestID <= 5418) or (QuestID >= 5368 and QuestID <= 5377) or (QuestID >= 5388 and QuestID <= 5396) or -- writs
                 (QuestID == 5249) or (QuestID == 5259) or (QuestID == 5289) or (QuestID == 5302) or (QuestID == 5310) or (QuestID == 5314) or (QuestID == 5315) then -- certifications
             isQuestCompleted = false
@@ -3267,7 +3278,7 @@ local function AddAchievementCompassPins()
     end
     if DestinationsCSSV.filters[DPINS.CHAMPION] or DestinationsCSSV.filters[DPINS.CHAMPION_DONE] then
         -- TODO: Check if Murkmire zoneTextureName was fixed, it's nil on PTS 4.2.0
-        if (zoneTextureName == mapTextureName or mapTextureName == "murkmire_base_0") and DestinationsSV.settings.ShowDungeonBossesInZones == false then return end
+        if (zoneTextureName == mapTextureName) and DestinationsSV.settings.ShowDungeonBossesInZones == false then return end
         mapData = DBossStore[mapTextureName]
         if not mapData then return end
         for _, pinData in ipairs(mapData) do
@@ -3543,58 +3554,58 @@ end
 local function GetDestinationKnownPOITexture(poiTypeId)
 
     local mapPinTypeCorrespondance = {
-        [DESTINATIONS_PIN_TYPE_AOI]						= "/esoui/art/icons/poi/poi_areaofinterest_complete.dds",
-        [DESTINATIONS_PIN_TYPE_AYLEIDRUIN]				= "/esoui/art/icons/poi/poi_ayleidruin_complete.dds",
-        [DESTINATIONS_PIN_TYPE_BATTLEFIELD]				= "/esoui/art/icons/poi/poi_battlefield_complete.dds",
-        [DESTINATIONS_PIN_TYPE_CAMP]						= "/esoui/art/icons/poi/poi_camp_complete.dds",
-        [DESTINATIONS_PIN_TYPE_CAVE]						= "/esoui/art/icons/poi/poi_cave_complete.dds",
-        [DESTINATIONS_PIN_TYPE_CEMETERY]					= "/esoui/art/icons/poi/poi_cemetery_complete.dds",
-        [DESTINATIONS_PIN_TYPE_CITY]						= "/esoui/art/icons/poi/poi_city_complete.dds",
-        [DESTINATIONS_PIN_TYPE_CRAFTING]					= "/esoui/art/icons/poi/poi_crafting_complete.dds",
-        [DESTINATIONS_PIN_TYPE_CRYPT]						= "/esoui/art/icons/poi/poi_crypt_complete.dds",
-        [DESTINATIONS_PIN_TYPE_DAEDRICRUIN]				= "/esoui/art/icons/poi/poi_daedricruin_complete.dds",
-        [DESTINATIONS_PIN_TYPE_DELVE]						= "/esoui/art/icons/poi/poi_delve_complete.dds",
-        [DESTINATIONS_PIN_TYPE_DOCK]						= "/esoui/art/icons/poi/poi_dock_complete.dds",
-        [DESTINATIONS_PIN_TYPE_DUNGEON]					= "/esoui/art/icons/poi/poi_dungeon_complete.dds",
-        [DESTINATIONS_PIN_TYPE_DWEMERRUIN]				= "/esoui/art/icons/poi/poi_dwemerruin_complete.dds",
-        [DESTINATIONS_PIN_TYPE_ESTATE]					= "/esoui/art/icons/poi/poi_estate_complete.dds",
-        [DESTINATIONS_PIN_TYPE_FARM]						= "/esoui/art/icons/poi/poi_farm_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GATE]						= "/esoui/art/icons/poi/poi_gate_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPBOSS]				= "/esoui/art/icons/poi/poi_groupboss_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPDELVE]				= "/esoui/art/icons/poi/poi_groupdelve_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPINSTANCE]			= "/esoui/art/icons/poi/poi_groupinstance_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GROVE]						= "/esoui/art/icons/poi/poi_grove_complete.dds",
-        [DESTINATIONS_PIN_TYPE_KEEP]						= "/esoui/art/icons/poi/poi_keep_complete.dds",
-        [DESTINATIONS_PIN_TYPE_LIGHTHOUSE]				= "/esoui/art/icons/poi/poi_lighthouse_complete.dds",
-        [DESTINATIONS_PIN_TYPE_MINE]						= "/esoui/art/icons/poi/poi_mine_complete.dds",
-        [DESTINATIONS_PIN_TYPE_MUNDUS]					= "/esoui/art/icons/poi/poi_mundus_complete.dds",
-        [DESTINATIONS_PIN_TYPE_PORTAL]					= "/esoui/art/icons/poi/poi_portal_complete.dds",
-        [DESTINATIONS_PIN_TYPE_RAIDDUNGEON]				= "/esoui/art/icons/poi/poi_raiddungeon_complete.dds",
-        [DESTINATIONS_PIN_TYPE_RUIN]						= "/esoui/art/icons/poi/poi_ruin_complete.dds",
-        [DESTINATIONS_PIN_TYPE_SEWER]						= "/esoui/art/icons/poi/poi_sewer_complete.dds",
-        [DESTINATIONS_PIN_TYPE_SOLOTRIAL]				= "/esoui/art/icons/poi/poi_solotrial_complete.dds",
-        [DESTINATIONS_PIN_TYPE_TOWER]						= "/esoui/art/icons/poi/poi_tower_complete.dds",
-        [DESTINATIONS_PIN_TYPE_TOWN]						= "/esoui/art/icons/poi/poi_town_complete.dds",
-        [DESTINATIONS_PIN_TYPE_WAYSHRINE] 				= "/esoui/art/icons/poi/poi_wayshrine_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GUILDKIOSK] 				= "/esoui/art/icons/servicemappins/servicepin_guildkiosk.dds",
-        [DESTINATIONS_PIN_TYPE_PLANARARMORSCRAPS]		= "/esoui/art/icons/poi/poi_ic_planararmorscraps_complete.dds",
-        [DESTINATIONS_PIN_TYPE_TINYCLAW]					= "/esoui/art/icons/poi/poi_ic_tinyclaw_complete.dds",
-        [DESTINATIONS_PIN_TYPE_MONSTROUSTEETH] 		    = "/esoui/art/icons/poi/poi_ic_monstrousteeth_complete.dds",
-        [DESTINATIONS_PIN_TYPE_BONESHARD]				= "/esoui/art/icons/poi/poi_ic_boneshard_complete.dds",
-        [DESTINATIONS_PIN_TYPE_MARKLEGION]				= "/esoui/art/icons/poi/poi_ic_marklegion_complete.dds",
-        [DESTINATIONS_PIN_TYPE_DARKETHER]				= "/esoui/art/icons/poi/poi_ic_darkether_complete.dds",
-        [DESTINATIONS_PIN_TYPE_DARKBROTHERHOOD] 		= "/esoui/art/icons/poi/poi_darkbrotherhood_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPLIGHTHOUSE] 		= "/esoui/art/icons/poi/poi_group_lighthouse_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPESTATE] 			= "/esoui/art/icons/poi/poi_group_estate_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPRUIN] 				= "/esoui/art/icons/poi/poi_group_ruin_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPCAVE] 				= "/esoui/art/icons/poi/poi_group_cave_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPCEMETERY] 			= "/esoui/art/icons/poi/poi_group_cemetery_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPKEEP] 				= "/esoui/art/icons/poi/poi_group_keep_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPAREAOFINTEREST] 	= "/esoui/art/icons/poi/poi_group_areaofinterest_complete.dds",
+        [DESTINATIONS_PIN_TYPE_AOI]                     = "/esoui/art/icons/poi/poi_areaofinterest_complete.dds",
+        [DESTINATIONS_PIN_TYPE_AYLEIDRUIN]              = "/esoui/art/icons/poi/poi_ayleidruin_complete.dds",
+        [DESTINATIONS_PIN_TYPE_BATTLEFIELD]             = "/esoui/art/icons/poi/poi_battlefield_complete.dds",
+        [DESTINATIONS_PIN_TYPE_CAMP]                        = "/esoui/art/icons/poi/poi_camp_complete.dds",
+        [DESTINATIONS_PIN_TYPE_CAVE]                        = "/esoui/art/icons/poi/poi_cave_complete.dds",
+        [DESTINATIONS_PIN_TYPE_CEMETERY]                    = "/esoui/art/icons/poi/poi_cemetery_complete.dds",
+        [DESTINATIONS_PIN_TYPE_CITY]                        = "/esoui/art/icons/poi/poi_city_complete.dds",
+        [DESTINATIONS_PIN_TYPE_CRAFTING]                    = "/esoui/art/icons/poi/poi_crafting_complete.dds",
+        [DESTINATIONS_PIN_TYPE_CRYPT]                       = "/esoui/art/icons/poi/poi_crypt_complete.dds",
+        [DESTINATIONS_PIN_TYPE_DAEDRICRUIN]             = "/esoui/art/icons/poi/poi_daedricruin_complete.dds",
+        [DESTINATIONS_PIN_TYPE_DELVE]                       = "/esoui/art/icons/poi/poi_delve_complete.dds",
+        [DESTINATIONS_PIN_TYPE_DOCK]                        = "/esoui/art/icons/poi/poi_dock_complete.dds",
+        [DESTINATIONS_PIN_TYPE_DUNGEON]                 = "/esoui/art/icons/poi/poi_dungeon_complete.dds",
+        [DESTINATIONS_PIN_TYPE_DWEMERRUIN]              = "/esoui/art/icons/poi/poi_dwemerruin_complete.dds",
+        [DESTINATIONS_PIN_TYPE_ESTATE]                  = "/esoui/art/icons/poi/poi_estate_complete.dds",
+        [DESTINATIONS_PIN_TYPE_FARM]                        = "/esoui/art/icons/poi/poi_farm_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GATE]                        = "/esoui/art/icons/poi/poi_gate_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPBOSS]               = "/esoui/art/icons/poi/poi_groupboss_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPDELVE]              = "/esoui/art/icons/poi/poi_groupdelve_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPINSTANCE]           = "/esoui/art/icons/poi/poi_groupinstance_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GROVE]                       = "/esoui/art/icons/poi/poi_grove_complete.dds",
+        [DESTINATIONS_PIN_TYPE_KEEP]                        = "/esoui/art/icons/poi/poi_keep_complete.dds",
+        [DESTINATIONS_PIN_TYPE_LIGHTHOUSE]              = "/esoui/art/icons/poi/poi_lighthouse_complete.dds",
+        [DESTINATIONS_PIN_TYPE_MINE]                        = "/esoui/art/icons/poi/poi_mine_complete.dds",
+        [DESTINATIONS_PIN_TYPE_MUNDUS]                  = "/esoui/art/icons/poi/poi_mundus_complete.dds",
+        [DESTINATIONS_PIN_TYPE_PORTAL]                  = "/esoui/art/icons/poi/poi_portal_complete.dds",
+        [DESTINATIONS_PIN_TYPE_RAIDDUNGEON]             = "/esoui/art/icons/poi/poi_raiddungeon_complete.dds",
+        [DESTINATIONS_PIN_TYPE_RUIN]                        = "/esoui/art/icons/poi/poi_ruin_complete.dds",
+        [DESTINATIONS_PIN_TYPE_SEWER]                       = "/esoui/art/icons/poi/poi_sewer_complete.dds",
+        [DESTINATIONS_PIN_TYPE_SOLOTRIAL]               = "/esoui/art/icons/poi/poi_solotrial_complete.dds",
+        [DESTINATIONS_PIN_TYPE_TOWER]                       = "/esoui/art/icons/poi/poi_tower_complete.dds",
+        [DESTINATIONS_PIN_TYPE_TOWN]                        = "/esoui/art/icons/poi/poi_town_complete.dds",
+        [DESTINATIONS_PIN_TYPE_WAYSHRINE]               = "/esoui/art/icons/poi/poi_wayshrine_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GUILDKIOSK]              = "/esoui/art/icons/servicemappins/servicepin_guildkiosk.dds",
+        [DESTINATIONS_PIN_TYPE_PLANARARMORSCRAPS]       = "/esoui/art/icons/poi/poi_ic_planararmorscraps_complete.dds",
+        [DESTINATIONS_PIN_TYPE_TINYCLAW]                = "/esoui/art/icons/poi/poi_ic_tinyclaw_complete.dds",
+        [DESTINATIONS_PIN_TYPE_MONSTROUSTEETH]          = "/esoui/art/icons/poi/poi_ic_monstrousteeth_complete.dds",
+        [DESTINATIONS_PIN_TYPE_BONESHARD]               = "/esoui/art/icons/poi/poi_ic_boneshard_complete.dds",
+        [DESTINATIONS_PIN_TYPE_MARKLEGION]              = "/esoui/art/icons/poi/poi_ic_marklegion_complete.dds",
+        [DESTINATIONS_PIN_TYPE_DARKETHER]               = "/esoui/art/icons/poi/poi_ic_darkether_complete.dds",
+        [DESTINATIONS_PIN_TYPE_DARKBROTHERHOOD]         = "/esoui/art/icons/poi/poi_darkbrotherhood_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPLIGHTHOUSE]         = "/esoui/art/icons/poi/poi_group_lighthouse_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPESTATE]             = "/esoui/art/icons/poi/poi_group_estate_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPRUIN]               = "/esoui/art/icons/poi/poi_group_ruin_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPCAVE]               = "/esoui/art/icons/poi/poi_group_cave_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPCEMETERY]           = "/esoui/art/icons/poi/poi_group_cemetery_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPKEEP]               = "/esoui/art/icons/poi/poi_group_keep_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPAREAOFINTEREST]     = "/esoui/art/icons/poi/poi_group_areaofinterest_complete.dds",
         [DESTINATIONS_PIN_TYPE_HOUSING]                 = "/esoui/art/icons/poi/poi_group_house_owned.dds",
-		[DESTINATIONS_PIN_TYPE_DWEMERGEAR]              = "/esoui/art/icons/poi/poi_u26_dwemergear_complete.dds",		
-		[DESTINATIONS_PIN_TYPE_NORDBOAT]                = "/esoui/art/icons/poi/poi_u26_nord_boat_complete.dds",		
-        [DESTINATIONS_PIN_TYPE_UNKNOWN]					= "Destinations/pins/poi_unknown_pintype.dds",
+        [DESTINATIONS_PIN_TYPE_DWEMERGEAR]              = "/esoui/art/icons/poi/poi_u26_dwemergear_complete.dds",
+        [DESTINATIONS_PIN_TYPE_NORDBOAT]                = "/esoui/art/icons/poi/poi_u26_nord_boat_complete.dds",
+        [DESTINATIONS_PIN_TYPE_UNKNOWN]                 = "Destinations/pins/poi_unknown_pintype.dds",
     }
 
     if poiTypeId  and mapPinTypeCorrespondance[poiTypeId] then
@@ -3608,58 +3619,58 @@ end
 local function GetDestinationUnknownPOITexture(poiTypeId)
 
     local mapPinTypeCorrespondance = {
-        [DESTINATIONS_PIN_TYPE_AOI]						= "/esoui/art/icons/poi/poi_areaofinterest_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_AYLEIDRUIN]				= "/esoui/art/icons/poi/poi_ayleidruin_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_BATTLEFIELD]				= "/esoui/art/icons/poi/poi_battlefield_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_CAMP]						= "/esoui/art/icons/poi/poi_camp_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_CAVE]						= "/esoui/art/icons/poi/poi_cave_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_CEMETERY]					= "/esoui/art/icons/poi/poi_cemetery_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_CITY]						= "/esoui/art/icons/poi/poi_city_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_CRAFTING]					= "/esoui/art/icons/poi/poi_crafting_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_CRYPT]						= "/esoui/art/icons/poi/poi_crypt_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_DAEDRICRUIN]				= "/esoui/art/icons/poi/poi_daedricruin_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_DELVE]						= "/esoui/art/icons/poi/poi_delve_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_DOCK]						= "/esoui/art/icons/poi/poi_dock_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_DUNGEON]					= "/esoui/art/icons/poi/poi_dungeon_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_DWEMERRUIN]				= "/esoui/art/icons/poi/poi_dwemerruin_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_ESTATE]					= "/esoui/art/icons/poi/poi_estate_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_FARM]						= "/esoui/art/icons/poi/poi_farm_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_GATE]						= "/esoui/art/icons/poi/poi_gate_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPBOSS]				= "/esoui/art/icons/poi/poi_groupboss_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPDELVE]				= "/esoui/art/icons/poi/poi_groupdelve_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPINSTANCE]			= "/esoui/art/icons/poi/poi_groupinstance_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_GROVE]						= "/esoui/art/icons/poi/poi_grove_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_KEEP]						= "/esoui/art/icons/poi/poi_keep_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_LIGHTHOUSE]				= "/esoui/art/icons/poi/poi_lighthouse_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_MINE]						= "/esoui/art/icons/poi/poi_mine_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_MUNDUS]					= "/esoui/art/icons/poi/poi_mundus_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_PORTAL]					= "/esoui/art/icons/poi/poi_portal_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_RAIDDUNGEON]				= "/esoui/art/icons/poi/poi_raiddungeon_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_RUIN]						= "/esoui/art/icons/poi/poi_ruin_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_SEWER]						= "/esoui/art/icons/poi/poi_sewer_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_SOLOTRIAL]				= "/esoui/art/icons/poi/poi_solotrial_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_TOWER]						= "/esoui/art/icons/poi/poi_tower_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_TOWN]						= "/esoui/art/icons/poi/poi_town_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_WAYSHRINE] 				= "/esoui/art/icons/poi/poi_wayshrine_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_GUILDKIOSK] 				= "/esoui/art/icons/servicemappins/servicepin_guildkiosk.dds",
-        [DESTINATIONS_PIN_TYPE_PLANARARMORSCRAPS]		= "/esoui/art/icons/poi/poi_ic_planararmorscraps_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_TINYCLAW]					= "/esoui/art/icons/poi/poi_ic_tinyclaw_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_MONSTROUSTEETH] 		= "/esoui/art/icons/poi/poi_ic_monstrousteeth_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_BONESHARD]				= "/esoui/art/icons/poi/poi_ic_boneshard_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_MARKLEGION]				= "/esoui/art/icons/poi/poi_ic_marklegion_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_DARKETHER]				= "/esoui/art/icons/poi/poi_ic_darkether_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_DARKBROTHERHOOD] 		= "/esoui/art/icons/poi/poi_darkbrotherhood_incomplete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPLIGHTHOUSE] 		= "/esoui/art/icons/poi/poi_group_lighthouse_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPESTATE] 			= "/esoui/art/icons/poi/poi_group_estate_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPRUIN] 				= "/esoui/art/icons/poi/poi_group_ruin_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPCAVE] 				= "/esoui/art/icons/poi/poi_group_cave_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPCEMETERY] 			= "/esoui/art/icons/poi/poi_group_cemetery_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPKEEP] 				= "/esoui/art/icons/poi/poi_group_keep_complete.dds",
-        [DESTINATIONS_PIN_TYPE_GROUPAREAOFINTEREST] 	= "/esoui/art/icons/poi/poi_group_areaofinterest_complete.dds",
+        [DESTINATIONS_PIN_TYPE_AOI]                     = "/esoui/art/icons/poi/poi_areaofinterest_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_AYLEIDRUIN]              = "/esoui/art/icons/poi/poi_ayleidruin_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_BATTLEFIELD]             = "/esoui/art/icons/poi/poi_battlefield_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_CAMP]                        = "/esoui/art/icons/poi/poi_camp_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_CAVE]                        = "/esoui/art/icons/poi/poi_cave_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_CEMETERY]                    = "/esoui/art/icons/poi/poi_cemetery_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_CITY]                        = "/esoui/art/icons/poi/poi_city_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_CRAFTING]                    = "/esoui/art/icons/poi/poi_crafting_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_CRYPT]                       = "/esoui/art/icons/poi/poi_crypt_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_DAEDRICRUIN]             = "/esoui/art/icons/poi/poi_daedricruin_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_DELVE]                       = "/esoui/art/icons/poi/poi_delve_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_DOCK]                        = "/esoui/art/icons/poi/poi_dock_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_DUNGEON]                 = "/esoui/art/icons/poi/poi_dungeon_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_DWEMERRUIN]              = "/esoui/art/icons/poi/poi_dwemerruin_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_ESTATE]                  = "/esoui/art/icons/poi/poi_estate_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_FARM]                        = "/esoui/art/icons/poi/poi_farm_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_GATE]                        = "/esoui/art/icons/poi/poi_gate_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPBOSS]               = "/esoui/art/icons/poi/poi_groupboss_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPDELVE]              = "/esoui/art/icons/poi/poi_groupdelve_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPINSTANCE]           = "/esoui/art/icons/poi/poi_groupinstance_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_GROVE]                       = "/esoui/art/icons/poi/poi_grove_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_KEEP]                        = "/esoui/art/icons/poi/poi_keep_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_LIGHTHOUSE]              = "/esoui/art/icons/poi/poi_lighthouse_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_MINE]                        = "/esoui/art/icons/poi/poi_mine_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_MUNDUS]                  = "/esoui/art/icons/poi/poi_mundus_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_PORTAL]                  = "/esoui/art/icons/poi/poi_portal_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_RAIDDUNGEON]             = "/esoui/art/icons/poi/poi_raiddungeon_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_RUIN]                        = "/esoui/art/icons/poi/poi_ruin_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_SEWER]                       = "/esoui/art/icons/poi/poi_sewer_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_SOLOTRIAL]               = "/esoui/art/icons/poi/poi_solotrial_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_TOWER]                       = "/esoui/art/icons/poi/poi_tower_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_TOWN]                        = "/esoui/art/icons/poi/poi_town_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_WAYSHRINE]               = "/esoui/art/icons/poi/poi_wayshrine_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_GUILDKIOSK]              = "/esoui/art/icons/servicemappins/servicepin_guildkiosk.dds",
+        [DESTINATIONS_PIN_TYPE_PLANARARMORSCRAPS]       = "/esoui/art/icons/poi/poi_ic_planararmorscraps_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_TINYCLAW]                    = "/esoui/art/icons/poi/poi_ic_tinyclaw_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_MONSTROUSTEETH]      = "/esoui/art/icons/poi/poi_ic_monstrousteeth_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_BONESHARD]               = "/esoui/art/icons/poi/poi_ic_boneshard_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_MARKLEGION]              = "/esoui/art/icons/poi/poi_ic_marklegion_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_DARKETHER]               = "/esoui/art/icons/poi/poi_ic_darkether_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_DARKBROTHERHOOD]         = "/esoui/art/icons/poi/poi_darkbrotherhood_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPLIGHTHOUSE]         = "/esoui/art/icons/poi/poi_group_lighthouse_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPESTATE]             = "/esoui/art/icons/poi/poi_group_estate_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPRUIN]               = "/esoui/art/icons/poi/poi_group_ruin_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPCAVE]               = "/esoui/art/icons/poi/poi_group_cave_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPCEMETERY]           = "/esoui/art/icons/poi/poi_group_cemetery_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPKEEP]               = "/esoui/art/icons/poi/poi_group_keep_complete.dds",
+        [DESTINATIONS_PIN_TYPE_GROUPAREAOFINTEREST]     = "/esoui/art/icons/poi/poi_group_areaofinterest_complete.dds",
         [DESTINATIONS_PIN_TYPE_HOUSING]                 = "/esoui/art/icons/poi/poi_group_house_unowned.dds",
-		[DESTINATIONS_PIN_TYPE_DWEMERGEAR]              = "/esoui/art/icons/poi/poi_u26_dwemergear_incomplete.dds",
-		[DESTINATIONS_PIN_TYPE_NORDBOAT]                = "/esoui/art/icons/poi/poi_u26_nord_boat_incomplete.dds",		
-        [DESTINATIONS_PIN_TYPE_UNKNOWN]					= "Destinations/pins/poi_unknown_pintype.dds",
+        [DESTINATIONS_PIN_TYPE_DWEMERGEAR]              = "/esoui/art/icons/poi/poi_u26_dwemergear_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_NORDBOAT]                = "/esoui/art/icons/poi/poi_u26_nord_boat_incomplete.dds",
+        [DESTINATIONS_PIN_TYPE_UNKNOWN]                 = "Destinations/pins/poi_unknown_pintype.dds",
     }
 
     if poiTypeId  and mapPinTypeCorrespondance[poiTypeId] then
@@ -3798,7 +3809,7 @@ local function MapCallback_unknown()
     mapData, mapTextureName, zoneTextureName = nil, nil, nil
     if LMP:IsEnabled(drtv.pinName) and DestinationsCSSV.filters[drtv.pinName] then
         GetMapTextureName()
-		mapData = POIsStore[GetZoneId(GetCurrentMapZoneIndex())]
+        mapData = POIsStore[GetZoneId(GetCurrentMapZoneIndex())]
     end
 
     local zoneIndex = GetCurrentMapZoneIndex()
@@ -3897,7 +3908,7 @@ local function GetCoords(questName, journalIndex)
     if drtv.getQuestInfo and not questID then
         d("Fixing empty QuestID...")
     end
-    if not questID then	questID = 0 end
+    if not questID then questID = 0 end
     if questFound then
         DestinationsCSSV.QuestsDone[questID] = 2
         if questID == 5073 or questID == 5075 or questID == 5077 then -- fighters guild
@@ -3943,8 +3954,8 @@ local function GetCoords(questName, journalIndex)
                     local NPC = nil
                     if questID == pinData[QuestsIndex.QUESTID] then
                         local questSeries = pinData[QuestsIndex.QUESTSERIES]
-                        if (playerAlliance == 1 and (questSeries == 3 or questSeries == 0))		-- (Aldmeri Dominion)
-                                or (playerAlliance == 2 and (questSeries == 5 or questSeries == 0))		-- (Ebonheart Pact)
+                        if (playerAlliance == 1 and (questSeries == 3 or questSeries == 0))     -- (Aldmeri Dominion)
+                                or (playerAlliance == 2 and (questSeries == 5 or questSeries == 0))     -- (Ebonheart Pact)
                                 or (playerAlliance == 3 and (questSeries == 4 or questSeries == 0)) then-- (Daggerfall Covenant)
                             NPCID = pinData[QuestsIndex.QUESTNPC]
                             local NPCName = QGiverStore[NPCID]
@@ -4594,7 +4605,7 @@ function SetQuestEditing()
     end
 end
 
-SLASH_COMMANDS["/dqin"] = function()	--Quest Info Debug TOGGLE
+SLASH_COMMANDS["/dqin"] = function()    --Quest Info Debug TOGGLE
     if drtv.getQuestInfo == false then
         drtv.getQuestInfo = true
         d("Quest debug Info ON")
@@ -4604,19 +4615,19 @@ SLASH_COMMANDS["/dqin"] = function()	--Quest Info Debug TOGGLE
         d("Quest debug Info OFF")
     end
 end
-SLASH_COMMANDS["/dhlp"] = function()	--Show help
+SLASH_COMMANDS["/dhlp"] = function()    --Show help
     d(GetString(DESTCOMMANDS))
     d(GetString(DESTCOMMANDdhlp))
     d(GetString(DESTCOMMANDdset))
     d(GetString(DESTCOMMANDdqed))
 end
-SLASH_COMMANDS["/dlaq"] = function()	--Refresh all Completed Quests and /reloadui
+SLASH_COMMANDS["/dlaq"] = function()    --Refresh all Completed Quests and /reloadui
     GetInProgressQuests()
     SetSpecialQuests()
     ReloadUI()
 end
-SLASH_COMMANDS["/dqed"] = SetQuestEditing	--Quest Editing TOGGLE
-SLASH_COMMANDS["/dgcq"] = function()	--Get Completed Quests (to saved vars)
+SLASH_COMMANDS["/dqed"] = SetQuestEditing   --Quest Editing TOGGLE
+SLASH_COMMANDS["/dgcq"] = function()    --Get Completed Quests (to saved vars)
     d("Saving all completed quests...")
     local questId = nil
     local questName = nil
@@ -4630,7 +4641,7 @@ SLASH_COMMANDS["/dgcq"] = function()	--Get Completed Quests (to saved vars)
     end
     d("Done...")
 end
-SLASH_COMMANDS["/dgac"] = function()	--Get All Achievements (to saved vars)
+SLASH_COMMANDS["/dgac"] = function()    --Get All Achievements (to saved vars)
     d("Saving all achievements...")
     local achId = nil
     local achName = nil
@@ -4644,7 +4655,7 @@ SLASH_COMMANDS["/dgac"] = function()	--Get All Achievements (to saved vars)
     end
     d("Done...")
 end
-SLASH_COMMANDS["/dgap"] = function()	--Get All POI's (to saved vars)
+SLASH_COMMANDS["/dgap"] = function()    --Get All POI's (to saved vars)
     d("Saving all POI's...")
     local zoneIndex = GetCurrentMapZoneIndex()
     DestinationsSV.TEMPPINDATA = {}
@@ -4674,7 +4685,7 @@ SLASH_COMMANDS["/dgap"] = function()	--Get All POI's (to saved vars)
         d("No data to save...")
     end
 end
-SLASH_COMMANDS["/dsav"] = function(...)	--Save coords data
+SLASH_COMMANDS["/dsav"] = function(...) --Save coords data
     local param = select(1,...)
     if (param ~= nil and param ~= "") then
         local cmdparam = nil
@@ -4986,7 +4997,7 @@ local function UpdateInventoryContent()
     if DestinationsCSSV.filters[DPINS.RELIC_HUNTER] or DestinationsCSSV.filters[DPINS.CUTPURSE] then
         GetMapTextureName()
         if mapTextureName and zoneTextureName then
-            --			d("getting inventory...")
+            --          d("getting inventory...")
         end
     end
 end
@@ -6003,12 +6014,12 @@ end
 
 local function ShowLanguageWarning()
     EVENT_MANAGER:UnregisterForEvent(ADDON_NAME, EVENT_PLAYER_ACTIVATED)
-    d("Destinations is not properly localized for " .. localLanguage .. ".	English terms will be used and not all POIs may be properly classified.")
+    CHAT_ROUTER:AddSystemMessage("Destinations is not properly localized for " .. Destinations.client_lang .. ".  English terms will be used and not all POIs may be properly classified.")
 end
 
 local function DisableEnglishFunctionnalities()
 
-    if localLanguage == "en" then
+    if Destinations.effective_lang == "en" then
         DestinationsSV.settings.AddEnglishOnUnknwon = false
         DestinationsSV.settings.AddEnglishOnKeeps = false
     end
@@ -6328,7 +6339,7 @@ local function InitSettings()
                     getFunc = function() return DestinationsSV.settings.AddEnglishOnUnknwon end,
                     setFunc = function(state) DestinationsSV.settings.AddEnglishOnUnknwon = state end,
                     default = defaults.settings.AddEnglishOnUnknwon,
-                    disabled = function() return localLanguage == "en" end,
+                    disabled = function() return Destinations.effective_lang == "en" end,
                 },
                 { -- Color of English name
                     type = "colorpicker",
@@ -6349,7 +6360,7 @@ local function InitSettings()
                     getFunc = function() return DestinationsSV.settings.AddEnglishOnKeeps end,
                     setFunc = function(state) DestinationsSV.settings.AddEnglishOnKeeps = state end,
                     default = defaults.settings.AddEnglishOnKeeps,
-                    disabled = function() return localLanguage == "en" end,
+                    disabled = function() return Destinations.effective_lang == "en" end,
                 },
                 { -- Color for English name on Keeps
                     type = "colorpicker",
@@ -9453,10 +9464,7 @@ local function OnLoad(eventCode, name)
         DestinationsCSSV = ZO_SavedVars:NewCharacterNameSettings("Destinations_Settings", 1, nil, defaults)
         DestinationsAWSV = ZO_SavedVars:NewAccountWide("Destinations_Settings", 1, nil, defaults) -- AccountWide
 
-        --Check Language, Addon not yet localized
-        localLanguage = GetCVar("language.2") or "en"
-
-        if not (localLanguage == "en" or localLanguage == "es" or localLanguage == "de" or localLanguage == "fr" or localLanguage == "jp" or localLanguage == "ru") then
+        if not Destinations.supported_lang then
             --chat messages aren't shown before player is activated
             EVENT_MANAGER:RegisterForEvent(ADDON_NAME, EVENT_PLAYER_ACTIVATED, ShowLanguageWarning)
         end

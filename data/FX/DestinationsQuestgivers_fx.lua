@@ -1,4 +1,4 @@
-﻿Destinations = Destinations or {}
+Destinations = Destinations or {}
 
 Destinations.QuestGiverIndex = {
 	NPC = 1,
@@ -1097,7 +1097,7 @@ Destinations.QuestGiverStore = {
 	[500061] = {"Red Rook Note"},
 	[500062] = {"Guifford Vinielle's Sketchbook"},
 	[500063] = {"Bandit's Journal"},
-	[500064] = {"Runensteinfragment"},
+	[500064] = {"Runestone Fragment"},
 	[500065] = {"Torn Letter"},
 	[500066] = {"Nimriell's Research"},
 	[500067] = {"Azura Shrine"},
@@ -1116,7 +1116,7 @@ Destinations.QuestGiverStore = {
 	[500080] = {"Make the Wilds Safer, Earn Gold"},
 	[500081] = {"Yenadar's Journal"},
 	[500082] = {"Suspicious Bottle"},
-	[500083] = {"Parchemin antique"},
+	[500083] = {"An Ancient Scroll"},
 	[500084] = {"Klaandor's Journal"},
 	[500085] = {"Nedras' Journal"},
 	[500086] = {"Ancient Sword"},
