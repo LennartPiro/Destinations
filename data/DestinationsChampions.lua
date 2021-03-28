@@ -374,10 +374,10 @@ Destinations.ChampionTableStore =   {
     ["depravedgrotto_base_0"] = {
         {0.7076259255,  0.5801438689,   433,    1},
     },
-    ["DesertWind_Base_0"] = {
+    ["desertwind_base_0"] = {
         {0.5481,    0.1716, 2398,   1},
     },
-    ["DesertWind2A_Base_0"] = {
+    ["desertwind2a_base_0"] = {
         {0.5481,    0.1716, 2398,   1},
     },
     ["deshaan_base_0"] = {
@@ -919,7 +919,7 @@ Destinations.ChampionTableStore =   {
         {0.379012,  0.220988,   739,    1 },
         {0.780247,  0.262963,   739,    2 },
     },
-    ["RimmenNecropolis_Base_0"] = { -- TODO: recheck if these coordinates are exact
+    ["rimmennecropolis_base_0"] = { -- TODO: recheck if these coordinates are exact
         {0.0926,    0.4704, 2440,   1},
         {0.8988,    0.7420, 2440,   2},
         {0.7914,    0.3988, 2440,   3},

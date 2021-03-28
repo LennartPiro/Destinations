@@ -1622,7 +1622,7 @@ Destinations.QuestDataStore = {
 		{0.7417,	0.6100,	500070,	0,	0,	4770,	10001,	10000,	0},
 		{0.7535,	0.5132,	39613,	0,	0,	4735,	14680,	10027,	0},
 	},
-	["MarbrukOutlawsRefuge_base_0"] = {			-- Marbruk Outlaws Refuge (Greenshade)
+	["marbrukoutlawsrefuge_base_0"] = {			-- Marbruk Outlaws Refuge (Greenshade)
 		{0.4486,	0.3231,	68328,	3,	0,	5531,	15531,	10001,	0},
 	},
 	["gurzagsmine_base_0"] = {					-- Gurzag's Mine (Greenshade)
@@ -1776,7 +1776,7 @@ Destinations.QuestDataStore = {
 		{0.5131,	0.2096,	21851,	5,	0,	5136,	10000,	10000,	0},
 		{0.5131,	0.2096,	58826,	5,	0,	5136,	10000,	10000,	0},
 	},
-	["Imperialsewers_aldmeri1_base_0"] = {		-- Imperial City Sewers Aldmeri Sector (Cyrodiil)
+	["imperialsewers_aldmeri1_base_0"] = {		-- Imperial City Sewers Aldmeri Sector (Cyrodiil)
 		{0.8519,	0.7201,	500073,	0,	0,	5508,	10000,	10000,	3},
 		{0.8519,	0.7201,	500073,	0,	0,	5506,	10000,	10000,	3},
 		{0.8519,	0.7201,	500073,	0,	0,	5510,	10000,	10000,	3},
@@ -1784,7 +1784,7 @@ Destinations.QuestDataStore = {
 		{0.8519,	0.7201,	500073,	0,	0,	5512,	10000,	10000,	3},
 		{0.8519,	0.7201,	500073,	0,	0,	5513,	10000,	10000,	3},
 	},
-	["Imperialsewer_daggerfall1_base_0"] = {	-- Imperial City Sewers Daggerfall Sector (Cyrodiil)
+	["imperialsewer_daggerfall1_base_0"] = {	-- Imperial City Sewers Daggerfall Sector (Cyrodiil)
 		{0.0638,	0.6279,	500073,	0,	0,	5508,	10000,	10000,	4},
 		{0.0638,	0.6279,	500073,	0,	0,	5506,	10000,	10000,	4},
 		{0.0638,	0.6279,	500073,	0,	0,	5510,	10000,	10000,	4},
@@ -1792,7 +1792,7 @@ Destinations.QuestDataStore = {
 		{0.0638,	0.6279,	500073,	0,	0,	5512,	10000,	10000,	4},
 		{0.0638,	0.6279,	500073,	0,	0,	5513,	10000,	10000,	4},
 	},
-	["Imperialsewers_ebon1_base_0"] = {			-- Imperial City Sewers Ebonheart Sector (Cyrodiil)
+	["imperialsewers_ebon1_base_0"] = {			-- Imperial City Sewers Ebonheart Sector (Cyrodiil)
 		{0.5442,	0.2376,	500073,	0,	0,	5508,	10000,	10000,	5},
 		{0.5442,	0.2376,	500073,	0,	0,	5506,	10000,	10000,	5},
 		{0.5442,	0.2376,	500073,	0,	0,	5510,	10000,	10000,	5},
@@ -1967,7 +1967,7 @@ Destinations.QuestDataStore = {
 		{0.6172,	0.2612,	68328,	3,	0,	5531,	15531,	10001,	0},
 		{0.8266,	0.3905,	39613,	0,	0,	4735,	14680,	10027,	0},
 	},
-	["Maw_of_Lorkaj_Base_0"] = {				-- Maw of Lorkaj ()
+	["maw_of_lorkaj_base_0"] = {				-- Maw of Lorkaj ()
 		{0.6977,	0.4937,	60285,	6,	1,	5352,	10000,	10000,	0},
 	},
 	["mehrunesspite_base_0"] = {				-- Mehrunes' Spite (Auridon)
@@ -2047,7 +2047,7 @@ Destinations.QuestDataStore = {
 		{0.7033,	0.6762,	500009,	4,	2,	5368,	10001,	10000,	0},
 		{0.7656,	0.4470,	23029,	0,	0,	3893,	13893,	10001,	0},
 	},
-	["MournholdOutlawsRefuge_base_0"] = {		-- Mournhold Outlaws Refuge (Deshaan)
+	["mournholdoutlawsrefuge_base_0"] = {		-- Mournhold Outlaws Refuge (Deshaan)
 		{0.4985,	0.5448,	68328,	3,	0,	5531,	15531,	10001,	0},
 	},
 	["mtharnaz_base_0"] = {						-- Mtharnaz (Craglorn)
@@ -2168,7 +2168,7 @@ Destinations.QuestDataStore = {
 	["pinepeakcaverns_base_0"] = {				-- Pinepeak Cavern (The Rift)
 		{0.4852,	0.2692,	27354,	0,	0,	3980,	14023,	10095,	0},
 	},
-	["planeofjodehubhillbos_base_0"] = {		-- 
+	["planeofjodehubhillbos_base_0"] = {		--
 		{0.4953,	0.3871,	36115,	0,	0,	4720,	14680,	10067,	1},
 		{0.4962,	0.3876,	36116,	0,	0,	4720,	14680,	10067,	1},
 	},
@@ -2327,7 +2327,7 @@ Destinations.QuestDataStore = {
 		{0.7145,	0.5368,	29168,	0,	0,	3927,	14023,	10101,	0},
 		{0.8113,	0.5352,	30183,	0,	0,	4254,	10001,	10000,	0},
 	},
-	["RiftOutlaw_base_0"] = {					-- Riften Outlaws Refuge (The Rift)
+	["riftoutlaw_base_0"] = {					-- Riften Outlaws Refuge (The Rift)
 		{0.4643,	0.4741,	68328,	3,	0,	5531,	15531,	10001,	0},
 	},
 	["rivenspire_base_0"] = {					-- Rivenspire -- (Rivenspire)
@@ -2401,7 +2401,7 @@ Destinations.QuestDataStore = {
 		{0.8110,	0.3544,	48891,	0,	0,	4930,	10001,	10000,	0},
 		{0.8161,	0.2007,	43839,	0,	1,	4916,	10001,	10000,	0},
 	},
-	["RivenspireOutlaw_Base_0"] = {				-- Rivenspire Outlaws Refuge (Rivenspire)
+	["rivenspireoutlaw_base_0"] = {				-- Rivenspire Outlaws Refuge (Rivenspire)
 		{0.4236,	0.5833,	68328,	3,	0,	5531,	15531,	10001,	0},
 	},
 	["rkhardahrk_0"] = {						-- Rkhardahrk (Craglorn)
@@ -3331,13 +3331,13 @@ Destinations.QuestDataStore = {
 		{0.4495,	0.3660,	47667,	0,	1,	4879,	10000,	10000,	3},
 		{0.4495,	0.3660,	47667,	0,	1,	4880,	10000,	10000,	3},
 	},
-	["WGTGreenEmporerWay_Base_0"] = {			-- White-Gold Tower Emporer Way (Cyrodiil)
+	["wgtgreenemporerway_base_0"] = {			-- White-Gold Tower Emporer Way (Cyrodiil)
 		{0.1950,	0.1803,	60187,	5,	0,	5342,	10000,	10000,	0},
 	},
-	["WGTLibraryMain_Base_0"] = {				-- White-Gold Tower Main (Cyrodiil)
+	["wgtlibrarymain_base_0"] = {				-- White-Gold Tower Main (Cyrodiil)
 		{0.5576,	0.5470,	60187,	5,	0,	5342,	10000,	10000,	0},
 	},
-	["WGTPalaceSewers_Base_0"] = {				-- White-Gold Tower Sewers (Cyrodiil)
+	["wgtpalacesewers_base_0"] = {				-- White-Gold Tower Sewers (Cyrodiil)
 		{0.4506,	0.1619,	60187,	5,	0,	5342,	10000,	10000,	0},
 	},
 	["whiteroseprison_base_0"] = {				-- White Rose Prison Dungeon (Shadowfen)
